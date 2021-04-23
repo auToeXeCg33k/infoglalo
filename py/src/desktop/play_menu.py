@@ -1,5 +1,5 @@
 import tkinter
-from window import Window
+from .window import Window
 
 class PlayMenuWindow(Window):
     def __init__(this):
