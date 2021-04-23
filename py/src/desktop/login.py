@@ -4,8 +4,8 @@ from tkinter.ttk import Button
 
 from typing import Union
 
-from window import Window
-from regist import RegistWindow
+from .window import Window
+from .regist import RegistWindow
 
 
 class LoginWindow(Window):

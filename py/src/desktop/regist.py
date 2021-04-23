@@ -1,7 +1,8 @@
 import tkinter
 from typing import Union
 from tkinter import Entry
-from window import Window
+from .window import Window
+
 
 class RegistWindow(Window):
     def __init__(this):
