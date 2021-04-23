@@ -7,18 +7,22 @@ class AdsWindow(Window):
         Window.__init__(this, data)
 
         this.columnconfigure(index=0, weight=1)
+        this.columnconfigure(index=1, weight=1, minsize=20)
         this.rowconfigure(index=0, weight=1)
         this.reset()
         
     def reset(this) -> None:
         canvas = tkinter.Canvas(this)
+        canvas.configure(scrollregion=canvas.bbox("all"))
         canvas.grid(row=0, column=0, sticky="NESW")
-        scrollbar = ttk.Scrollbar(this, orient="vertical", command=canvas.yview)
-
         canvas.columnconfigure(index=0, weight=1)
         canvas.rowconfigure(index=0, weight=1)
+
+        scrollbar = ttk.Scrollbar(this, orient="vertical", command=canvas.yview)
+        scrollbar.grid(row=0, column=1, sticky="NES")
+
         scrollable_frame = ttk.Frame(canvas)
-        scrollable_frame.grid(row=0, column=0)
+        scrollable_frame.grid(row=0, column=0, sticky="EW")
         scrollable_frame.columnconfigure(index=0, weight=1)
 
         scrollable_frame.bind(
