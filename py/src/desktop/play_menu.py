@@ -2,8 +2,8 @@ import tkinter
 from .window import Window
 
 class PlayMenuWindow(Window):
-    def __init__(this):
-        Window.__init__(this)
+    def __init__(this, data):
+        Window.__init__(this, data)
 
         this.rowconfigure(index=0, weight=1)
         this.rowconfigure(index=1, weight=1)

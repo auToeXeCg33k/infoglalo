@@ -2,6 +2,7 @@ import tkinter
 
 from .window import Window
 from .login import LoginWindow
+from .ads_window import AdsWindow
 
 from typing import Union
 from typing import Type
@@ -11,7 +12,7 @@ class App(tkinter.Tk):
     # SHOW A CACHED WINDOW
     def show_window(this, window_type: Type[Window]) -> None:
         if window_type not in this.windows:
-            window = window_type()
+            window = window_type(this.data)
             window.master = this
             this.windows[window_type] = window
 
@@ -29,9 +30,13 @@ class App(tkinter.Tk):
         # CURRENTLY SHOWN WINDOW
         this.shown: Union[Window, None] = None
 
+        # CENTRAL DATA HOLDER
+        this.data: dict[str] = dict()
+
         this.title("Infoglaló")
 
         this.columnconfigure(index=0, weight=1)
         this.rowconfigure(index=0, weight=1)
 
-        this.show_window(LoginWindow)
+        #this.show_window(LoginWindow)
+        this.show_window(AdsWindow)

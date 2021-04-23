@@ -9,8 +9,8 @@ from .regist import RegistWindow
 
 
 class LoginWindow(Window):
-    def __init__(this) -> None:
-        Window.__init__(this)
+    def __init__(this, data) -> None:
+        Window.__init__(this, data)
 
         # TEMPORARY WEIGHTS
         this.rowconfigure(index=0, weight=1)
