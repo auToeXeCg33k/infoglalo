@@ -9,22 +9,22 @@ from typing import Type
 
 class App(tkinter.Tk):
     # SAVE CREATED WINDOW IN CACHE
-    def create_window(this, name: str, window_type: Type[Window]) -> Union[Window, None]:
+    def create_window(this, window_type: Type[Window]) -> Union[Window, None]:
         if str in this.windows:
             return None
 
         window = window_type()
         window.master = this
-        this.windows[name] = window
+        this.windows[window_type] = window
         return window
 
 
     # SHOW A CACHED WINDOW
-    def show_window(this, name: str) -> bool:
-        if name not in this.windows:
+    def show_window(this, window_type: Type[Window]) -> bool:
+        if window_type not in this.windows:
             return False
 
-        this.shown = this.windows[name]
+        this.shown = this.windows[window_type]
         this.shown.reset()
         this.shown.grid(row=0, column=0, sticky="NESW")
 
@@ -34,7 +34,7 @@ class App(tkinter.Tk):
         tkinter.Tk.__init__(this, *args, **kwargs)
 
         # CACHE FOR LOADED WINDOWS
-        this.windows: dict[str, Window] = dict()
+        this.windows: dict[Type[Window], Window] = dict()
         # CURRENTLY SHOWN WINDOW
         this.shown: Union[Window, None] = None
 
@@ -43,5 +43,5 @@ class App(tkinter.Tk):
         this.columnconfigure(index=0, weight=1)
         this.rowconfigure(index=0, weight=1)
 
-        this.create_window("main_menu", MainMenuWindow)
-        this.show_window("main_menu")
+        this.create_window(MainMenuWindow)
+        this.show_window(MainMenuWindow)
