@@ -57,6 +57,6 @@ class MainMenuWindow(Window):
 
 
     def go_to_register(this) -> None:
-        if not this.master.show_window("register_menu"):
-            this.master.create_window("register_menu", RegistWindow)
-            this.master.show_window("register_menu")
+        if not this.master.show_window(RegistWindow):
+            this.master.create_window(RegistWindow)
+            this.master.show_window(RegistWindow)
