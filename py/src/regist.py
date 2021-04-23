@@ -4,7 +4,7 @@ from tkinter import Entry
 from window import Window
 
 class RegistWindow(Window):
-    def __inif__(this):
+    def __init__(this):
         Window.__init__(this)
 
         this.rowconfigure(index=0, weight=1)
