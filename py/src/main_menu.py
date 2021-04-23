@@ -1,62 +1,42 @@
-from tkinter import Label
-from tkinter.ttk import Entry
-from tkinter.ttk import Button
-
-from typing import Union
-
+import tkinter
 from window import Window
-from regist import RegistWindow
-
 
 class MainMenuWindow(Window):
-    def __init__(this) -> None:
+    def __init__(this):
         Window.__init__(this)
 
-        # TEMPORARY WEIGHTS
         this.rowconfigure(index=0, weight=1)
         this.rowconfigure(index=1, weight=1)
         this.rowconfigure(index=2, weight=1)
         this.rowconfigure(index=3, weight=1)
+        this.rowconfigure(index=4, weight=1)
+        this.rowconfigure(index=5, weight=1)
         this.columnconfigure(index=0, weight=1)
-        this.columnconfigure(index=1, weight=1)
 
-        this.uname_entry: Union[None, Entry] = None
-        this.pwd_entry: Union[None, Entry] = None
-
-        # CREATE LAYOUT
         this.reset()
 
-
     def reset(this) -> None:
-        # REMOVE OLD WIDGETS
-        # THIS IS PROBABLY A WASTE BUT IT SHOULD DO FOR NOW
-        for child in this.winfo_children():
-            child.destroy()
+        #MENU TITLE
+        tkinter.Label(this, text="Menü", font=(None, 25)).grid(row=0, column=0, sticky="NESW")
 
-        # TITLE
-        Label(this, text="Infoglaló", font=(None, 26)).grid(row=0, column=0, columnspan=2, sticky="NESW")
+        #MENU BUTTONS
+        tkinter.Button(this, command=this.go_to_play, text="Játék").grid(row=1, column=0, sticky="NESW")
+        tkinter.Button(this, command=this.go_to_ranking, text="Rangsor").grid(row=2, column=0, sticky="NESW")
+        tkinter.Button(this, command=this.go_to_social, text="Közösségi").grid(row=3, column=0, sticky="NESW")
+        tkinter.Button(this, command=this.go_to_ad, text="Hirdetések").grid(row=4, column=0, sticky="NESW")
+        tkinter.Button(this, command=this.go_to_settings, text="Beállítások").grid(row=5, column=0, sticky="NESW")
 
-        # FIELD NAMES
-        Label(this, text="Felhasználónév: ").grid(row=1, column=0, sticky="NESW")
-        Label(this, text="Jelszó: ").grid(row=2, column=0, sticky="NESW")
-
-        # INPUT FIELDS
-        this.uname_entry = Entry(this)
-        this.pwd_entry = Entry(this)
-
-        this.uname_entry.grid(row=1, column=1, sticky="NESW")
-        this.pwd_entry.grid(row=2, column=1, sticky="NESW")
-
-        # BUTTONS
-        Button(this, text="Regisztráció", command=this.go_to_register).grid(row=3, column=0, sticky="NESW")
-        Button(this, text="Bejelentkezés", command=this.login).grid(row=3, column=1, sticky="NESW")
-
-
-    def login(this) -> None:
+    def go_to_play():
         pass
 
+    def go_to_ranking():
+        pass
 
-    def go_to_register(this) -> None:
-        if not this.master.show_window(RegistWindow):
-            this.master.create_window(RegistWindow)
-            this.master.show_window(RegistWindow)
+    def go_to_social():
+        pass
+
+    def go_to_ad():
+        pass
+
+    def go_to_settings():
+        pass
