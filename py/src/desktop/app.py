@@ -1,5 +1,6 @@
 import tkinter
 
+from .main_menu import MainMenuWindow
 from .window import Window
 from .login import LoginWindow
 from .ads_window import AdsWindow
@@ -39,4 +40,4 @@ class App(tkinter.Tk):
         this.rowconfigure(index=0, weight=1)
 
         #this.show_window(LoginWindow)
-        this.show_window(AdsWindow)
+        this.show_window(MainMenuWindow)

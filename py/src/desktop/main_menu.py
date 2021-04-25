@@ -1,4 +1,6 @@
 import tkinter
+
+from .social_menu import SocialMenu
 from .window import Window
 
 class MainMenuWindow(Window):
@@ -26,17 +28,17 @@ class MainMenuWindow(Window):
         tkinter.Button(this, command=this.go_to_ad, text="Hirdetések").grid(row=4, column=0, sticky="NESW")
         tkinter.Button(this, command=this.go_to_settings, text="Beállítások").grid(row=5, column=0, sticky="NESW")
 
-    def go_to_play():
+    def go_to_play(this) -> None:
         pass
 
-    def go_to_ranking():
+    def go_to_ranking(this) -> None:
         pass
 
-    def go_to_social():
+    def go_to_social(this) -> None:
+        this.master.show_window(SocialMenu)
+
+    def go_to_ad(this) -> None:
         pass
 
-    def go_to_ad():
-        pass
-
-    def go_to_settings():
+    def go_to_settings(this) -> None:
         pass
