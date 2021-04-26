@@ -6,7 +6,6 @@ from .login import LoginWindow
 from typing import Union
 from typing import Type
 
-from ..core.dao.user_dao import UserDAO
 
 class App(tkinter.Tk):
     # SHOW A CACHED WINDOW

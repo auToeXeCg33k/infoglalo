@@ -32,4 +32,4 @@ class UserDAO:
 
         except Exception as e:
             print(e)
-            pass
+            return None
