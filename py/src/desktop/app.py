@@ -1,6 +1,8 @@
 import tkinter
 
+from .chat_rooms import ChatRoom
 from .main_menu import MainMenuWindow
+from .scrollable_window import ScrollableWindow
 from .window import Window
 from .login import LoginWindow
 from .ads_window import AdsWindow
@@ -40,4 +42,4 @@ class App(tkinter.Tk):
         this.rowconfigure(index=0, weight=1)
 
         #this.show_window(LoginWindow)
-        this.show_window(MainMenuWindow)
+        this.show_window(ChatRoom)
