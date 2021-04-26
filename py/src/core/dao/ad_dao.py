@@ -1,5 +1,5 @@
 import cx_Oracle
-from .config import ConfigLoader
+from src.core.config import ConfigLoader
 from tkinter import PhotoImage
 
 
