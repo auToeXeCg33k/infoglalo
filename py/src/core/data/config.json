@@ -1,0 +1,7 @@
+{
+  "oracle_dir": "C:/instantclient_19_10",
+  "db_user": "infoglalo",
+  "db_pwd": "jelszo",
+  "db_url": "leopph.tplinkdns.com/xe",
+  "db_encoding": "UTF-8"
+}
