@@ -1,5 +1,5 @@
-import tkinter
 from .scrollable_window import ScrollableWindow
+from ..core.dao.ad_dao import AdDAO
 
 class AdsWindow(ScrollableWindow):
     def __init__(this, data) -> None:
@@ -7,6 +7,7 @@ class AdsWindow(ScrollableWindow):
         this.reset()
         
     def reset(this) -> None:
-        for i in range (10):
+        dao = AdDAO()
+        data =  dao.find_all()
+        for i in range (len(data)):
             this.main_frame.rowconfigure(index=i, weight=1)
-            tkinter.Label(this.main_frame, text="Valami", font=(None, 25)).grid(row=i, column=0, sticky="NESW")
