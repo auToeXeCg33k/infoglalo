@@ -7,7 +7,6 @@ class ChatRoom(ScrollableWindow):
     def __init__(this, data) -> None:
         ScrollableWindow.__init__(this, data)
 
-
         this.reset()
 
 

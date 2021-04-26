@@ -9,7 +9,7 @@ class ScrollableWindow(Window):
         Window.__init__(this, data)
 
         #TITLE ROW
-        this.rowconfigure(index=0, weight=1)
+        # this.rowconfigure(index=0, weight=1)
         #CANVAS ROW
         this.rowconfigure(index=1, weight=1)
 
