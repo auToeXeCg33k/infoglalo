@@ -53,10 +53,11 @@ class RegistWindow(Window):
 
         # tkinter.Button(this, command=this.go_to_login, text="Bejelentkezés").grid(row=6, column=0, sticky="NESW")
         tkinter.Button(this, command=this.regist, text="Regisztráció").grid(row=6, column=1, sticky="NESW")
+        tkinter.Button(this, command=this.go_to_login, text="Vissza").grid(row=6, column=0, sticky="NESW")
 
 
     def regist():
         pass
 
-    # def go_to_login(this) -> None:
-    #     this.master.show_window(LoginWindow)
+    def go_to_login(this) -> None:
+         this.master.raise_previous_window()

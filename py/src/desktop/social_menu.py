@@ -25,8 +25,8 @@ class SocialMenu(Window):
 
 
     def go_to_forum(this) -> None:
-        this.master.show_window(Forum)
+        this.master.raise_window(Forum)
 
     def go_to_rooms(this) -> None:
-        this.master.show_window(ChatRoom)
+        this.master.raise_window(ChatRoom)
 
