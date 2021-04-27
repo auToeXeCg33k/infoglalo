@@ -31,3 +31,14 @@ class SocialDAO:
         except Exception as e:
             print(e)
         return list()
+
+    def send_message(this, u_name, room_id, content) -> bool:
+        try:
+            with cx_Oracle.connect(ConfigLoader.get_db_user(), ConfigLoader.get_db_pwd(), ConfigLoader.get_db_url(), encoding=ConfigLoader.get_db_encoding()) as connection:
+                cursor = connection.cursor()
+                cursor.execute("INSERT INTO UZENET(KULDO, KOZOSSEG, IDOPONT, SZOVEG) VALUES (:1, :2, SYSDATE, :3)", [u_name, room_id, content])
+                return True
+
+        except Exception as e:
+            print(e)
+            return False
