@@ -23,7 +23,7 @@ class AdsWindow(ScrollableWindow):
             img_button.grid(row=i, column=0, sticky="NEWS")
 
 
-    def get_info(this, data, i):
+    def get_info(this, data, i) -> None:
         info_frame = tk.Toplevel()
         info_frame.columnconfigure(index=0, weight=1)
         info_frame.rowconfigure(index=0, weight=1)
