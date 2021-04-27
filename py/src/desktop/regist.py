@@ -4,6 +4,7 @@ from tkinter import Entry
 from .window import Window
 
 
+# TODO IMPLEMENT BIRTHDATE
 class RegistWindow(Window):
     def __init__(this, data):
         Window.__init__(this, data)
