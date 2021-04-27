@@ -35,7 +35,7 @@ class MainMenuWindow(Window):
         pass
 
     def go_to_social(this) -> None:
-        this.master.show_window(SocialMenu)
+        this.master.raise_window(SocialMenu)
 
     def go_to_ad(this) -> None:
         pass

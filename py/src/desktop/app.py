@@ -9,16 +9,23 @@ from typing import Type
 
 
 class App(tkinter.Tk):
-    # SHOW A CACHED WINDOW
-    def show_window(this, window_type: Type[Window]) -> None:
+    # CACHE AND PUT WINDOW ON THE BACK STACK
+    def raise_window(this, window_type: Type[Window]) -> None:
         if window_type not in this.windows:
-            window = window_type(this.data)
+            window = window_type(this.loaded_windows)
             window.master = this
             this.windows[window_type] = window
 
-        this.shown = this.windows[window_type]
-        this.shown.reset()
-        this.shown.grid(row=0, column=0, sticky="NESW")
+        this.back_stack.append(this.windows[window_type])
+        this.back_stack[-1].reset()
+        this.back_stack[-1].grid(row=0, column=0, sticky="NESW")
+
+
+    # GO BACK ONE STEP IN THE BACK STACK
+    def raise_previous_window(this) -> None:
+        this.back_stack[-1].grid_forget()
+        this.back_stack.pop()
+        this.back_stack[-1].reset()
 
 
     # APP INITIALIZER
@@ -27,15 +34,15 @@ class App(tkinter.Tk):
 
         # CACHE FOR LOADED WINDOWS
         this.windows: dict[Type[Window], Window] = dict()
-        # CURRENTLY SHOWN WINDOW
-        this.shown: Union[Window, None] = None
+        # WINDOW BACK STACK
+        this.back_stack: list[Window] = list()
 
         # CENTRAL DATA HOLDER
-        this.data: dict[str] = dict()
+        this.loaded_windows: dict[str] = dict()
 
         this.title("Infoglaló")
 
         this.columnconfigure(index=0, weight=1)
         this.rowconfigure(index=0, weight=1)
 
-        this.show_window(LoginWindow)
+        this.raise_window(LoginWindow)

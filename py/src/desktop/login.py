@@ -52,4 +52,4 @@ class LoginWindow(Window):
 
 
     def go_to_register(this) -> None:
-        this.master.show_window(RegistWindow)
+        this.master.raise_window(RegistWindow)
