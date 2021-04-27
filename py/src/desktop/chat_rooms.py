@@ -26,8 +26,8 @@ class ChatRoom(ScrollableWindow):
 
         for i in range(len(rooms)):
             room_frame.rowconfigure(index=i, weight=1)
-            tk.Button(room_frame, command=this.to_room(rooms[i][0]), text=rooms[i][1]).grid(row=i, column=0, sticky="NESW")
-        
+            tk.Button(room_frame, command=this.to_room(rooms[i][0]), text=rooms[i][1]).grid(row=i, column=0, sticky="NEW")
+
 
         #FRAME FOR MAIN MESSAGES
         main_message_frame = tk.LabelFrame(this.main_frame, text="Üzenetek",font=(None, 15))
