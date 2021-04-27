@@ -8,7 +8,9 @@ class ChatRoom(ScrollableWindow):
         ScrollableWindow.__init__(this, data)
 
         #DAO
-        socialDAO = SocialDAO()
+        this.socialDAO = SocialDAO()
+
+
 
         #TITLE
         tk.Label(this, text="Közösségi szobák", font=(None, 25)).grid(row=0, column=0, sticky="NESW")
@@ -18,15 +20,11 @@ class ChatRoom(ScrollableWindow):
         this.main_frame.columnconfigure(index=1, weight=3)
 
         #FRAME FOR ROOM NAME
-        room_frame = tk.LabelFrame(this.main_frame, text="Szobák", font=(None, 15))
-        room_frame.grid(row=0, column=0,sticky="NESW")
+        this.room_frame = tk.LabelFrame(this.main_frame, text="Szobák", font=(None, 15))
+        this.room_frame.grid(row=0, column=0,sticky="NESW")
 
-        #ADD ROOMS FROM DB
-        rooms:list[tuple[int, str]] = socialDAO.get_room()
 
-        for i in range(len(rooms)):
-            room_frame.rowconfigure(index=i, weight=1)
-            tk.Button(room_frame, command=this.to_room(rooms[i][0]), text=rooms[i][1]).grid(row=i, column=0, sticky="NEW")
+
 
 
         #FRAME FOR MAIN MESSAGES
@@ -42,9 +40,18 @@ class ChatRoom(ScrollableWindow):
 
 
         #ADD MESSAGES FROM DB
-        for i in range(15):
-            text = "User" + str(i) + ": Ez egy uzenet."
-            tk.Label(messages_frame, text=text, font=(None, 10)).grid(row=i, sticky="W")
+        #for i in range(15):
+        #    text = "User" + str(i) + ": Ez egy uzenet."
+        #    tk.Label(messages_frame, text=text, font=(None, 10)).grid(row=i, sticky="W")
+        #ADD ROOMS FROM DB
+        rooms:list[tuple[int, str]] = this.socialDAO.get_room()
+
+        for i in range(len(rooms)):
+            this.room_frame.rowconfigure(index=i, weight=1)
+            tk.Button(this.room_frame, command=this.to_room(rooms[i][0], messages_frame), text=rooms[i][1]).grid(row=i, column=0, sticky="NEW")
+
+
+
 
 
         #MESSAGE WRITER FRAME
@@ -69,8 +76,13 @@ class ChatRoom(ScrollableWindow):
 
 
 
-    def to_room(this, room_id):
-        pass
+    def to_room(this, room_id:int, frame:tk.Frame) -> None:
+        room_messages = this.socialDAO.get_messages(room_id)
+
+        for i in range(len(room_messages)):
+            text = "User" + room_messages[i][0] + ":" + room_messages[i][3]
+            tk.Label(frame, text=text, font=(None, 10)).grid(row=i, sticky="W")
+
 
 
     def send_message(this, content):
