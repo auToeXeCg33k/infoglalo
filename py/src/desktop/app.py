@@ -12,7 +12,7 @@ class App(tkinter.Tk):
     # CACHE AND PUT WINDOW ON THE BACK STACK
     def raise_window(this, window_type: Type[Window]) -> None:
         if window_type not in this.windows:
-            window = window_type(this.loaded_windows)
+            window = window_type(this.data)
             window.master = this
             this.windows[window_type] = window
 
@@ -38,7 +38,7 @@ class App(tkinter.Tk):
         this.back_stack: list[Window] = list()
 
         # CENTRAL DATA HOLDER
-        this.loaded_windows: dict[str] = dict()
+        this.data: dict[str] = dict()
 
         this.title("Infoglaló")
 
