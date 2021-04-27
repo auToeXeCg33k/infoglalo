@@ -1,4 +1,5 @@
 import tkinter as tk
+from functools import partial
 
 from .scrollable_window import ScrollableWindow
 from ..core.dao.social_dao import SocialDAO
@@ -25,8 +26,6 @@ class ChatRoom(ScrollableWindow):
 
 
 
-
-
         #FRAME FOR MAIN MESSAGES
         main_message_frame = tk.LabelFrame(this.main_frame, text="Üzenetek",font=(None, 15))
         main_message_frame.grid(row=0, column=1,sticky="NESW")
@@ -39,19 +38,12 @@ class ChatRoom(ScrollableWindow):
         messages_frame.grid(row=0, column=0, sticky="NESW")
 
 
-        #ADD MESSAGES FROM DB
-        #for i in range(15):
-        #    text = "User" + str(i) + ": Ez egy uzenet."
-        #    tk.Label(messages_frame, text=text, font=(None, 10)).grid(row=i, sticky="W")
-        #ADD ROOMS FROM DB
+        #ADD ROOMS AND MESSAGES FROM DB
         rooms:list[tuple[int, str]] = this.socialDAO.get_room()
 
         for i in range(len(rooms)):
             this.room_frame.rowconfigure(index=i, weight=1)
-            tk.Button(this.room_frame, command=this.to_room(rooms[i][0], messages_frame), text=rooms[i][1]).grid(row=i, column=0, sticky="NEW")
-
-
-
+            tk.Button(this.room_frame, command=partial(this.to_room, rooms[i][0], messages_frame), text=rooms[i][1]).grid(row=i, column=0, sticky="NEW")
 
 
         #MESSAGE WRITER FRAME
