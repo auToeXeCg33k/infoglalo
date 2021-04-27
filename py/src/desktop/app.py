@@ -3,6 +3,7 @@ import tkinter
 from .window import Window
 from .login import LoginWindow
 
+
 from typing import Union
 from typing import Type
 
