@@ -1,6 +1,7 @@
 import tkinter as tk
 
 from .chat_rooms import ChatRoom
+from .forum import Forum
 from .window import Window
 
 class SocialMenu(Window):
@@ -24,7 +25,7 @@ class SocialMenu(Window):
 
 
     def go_to_forum(this) -> None:
-        pass
+        this.master.show_window(Forum)
 
     def go_to_rooms(this) -> None:
         this.master.show_window(ChatRoom)
