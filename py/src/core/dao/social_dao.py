@@ -19,11 +19,11 @@ class SocialDAO:
             print(e)
         return list()
 
-    def get_room(this) -> list[tuple[int, str]]:
+    def get_room(this, u_name) -> list[tuple[int, str]]:
         try:
             connection = ConfigLoader.get_connection_pool().acquire()
             cursor = connection.cursor()
-            cursor.execute("SELECT * FROM KOZOSSEG")
+            cursor.execute("SELECT * FROM KOZOSSEG WHERE KOZOSSEG.ID != 0 and KOZOSSEG.ID in (Select KOZOSSEG from KOZOSSEGTAGJA where FELHASZNALONEV = :1)", [u_name])
             db_data: list[tuple[int, str]] = cursor.fetchall()
             ConfigLoader.get_connection_pool().release(connection)
             result = list()
