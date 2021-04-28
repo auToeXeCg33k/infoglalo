@@ -23,7 +23,6 @@ class ChatRoom(ScrollableWindow):
         this.main_frame.columnconfigure(index=0, weight=1)
         this.main_frame.columnconfigure(index=1, weight=3)
 
-
         # FRAME FOR ROOM NAME
         this.room_frame = tk.LabelFrame(this.main_frame, text="Szobák", font=(None, 15))
         this.room_frame.grid(row=0, column=0, sticky="NESW")
@@ -38,7 +37,6 @@ class ChatRoom(ScrollableWindow):
         # FRAME FOR MESSAGES
         messages_frame = tk.Frame(main_message_frame, height=150)
         messages_frame.grid(row=0, column=0, sticky="NESW")
-
 
         # ADD ROOMS AND MESSAGES FROM DB
         rooms: list[tuple[int, str]] = this.socialDAO.get_room(data["user"][0])
@@ -79,8 +77,17 @@ class ChatRoom(ScrollableWindow):
         room_messages = this.socialDAO.get_messages(room_id)
         this.akt_room_id = room_id
         for i in range(len(room_messages)):
-            text = "User" + room_messages[i][0] + ":" + room_messages[i][3]
-            tk.Label(frame, text=text, font=(None, 10)).grid(row=i, sticky="W")
+            akt_message = tk.Frame(frame)
+            akt_message.rowconfigure(index=0, weight=1)
+            akt_message.columnconfigure(index=0, weight=1)
+            akt_message.columnconfigure(index=1, weight=3)
+            akt_message.columnconfigure(index=2, weight=1)
+            tk.Label(akt_message, text=room_messages[i][0], font=(None, 10)).grid(row=0, column=0, sticky="W")
+            tk.Label(akt_message, text=room_messages[i][3], font=(None, 10)).grid(row=0, column=1, sticky="WE")
+            tk.Label(akt_message, text=room_messages[i][2], font=(None, 10)).grid(row=0, column=2, sticky="E")
+            akt_message.grid(row=i, sticky="W")
+
+
 
     def send_message(this, room_id, content: tk.Entry):
         print(this.socialDAO.send_message("Atesz", room_id, content.get()))
