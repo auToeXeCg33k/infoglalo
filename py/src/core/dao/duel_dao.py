@@ -4,7 +4,7 @@ from src.core.config import ConfigLoader
 class DuelDAO:
     def executesql(this, sql, args: list) -> list:
         try:
-            connection = ConfigLoader.get_connection_pool()
+            connection = ConfigLoader.get_connection_pool().acquire()
             cursor = connection.cursor()
             cursor.execute(sql, args)
             ret = cursor.fetchall()

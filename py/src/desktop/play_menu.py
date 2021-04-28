@@ -1,5 +1,7 @@
 import tkinter
+
 from .window import Window
+from .duel_menu import DuelMenuWindow
 
 class PlayMenuWindow(Window):
     def __init__(this, data):
@@ -33,7 +35,7 @@ class PlayMenuWindow(Window):
         pass
 
     def go_to_duel(this) -> None:
-        pass
+        this.master.raise_window(DuelMenuWindow)
 
     def go_to_test(this) -> None:
         pass
