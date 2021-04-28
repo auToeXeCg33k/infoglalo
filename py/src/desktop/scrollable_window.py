@@ -31,13 +31,6 @@ class ScrollableWindow(Window):
         this.scroll_canvas.rowconfigure(index=0, weight=1)
         this.scroll_canvas.columnconfigure(index=0, weight=1)
 
-        #MAIN FRAME CAN BE CUSTOMIZE
-
-        this.reset()
-
-    def reset(this) -> None:
-        pass
-
 
     def canvas_conf(this) -> None:
         this.bind("<Configure>",
