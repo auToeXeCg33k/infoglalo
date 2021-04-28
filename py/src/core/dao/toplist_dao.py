@@ -4,6 +4,7 @@ from src.core.config import ConfigLoader
 
 
 class TopListDAO:
+    # REPRODUCE PYTHON OBJECTS FROM PLSQL OBJECTS
     def object_repr(this, obj):
         if obj.type.iscollection:
             ret = list()
@@ -23,13 +24,46 @@ class TopListDAO:
         return ret
 
 
+    # GET AGGREGATE SCORES
     def aggregate(this) -> list[dict[str, int]]:
+        connection = ConfigLoader.get_connection_pool().acquire()
+
         try:
-            connection = ConfigLoader.get_connection_pool().acquire()
-            ret = this.object_repr(connection.cursor().callfunc("aggregate_points", connection.gettype("AGGREGATE_TOPLIST_TABLE_T"), [0.1, 0.2, 0.3]))
-            ConfigLoader.get_connection_pool().release(connection)
-            return ret
+            return this.object_repr(connection.cursor().callfunc("aggregate_points", connection.gettype("AGGREGATE_TOPLIST_TABLE_T"), [0.5, 0.75, 1]))
 
         except Exception as e:
             print(e)
             return list()
+
+        finally:
+            ConfigLoader.get_connection_pool().release(connection)
+
+
+    # GET EASY SCORES
+    def easy(this) -> list[tuple[str, int]]:
+        return this.query_categorized_points("KONNYUPONT")
+
+    # GET MEDIUM POINTS
+    def medium(this) -> list[tuple[str, int]]:
+        return this.query_categorized_points("KOZEPESPONT")
+
+    # GET HARD POINTS
+    def hard(this) -> list[tuple[str, int]]:
+        return this.query_categorized_points("NEHEZPONT")
+
+
+    # QUERY HELPER
+    def query_categorized_points(this, field_name: str) -> list[tuple[str, int]]:
+        connection = ConfigLoader.get_connection_pool().acquire()
+
+        try:
+            cursor = connection.cursor()
+            cursor.execute("SELECT FELHASZNALONEV, " + field_name + " FROM JATEKOS ORDER BY " + field_name)
+            return cursor.fetchall()
+
+        except Exception as e:
+            print(e)
+            return list()
+
+        finally:
+            ConfigLoader.get_connection_pool().release(connection)
