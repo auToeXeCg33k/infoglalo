@@ -31,11 +31,20 @@ class Forum(ScrollableWindow):
         messages_frame.grid(row=0, column=0, sticky="NESW")
 
         # ADD THE MESSAGES
-        forum_messages = this.socialDAO.get_forum_messages()
+        room_messages = this.socialDAO.get_forum_messages()
 
-        for i in range(len(forum_messages)):
-            text = forum_messages[i][0] + ":" + forum_messages[i][3]
-            tk.Label(messages_frame, text=text, font=(None, 10)).grid(row=i, sticky="W")
+        for i in range(len(room_messages)):
+            akt_message = tk.Frame(messages_frame)
+            akt_message.rowconfigure(index=0, weight=1)
+            akt_message.columnconfigure(index=0, weight=1)
+            akt_message.columnconfigure(index=1, weight=3)
+            akt_message.columnconfigure(index=2, weight=1)
+            tk.Label(akt_message, text=room_messages[i][0], font=(None, 10)).grid(row=0, column=0, sticky="W")
+            tk.Label(akt_message, text=room_messages[i][3], font=(None, 10)).grid(row=0, column=1, sticky="WE")
+            tk.Label(akt_message, text=room_messages[i][2], font=(None, 10)).grid(row=0, column=2, sticky="E")
+            akt_message.grid(row=i, sticky="W")
+
+
 
         # MESSAGE WRITER FRAME
         writer_frame = tk.Frame(main_message_frame)
