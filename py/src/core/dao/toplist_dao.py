@@ -25,8 +25,10 @@ class TopListDAO:
 
     def aggregate(this) -> list[dict[str, int]]:
         try:
-            with cx_Oracle.connect(ConfigLoader.get_db_user(), ConfigLoader.get_db_pwd(), ConfigLoader.get_db_url(), encoding=ConfigLoader.get_db_encoding()) as connection:
-                return this.object_repr(connection.cursor().callfunc("aggregate_points", connection.gettype("AGGREGATE_TOPLIST_TABLE_T"), [0.1, 0.2, 0.3]))
+            connection = ConfigLoader.get_connection_pool().acquire()
+            ret = this.object_repr(connection.cursor().callfunc("aggregate_points", connection.gettype("AGGREGATE_TOPLIST_TABLE_T"), [0.1, 0.2, 0.3]))
+            ConfigLoader.get_connection_pool().release(connection)
+            return ret
 
         except Exception as e:
             print(e)

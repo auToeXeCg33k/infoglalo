@@ -11,17 +11,18 @@ class AdDAO:
 
     def find_all(this) -> list[tuple[str, str, PhotoImage]]:
         try:
-            with cx_Oracle.connect(ConfigLoader.get_db_user(), ConfigLoader.get_db_pwd(), ConfigLoader.get_db_url(), encoding=ConfigLoader.get_db_encoding()) as connection:
-                connection.outputtypehandler = this.output_type_handler
-                cursor = connection.cursor()
-                cursor.execute("SELECT * FROM HIRDETES")
+            connection = ConfigLoader.get_connection_pool().acquire()
+            connection.outputtypehandler = this.output_type_handler
+            cursor = connection.cursor()
+            cursor.execute("SELECT * FROM HIRDETES")
 
-                db_data : list[tuple[int, str, str, str]] = cursor.fetchall()
-                ret = list()
+            db_data : list[tuple[int, str, str, str]] = cursor.fetchall()
+            ConfigLoader.get_connection_pool().release(connection)
+            ret = list()
 
-                for db_id, title, text, image in db_data:
-                    ret.append((title, text, PhotoImage(data = image)))
-                return ret
+            for db_id, title, text, image in db_data:
+                ret.append((title, text, PhotoImage(data = image)))
+            return ret
 
 
         except Exception as e:

@@ -6,10 +6,11 @@ from pathlib import Path
 class ConfigLoader:
     # LOAD JSON DATA
     with open(str(Path(__file__).parent.absolute()) + "/data/config.json") as file:
-        data: dict[str, str] = json.load(file)
+        data_: dict[str, str] = json.load(file)
 
     # INIT ORACLE LIB
-    cx_Oracle.init_oracle_client(data["oracle_dir"])
+    cx_Oracle.init_oracle_client(data_["oracle_dir"])
+    connection_pool_ = cx_Oracle.SessionPool(data_["db_user"], data_["db_pwd"], data_["db_url"], encoding=data_["db_encoding"])
 
     def __new__(cls, *args, **kwargs) -> None:
         if cls is ConfigLoader:
@@ -17,20 +18,24 @@ class ConfigLoader:
 
     @staticmethod
     def get_oracle_dir()->str:
-        return ConfigLoader.data.get('oracle_dir')
+        return ConfigLoader.data_.get('oracle_dir')
 
     @staticmethod
     def get_db_user()->str:
-        return ConfigLoader.data.get('db_user')
+        return ConfigLoader.data_.get('db_user')
 
     @staticmethod
     def get_db_pwd()->str:
-        return ConfigLoader.data.get('db_pwd')
+        return ConfigLoader.data_.get('db_pwd')
 
     @staticmethod
     def get_db_url()->str:
-        return ConfigLoader.data.get('db_url')
+        return ConfigLoader.data_.get('db_url')
 
     @staticmethod
     def get_db_encoding()->str:
-        return ConfigLoader.data.get('db_encoding')
+        return ConfigLoader.data_.get('db_encoding')
+
+    @staticmethod
+    def get_connection_pool():
+        return ConfigLoader.connection_pool_
