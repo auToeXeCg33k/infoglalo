@@ -58,7 +58,7 @@ class TopListDAO:
 
         try:
             cursor = connection.cursor()
-            cursor.execute("SELECT FELHASZNALONEV, " + field_name + " FROM JATEKOS ORDER BY " + field_name)
+            cursor.execute("SELECT FELHASZNALONEV, " + field_name + " FROM JATEKOS ORDER BY " + field_name + " DESC")
             return cursor.fetchall()
 
         except Exception as e:
