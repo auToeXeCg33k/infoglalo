@@ -1,16 +1,21 @@
 from tkinter import Label
 from tkinter.ttk import Entry
 from tkinter.ttk import Button
+from tkinter import messagebox
 
 from typing import Union
 
 from .window import Window
 from .regist import RegistWindow
+from .main_menu import MainMenuWindow
+from..core.dao.user_dao import UserDAO
 
 
 class LoginWindow(Window):
     def __init__(this, data) -> None:
         Window.__init__(this, data)
+
+        this.dao = UserDAO()
 
         # TEMPORARY WEIGHTS
         this.rowconfigure(index=0, weight=1)
@@ -48,7 +53,18 @@ class LoginWindow(Window):
 
 
     def login(this) -> None:
-        pass
+        # TODO TEMPORARY LOGIN HANDLING
+        user = this.dao.get(this.uname_entry.get())
+        if user is None:
+            messagebox.showerror("Hiba", "Hibás felhasználónév!")
+            return
+
+        if user[2] != this.pwd_entry.get():
+            messagebox.showerror("Hiba", "Hibás jelszó!")
+            return
+
+        this.data["user"] = user
+        this.master.raise_window(MainMenuWindow)
 
 
     def go_to_register(this) -> None:
