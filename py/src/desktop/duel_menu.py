@@ -17,7 +17,6 @@ class DuelMenuWindow(Window):
         this.columnconfigure(index=3, weight=1)
         this.columnconfigure(index=4, weight=1)
         this.columnconfigure(index=5, weight=1)
-        this.columnconfigure(index=6, weight=1)
 
         this.dao = DuelDAO()
         this.reset()
@@ -28,10 +27,10 @@ class DuelMenuWindow(Window):
 
         tk.Label(this, text="Párbaj menü").grid(row=0, column=0, sticky="NEWS")
 
-        tk.Button(this, text="Visszavon", command=this.rewoke).grid(row=2, column=1, columnspan=2, sticky="NEWS")
-        tk.Button(this, text="Kihív", command=this.challenge).grid(row=2, column=3, columnspan=2, sticky="NEWS")
-        tk.Button(this, text="Elutasít", command=this.decline).grid(row=2, column=5, sticky="NEWS")
-        tk.Button(this, text="Elfogad", command=this.accept).grid(row=2, column=6, sticky="NEWS")
+        tk.Button(this, text="Visszavon", command=this.rewoke).grid(row=2, column=1, sticky="NEWS")
+        tk.Button(this, text="Kihív", command=this.challenge).grid(row=2, column=2, sticky="NEWS")
+        tk.Button(this, text="Elutasít", command=this.decline).grid(row=2, column=3, sticky="NWS")
+        tk.Button(this, text="Elfogad", command=this.accept).grid(row=2, column=3, sticky="NES")
         tk.Button(this, text="Vissza", command=this.go_back).grid(row=3, column=3, sticky="NESW")
 
         sent_requests = tk.Listbox(this)
