@@ -23,6 +23,7 @@ class ChatRoom(ScrollableWindow):
         this.main_frame.columnconfigure(index=0, weight=1)
         this.main_frame.columnconfigure(index=1, weight=3)
 
+
         # FRAME FOR ROOM NAME
         this.room_frame = tk.LabelFrame(this.main_frame, text="Szobák", font=(None, 15))
         this.room_frame.grid(row=0, column=0, sticky="NESW")
@@ -35,8 +36,9 @@ class ChatRoom(ScrollableWindow):
         main_message_frame.columnconfigure(index=0, weight=1)
 
         # FRAME FOR MESSAGES
-        messages_frame = tk.Frame(main_message_frame)
+        messages_frame = tk.Frame(main_message_frame, height=150)
         messages_frame.grid(row=0, column=0, sticky="NESW")
+
 
         # ADD ROOMS AND MESSAGES FROM DB
         rooms: list[tuple[int, str]] = this.socialDAO.get_room(data["user"][0])
@@ -59,7 +61,7 @@ class ChatRoom(ScrollableWindow):
                                 command=partial(this.send_message, this.akt_room_id, msg_entry))
         send_button.grid(row=1, column=0, sticky="NESW")
 
-        writer_frame.grid(row=1, column=0, sticky="NESW")
+        writer_frame.grid(row=1, column=0, sticky="ESW")
 
         # BACK BUTTON
         back_button = tk.Button(this.main_frame, text='Vissza', command=this.go_back)
