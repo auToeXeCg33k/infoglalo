@@ -3,7 +3,6 @@ from typing import Union
 from tkinter import Entry
 
 from .window import Window
-# from .login import LoginWindow
 
 
 # TODO IMPLEMENT BIRTHDATE
@@ -32,7 +31,7 @@ class RegistWindow(Window):
 
     def reset(this) -> None:
 
-        tkinter.Label(this, text="Regisztració", font=(None, 25)).grid(row=0, column=1, sticky="NESW")
+        tkinter.Label(this, text="Regisztració", font=(None, 25)).grid(row=0, column=0, columnspan=2, sticky="NESW")
         tkinter.Label(this, text="Felhasználónév", font=(None, 15)).grid(row = 1, column=0, sticky="NESW")
         tkinter.Label(this, text="Jelszó", font=(None, 15)).grid(row = 2, column=0, sticky="NESW")
         tkinter.Label(this, text="Jelszó újra", font=(None, 15)).grid(row = 3, column=0, sticky="NESW")
@@ -51,12 +50,11 @@ class RegistWindow(Window):
         this.email_entry.grid(row=4, column=1, sticky="NESW")
         this.birthdate_entry.grid(row=5, column=1, sticky="NESW")
 
-        # tkinter.Button(this, command=this.go_to_login, text="Bejelentkezés").grid(row=6, column=0, sticky="NESW")
+        tkinter.Button(this, command=this.go_to_login, text="Bejelentkezés").grid(row=6, column=0, sticky="NESW")
         tkinter.Button(this, command=this.regist, text="Regisztráció").grid(row=6, column=1, sticky="NESW")
-        tkinter.Button(this, command=this.go_to_login, text="Vissza").grid(row=6, column=0, sticky="NESW")
 
 
-    def regist():
+    def regist(this) -> None:
         pass
 
     def go_to_login(this) -> None:
