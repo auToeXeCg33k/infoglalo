@@ -41,7 +41,8 @@ class ChatRoom(ScrollableWindow):
 
 
         #ADD ROOMS AND MESSAGES FROM DB
-        rooms:list[tuple[int, str]] = this.socialDAO.get_room()
+        rooms:list[tuple[int, str]] = this.socialDAO.get_room(data["user"][0])
+
 
         for i in range(len(rooms)):
             this.room_frame.rowconfigure(index=i, weight=1)
