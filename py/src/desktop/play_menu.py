@@ -10,6 +10,7 @@ class PlayMenuWindow(Window):
         this.rowconfigure(index=2, weight=1)
         this.rowconfigure(index=3, weight=1)
         this.rowconfigure(index=4, weight=1)
+        this.rowconfigure(index=5, weight=1)
         this.columnconfigure(index=0, weight=1)
 
         this.reset()
@@ -23,15 +24,19 @@ class PlayMenuWindow(Window):
         tkinter.Button(this, command=this.go_to_comp, text="Verseny").grid(row=2, column=0, sticky="NESW")
         tkinter.Button(this, command=this.go_to_duel, text="Párbaj").grid(row=3, column=0, sticky="NESW")
         tkinter.Button(this, command=this.go_to_test, text="Tematikus teszt").grid(row=4, column=0, sticky="NESW")
+        tkinter.Button(this, command=this.go_back, text="Vissza").grid(row=5, column=0, sticky="NESW")
 
-    def go_to_iq():
+    def go_to_iq(this) -> None:
         pass
 
-    def go_to_comp():
+    def go_to_comp(this) -> None:
         pass
 
-    def go_to_duel():
+    def go_to_duel(this) -> None:
         pass
 
-    def go_to_test():
+    def go_to_test(this) -> None:
         pass
+
+    def go_back(this) -> None:
+        this.master.raise_previous_window()

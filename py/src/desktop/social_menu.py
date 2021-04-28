@@ -11,6 +11,7 @@ class SocialMenu(Window):
         this.rowconfigure(index=0, weight=2)
         this.rowconfigure(index=1, weight=1)
         this.rowconfigure(index=2, weight=1)
+        this.rowconfigure(index=3, weight=1)
 
         this.columnconfigure(index=0, weight=1)
 
@@ -21,6 +22,7 @@ class SocialMenu(Window):
 
         tk.Button(this, command=this.go_to_forum, text="Fórum").grid(row=1, column=0, sticky="NESW")
         tk.Button(this, command=this.go_to_rooms, text="Játékos szoba").grid(row=2, column=0, sticky="NESW")
+        tk.Button(this, command=this.go_back, text="Vissza").grid(row=3, column=0, sticky="NEWS")
 
 
 
@@ -29,4 +31,7 @@ class SocialMenu(Window):
 
     def go_to_rooms(this) -> None:
         this.master.raise_window(ChatRoom)
+
+    def go_back(this) -> None:
+        this.master.raise_previous_window()
 
