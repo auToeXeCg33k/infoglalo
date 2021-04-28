@@ -10,6 +10,7 @@ class DuelMenuWindow(Window):
         this.rowconfigure(index=0, weight=1)
         this.rowconfigure(index=1, weight=1)
         this.rowconfigure(index=2, weight=1)
+        this.rowconfigure(index=3, weight=1)
         this.columnconfigure(index=0, weight=1)
         this.columnconfigure(index=1, weight=1)
         this.columnconfigure(index=2, weight=1)
@@ -31,6 +32,7 @@ class DuelMenuWindow(Window):
         tk.Button(this, text="Kihív", command=this.challenge).grid(row=2, column=3, columnspan=2, sticky="NEWS")
         tk.Button(this, text="Elutasít", command=this.decline).grid(row=2, column=5, sticky="NEWS")
         tk.Button(this, text="Elfogad", command=this.accept).grid(row=2, column=6, sticky="NEWS")
+        tk.Button(this, text="Vissza", command=this.go_back).grid(row=3, column=3, sticky="NESW")
 
         sent_requests = tk.Listbox(this)
         player_list = tk.Listbox(this)
@@ -70,3 +72,6 @@ class DuelMenuWindow(Window):
 
     def accept(this) -> None:
         pass
+
+    def go_back(this) -> None:
+        this.master.raise_previous_window()
