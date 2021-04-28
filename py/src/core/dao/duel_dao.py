@@ -17,9 +17,14 @@ class DuelDAO:
 
 
     def get_availables(this, uname: str) -> list[str]:
-        return this.executesql("SELECT FELHASZNALONEV FROM JATEKOS WHERE FELHASZNALONEV != :1 AND FELHASZNALONEV NOT IN \
+        # TODO POTENTIAL PLSQL
+        return this.executesql("SELECT FELHASZNALONEV FROM JATEKOS \
+                               WHERE FELHASZNALONEV != :1 AND FELHASZNALONEV NOT IN \
                                (SELECT JATEKOS FROM PARBAJRAHIVOTT WHERE ID IN \
-                               (SELECT ID FROM PARBAJRAHIV WHERE JATEKOS = :1))", [uname])
+                               (SELECT ID FROM PARBAJRAHIV WHERE JATEKOS = :1)) \
+                               AND FELHASZNALONEV NOT IN \
+                               (SELECT JATEKOS FROM PARBAJRAHIV WHERE ID IN \
+                               (SELECT ID FROM PARBAJRAHIVOTT WHERE JATEKOS = :1))", [uname])
 
     def get_incoming(this, uname: str) -> list[str]:
         return this.executesql("SELECT PARBAJRAHIV.JATEKOS FROM PARBAJRAHIV \
