@@ -16,11 +16,14 @@ class AdsWindow(ScrollableWindow):
 
         dao = AdDAO()
         data = dao.find_all()
+        i = 0
         for i in range (len(data)):
             this.main_frame.rowconfigure(index=i, weight=1)
             img_button = tk.Button(this.main_frame, image=data[i][2], command=lambda index=i: this.get_info(data, index))
             img_button.image = data[i][2]
             img_button.grid(row=i, column=0, sticky="NEWS")
+        this.main_frame.rowconfigure(index=i+1, weight=1)
+        tk.Button(this.main_frame, text="Vissza", command=this.go_back).grid(row=i+1, column=0, sticky="NEWS")
 
 
     def get_info(this, data, i) -> None:
@@ -30,5 +33,8 @@ class AdsWindow(ScrollableWindow):
         info_frame.rowconfigure(index=1, weight=0)
         tk.Label(info_frame, text=data[i][0], font=(None, 25)).grid(row=0, column=0, sticky="NESW")
         tk.Label(info_frame, text=data[i][1], font=(None, 15)).grid(row=1, column=0, sticky="NESW")
+
+    def go_back(this) -> None:
+        this.master.raise_previous_window()
 
 
