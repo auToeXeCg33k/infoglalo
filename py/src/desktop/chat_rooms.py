@@ -13,7 +13,7 @@ class ChatRoom(ScrollableWindow):
         this.socialDAO = SocialDAO()
 
         # ID FOR THE ACTUAL ROOM
-        this.akt_room_id = 1
+        this.akt_room_id = 0
 
         # TITLE
         tk.Label(this, text="Közösségi szobák", font=(None, 25)).grid(row=0, column=0, sticky="NESW")
@@ -35,15 +35,15 @@ class ChatRoom(ScrollableWindow):
         main_message_frame.columnconfigure(index=0, weight=1)
 
         # FRAME FOR MESSAGES
-        messages_frame = tk.Frame(main_message_frame, height=150)
-        messages_frame.grid(row=0, column=0, sticky="NESW")
+        this.messages_frame = tk.Frame(main_message_frame, height=150)
+        this.messages_frame.grid(row=0, column=0, sticky="NESW")
 
         # ADD ROOMS AND MESSAGES FROM DB
         rooms: list[tuple[int, str]] = this.socialDAO.get_room(data["user"][0])
 
         for i in range(len(rooms)):
             this.room_frame.rowconfigure(index=i, weight=1)
-            tk.Button(this.room_frame, command=partial(this.to_room, rooms[i][0], messages_frame),
+            tk.Button(this.room_frame, command=partial(this.to_room, rooms[i][0], this.messages_frame),
                       text=rooms[i][1]).grid(row=i, column=0, sticky="NEW")
 
         # MESSAGE WRITER FRAME
@@ -56,7 +56,7 @@ class ChatRoom(ScrollableWindow):
         msg_entry.grid(row=0, column=0, sticky="NESW")
 
         send_button = tk.Button(writer_frame, text="Send",
-                                command=partial(this.send_message, this.akt_room_id, msg_entry))
+                                command=partial(this.send_message, msg_entry, data["user"][0]))
         send_button.grid(row=1, column=0, sticky="NESW")
 
         writer_frame.grid(row=1, column=0, sticky="ESW")
@@ -67,13 +67,33 @@ class ChatRoom(ScrollableWindow):
 
         this.reset()
 
+
+    def clean_messages(this) -> None:
+        for widget in this.messages_frame.winfo_children():
+            widget.destroy()
+
+
     def reset(this) -> None:
-        pass
+        if this.akt_room_id != 0:
+            this.clean_messages()
+            room_messages = this.socialDAO.get_messages(this.akt_room_id)
+            for i in range(len(room_messages)):
+                akt_message = tk.Frame(this.messages_frame)
+                akt_message.rowconfigure(index=0, weight=1)
+                akt_message.columnconfigure(index=0, weight=1)
+                akt_message.columnconfigure(index=1, weight=3)
+                akt_message.columnconfigure(index=2, weight=1)
+                tk.Label(akt_message, text=room_messages[i][0], font=(None, 10)).grid(row=0, column=0, sticky="W")
+                tk.Label(akt_message, text=room_messages[i][3], font=(None, 10)).grid(row=0, column=1, sticky="WE")
+                tk.Label(akt_message, text=room_messages[i][2], font=(None, 10)).grid(row=0, column=2, sticky="E")
+                akt_message.grid(row=i, sticky="W")
+
 
     def go_back(this) -> None:
         this.master.raise_previous_window()
 
     def to_room(this, room_id: int, frame: tk.Frame) -> None:
+        this.clean_messages()
         room_messages = this.socialDAO.get_messages(room_id)
         this.akt_room_id = room_id
         for i in range(len(room_messages)):
@@ -89,7 +109,8 @@ class ChatRoom(ScrollableWindow):
 
 
 
-    def send_message(this, room_id, content: tk.Entry):
-        print(this.socialDAO.send_message("Atesz", room_id, content.get()))
+
+    def send_message(this, content: tk.Entry, user:str):
+        this.socialDAO.send_message(user, this.akt_room_id, content.get())
         content.delete(0, "end")
         this.reset()
