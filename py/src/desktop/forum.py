@@ -27,14 +27,14 @@ class Forum(ScrollableWindow):
         main_message_frame.columnconfigure(index=0, weight=1)
 
         # FRAME FOR MESSAGES
-        messages_frame = tk.Frame(main_message_frame)
-        messages_frame.grid(row=0, column=0, sticky="NESW")
+        this.messages_frame = tk.Frame(main_message_frame)
+        this.messages_frame.grid(row=0, column=0, sticky="NESW")
 
         # ADD THE MESSAGES
         room_messages = this.socialDAO.get_forum_messages()
 
         for i in range(len(room_messages)):
-            akt_message = tk.Frame(messages_frame)
+            akt_message = tk.Frame(this.messages_frame)
             akt_message.rowconfigure(index=0, weight=1)
             akt_message.columnconfigure(index=0, weight=1)
             akt_message.columnconfigure(index=1, weight=3)
@@ -43,7 +43,6 @@ class Forum(ScrollableWindow):
             tk.Label(akt_message, text=room_messages[i][3], font=(None, 10)).grid(row=0, column=1, sticky="WE")
             tk.Label(akt_message, text=room_messages[i][2], font=(None, 10)).grid(row=0, column=2, sticky="E")
             akt_message.grid(row=i, sticky="W")
-
 
 
         # MESSAGE WRITER FRAME
@@ -55,7 +54,7 @@ class Forum(ScrollableWindow):
         msg_entry = tk.Entry(writer_frame)
         msg_entry.grid(row=0, column=0, sticky="NESW")
 
-        send_button = tk.Button(writer_frame, text="Send", command=partial(this.send_message, msg_entry))
+        send_button = tk.Button(writer_frame, text="Send", command=partial(this.send_message, msg_entry, data["user"][0]))
         send_button.grid(row=1, column=0, sticky="NESW")
 
         writer_frame.grid(row=1, column=0, sticky="ESW")
@@ -65,10 +64,29 @@ class Forum(ScrollableWindow):
         back_button.grid(row=1, column=0, sticky="W")
 
     def reset(this) -> None:
-        pass
+        this.clean_messages()
+        room_messages = this.socialDAO.get_forum_messages()
 
-    def send_message(this, content):
-        pass
+        for i in range(len(room_messages)):
+            akt_message = tk.Frame(this.messages_frame)
+            akt_message.rowconfigure(index=0, weight=1)
+            akt_message.columnconfigure(index=0, weight=1)
+            akt_message.columnconfigure(index=1, weight=3)
+            akt_message.columnconfigure(index=2, weight=1)
+            tk.Label(akt_message, text=room_messages[i][0], font=(None, 10)).grid(row=0, column=0, sticky="W")
+            tk.Label(akt_message, text=room_messages[i][3], font=(None, 10)).grid(row=0, column=1, sticky="WE")
+            tk.Label(akt_message, text=room_messages[i][2], font=(None, 10)).grid(row=0, column=2, sticky="E")
+            akt_message.grid(row=i, sticky="W")
+
+
+    def clean_messages(this) -> None:
+        for widget in this.messages_frame.winfo_children():
+            widget.destroy()
+
+    def send_message(this, content, user):
+        this.socialDAO.send_message(user, 0, content.get())
+        content.delete(0, "end")
+        this.reset()
 
     def go_back(this):
         this.master.raise_previous_window()

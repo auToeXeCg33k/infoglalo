@@ -56,6 +56,7 @@ class SocialDAO:
             connection = ConfigLoader.get_connection_pool().acquire()
             cursor = connection.cursor()
             cursor.execute("INSERT INTO UZENET(KULDO, KOZOSSEG, IDOPONT, SZOVEG) VALUES (:1, :2, SYSDATE, :3)", [u_name, room_id, content])
+            connection.commit()
             ConfigLoader.get_connection_pool().release(connection)
             return True
 
