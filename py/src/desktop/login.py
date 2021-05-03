@@ -2,7 +2,7 @@ from tkinter import Label
 from tkinter.ttk import Entry
 from tkinter.ttk import Button
 from tkinter import messagebox
-
+import bcrypt
 from typing import Union
 
 from .window import Window
@@ -44,7 +44,7 @@ class LoginWindow(Window):
 
         # BUTTONS
         Button(this, text="Regisztráció", command=this.go_to_register).grid(row=3, column=0, sticky="NESW")
-        Button(this, text="Bejelentkezés", command=this.login).grid(row=3, column=1, sticky="NESW")
+        Button(this, text="Bejelentkezés", command=this.login2).grid(row=3, column=1, sticky="NESW")
 
 
     def reset(this) -> None:
@@ -66,6 +66,20 @@ class LoginWindow(Window):
         this.data["user"] = user
         this.master.raise_window(MainMenuWindow)
 
+    def login2(this) -> None:
+        user = this.dao.get(this.uname_entry.get())
+        if user is None:
+            messagebox.showerror("Hiba", "Hibás felhasználónév!")
+            return
+        pwd = bytes(user[2], 'utf-8')
+        i_pwd=bytes(this.pwd_entry.get(), 'utf-8')
+
+        if not bcrypt.checkpw(i_pwd, pwd):
+            messagebox.showerror("Hiba", "Hibás jelszó!")
+            return
+
+        this.data["user"] = user
+        this.master.raise_window(MainMenuWindow)
 
     def go_to_register(this) -> None:
         this.master.raise_window(RegistWindow)

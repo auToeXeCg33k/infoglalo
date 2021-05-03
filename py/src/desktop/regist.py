@@ -75,6 +75,7 @@ class RegistWindow(Window):
 
         this.userDao.insert(this.uname_entry.get(),this.email_entry.get(), pwd.decode("utf-8") , salt.decode("utf-8") , this.birthdate_entry.get())
 
+        this.go_to_login()
 
     def go_to_login(this) -> None:
          this.master.raise_previous_window()

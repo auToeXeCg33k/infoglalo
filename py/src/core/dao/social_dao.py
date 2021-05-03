@@ -6,7 +6,7 @@ class SocialDAO:
         try:
             connection = ConfigLoader.get_connection_pool().acquire()
             cursor = connection.cursor()
-            cursor.execute("SELECT * FROM UZENET WHERE KOZOSSEG = :1",[room])
+            cursor.execute("SELECT * FROM UZENET WHERE KOZOSSEG = :1 ORDER BY IDOPONT",[room])
             db_data: list[tuple[str, int, cx_Oracle.Date, str]] = cursor.fetchall()
             ConfigLoader.get_connection_pool().release(connection)
             result = list()
@@ -38,7 +38,7 @@ class SocialDAO:
         try:
             connection = ConfigLoader.get_connection_pool().acquire()
             cursor = connection.cursor()
-            cursor.execute("SELECT * FROM UZENET WHERE KOZOSSEG = 0")
+            cursor.execute("SELECT * FROM UZENET WHERE KOZOSSEG = 0 order by IDOPONT")
             db_data: list[tuple[str, int, cx_Oracle.Date, str]] = cursor.fetchall()
             ConfigLoader.get_connection_pool().release(connection)
             result = list()
