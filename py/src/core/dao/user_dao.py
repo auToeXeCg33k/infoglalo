@@ -10,7 +10,8 @@ class UserDAO:
         try:
             connection = ConfigLoader.get_connection_pool().acquire()
             cursor = connection.cursor()
-            cursor.execute("INSERT INTO JATEKOS(FELHASZNALONEV, EMAIL, ADMIN, JELSZO, SALT, SZULDATUM) VALUES (:1, :2, :3, :4, :5, :6)", [uname, email, False, pwdhash, salt, birth_date])
+            cursor.execute("INSERT INTO JATEKOS(FELHASZNALONEV, EMAIL, ADMIN, JELSZO, SALT, SZULDATUM) VALUES (:1, :2, :3, :4, :5, to_date(:6, 'yyyy-mm-dd'))", [uname, email, False, pwdhash, salt, birth_date])
+            connection.commit()
             ConfigLoader.get_connection_pool().release(connection)
             return True
 
