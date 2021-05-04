@@ -20,14 +20,25 @@ class Forum(ScrollableWindow):
         this.main_frame.columnconfigure(index=0, weight=1)
 
         # FRAME FOR MAIN MESSAGES
-        main_message_frame = tk.LabelFrame(this.main_frame, text="Üzenetek", font=(None, 15))
-        main_message_frame.grid(row=0, column=0, sticky="NEW")
-        main_message_frame.rowconfigure(index=0, weight=1)
-        main_message_frame.rowconfigure(index=1, weight=1)
-        main_message_frame.columnconfigure(index=0, weight=1)
+        this.main_message_frame = tk.LabelFrame(this.main_frame, text="Üzenetek", font=(None, 15))
+        this.main_message_frame.grid(row=0, column=0, sticky="NEW")
+        this.main_message_frame.rowconfigure(index=0, weight=1)
+        this.main_message_frame.rowconfigure(index=1, weight=1)
+        this.main_message_frame.columnconfigure(index=0, weight=1)
+
+        #CANVAS FOR THE MESSAGES
+        this.scroll_message_canvas = tk.Canvas(this.main_message_frame, height=200)
+        this.scroll_message_canvas.rowconfigure(index=0, weight=1)
+        this.scroll_message_canvas.columnconfigure(index=0, weight=1)
+        this.scroll_message_canvas.grid(row=0, column=0, sticky="NESW")
+        this.scroll_message_canvas.grid_propagate(False)
+
+        this.scroll_message_scrollbar = tk.Scrollbar(this.main_message_frame,orient="vertical", command=this.scroll_message_canvas.yview)
+        this.scroll_message_scrollbar.grid(row=0, column=0, sticky="NES")
+
 
         # FRAME FOR MESSAGES
-        this.messages_frame = tk.Frame(main_message_frame)
+        this.messages_frame = tk.Frame(this.scroll_message_canvas)
         this.messages_frame.grid(row=0, column=0, sticky="NESW")
 
         # ADD THE MESSAGES
@@ -46,7 +57,7 @@ class Forum(ScrollableWindow):
 
 
         # MESSAGE WRITER FRAME
-        writer_frame = tk.Frame(main_message_frame)
+        writer_frame = tk.Frame(this.main_message_frame)
         writer_frame.rowconfigure(index=0, weight=1)
         writer_frame.columnconfigure(index=0, weight=3)
         writer_frame.columnconfigure(index=1, weight=1)
@@ -63,6 +74,21 @@ class Forum(ScrollableWindow):
         back_button = tk.Button(this.main_frame, text='Vissza', command=this.go_back)
         back_button.grid(row=1, column=0, sticky="W")
 
+        this.message_canvas_conf()
+
+
+    def message_canvas_conf(this):
+        #CONFIGURE
+        this.bind("<Configure>",
+                  lambda e:
+                  this.scroll_message_canvas.configure(
+                      scrollregion=this.scroll_message_canvas.bbox("all"))
+                  )
+
+        this.scroll_message_canvas.create_window((0, 0), window=this.messages_frame, anchor="nw")
+
+        this.scroll_message_canvas.configure(yscrollcommand=this.scroll_message_scrollbar.set)
+
     def reset(this) -> None:
         this.clean_messages()
         room_messages = this.socialDAO.get_forum_messages()
@@ -78,10 +104,28 @@ class Forum(ScrollableWindow):
             tk.Label(akt_message, text=room_messages[i][2], font=(None, 10)).grid(row=0, column=2, sticky="E")
             akt_message.grid(row=i, sticky="W")
 
+        this.message_canvas_conf()
+
 
     def clean_messages(this) -> None:
-        for widget in this.messages_frame.winfo_children():
-            widget.destroy()
+        #CANVAS FOR THE MESSAGES
+        this.scroll_message_canvas.destroy()
+        this.scroll_message_canvas = tk.Canvas(this.main_message_frame, height=200)
+        this.scroll_message_canvas.rowconfigure(index=0, weight=1)
+        this.scroll_message_canvas.columnconfigure(index=0, weight=1)
+        this.scroll_message_canvas.grid(row=0, column=0, sticky="NESW")
+        this.scroll_message_canvas.grid_propagate(False)
+
+        this.scroll_message_scrollbar.destroy()
+        this.scroll_message_scrollbar = tk.Scrollbar(this.main_message_frame,orient="vertical", command=this.scroll_message_canvas.yview)
+        this.scroll_message_scrollbar.grid(row=0, column=0, sticky="NES")
+
+
+        # FRAME FOR MESSAGES
+        this.messages_frame.destroy()
+        this.messages_frame = tk.Frame(this.scroll_message_canvas)
+        this.messages_frame.grid(row=0, column=0, sticky="NESW")
+
 
     def send_message(this, content, user):
         this.socialDAO.send_message(user, 0, content.get())
