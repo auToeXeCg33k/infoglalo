@@ -4,5 +4,6 @@
   "db_pwd": "jelszo",
   "db_url": "leopph.tplinkdns.com/xe",
   "db_encoding": "UTF-8",
-  "font": "Ebrima"
+  "font-family": "Ebrima",
+  "font-color": "snow"
 }
