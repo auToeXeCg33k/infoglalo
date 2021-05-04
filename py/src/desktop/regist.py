@@ -74,6 +74,14 @@ class RegistWindow(Window):
 
 
     def regist(this) -> None:
+        if this.uname_entry.get() == "" or\
+            this.pwd_entry.get() == "" or\
+            this.apwd_entry.get() == "" or\
+            this.email_entry.get() == "" or\
+            this.birthdate_entry.get() == "":
+                messagebox.showerror("Hiba", "Minden mezőt kötelező kitölteni!")
+                return
+
         if this.pwd_entry.get() != this.apwd_entry.get():
             messagebox.showerror("Hiba", "Nem egyeznek a jelszavak!")
             return
