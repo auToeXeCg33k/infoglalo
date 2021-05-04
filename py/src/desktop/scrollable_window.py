@@ -19,7 +19,7 @@ class ScrollableWindow(Window):
         this.scroll_canvas: Union[None, tk.Canvas] = tk.Canvas(this)
         this.scroll_bar: Union[None, tk.Scrollbar] = tk.Scrollbar(this)
         #MAIN FRAME IN THE CANVAS
-        this.main_frame: Union[None, tk.Frame] = tk.Frame(this.scroll_canvas)
+        this.main_frame: Union[None, tk.Frame] = tk.Frame(this.scroll_canvas, bg=this["bg"])
 
         # CANVAS CONF.
         this.scroll_canvas.grid(row=1, column=0, sticky="NESW")
