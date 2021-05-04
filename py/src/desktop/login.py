@@ -29,14 +29,16 @@ class LoginWindow(Window):
         this.uname_entry: Union[None, Entry] = None
         this.pwd_entry: Union[None, Entry] = None
 
-        text_color = "snow"
+        font_family = ConfigLoader.get("font-family")
+        font_color = ConfigLoader.get("font-color")
+        header_color = "gray7"
 
         # TITLE
-        Label(this, text="Infoglaló", fg=text_color, bg="gray7", font=(ConfigLoader.get("font"), 26)).grid(row=0, column=0, columnspan=2, sticky="NESW")
+        Label(this, text="Infoglaló", fg=font_color, bg=header_color, font=(font_family, 26)).grid(row=0, column=0, columnspan=2, sticky="NESW")
 
         # FIELD NAMES
-        Label(this, text="Felhasználónév: ", fg=text_color, bg=this["bg"], font=(ConfigLoader.get("font"))).grid(row=1, column=0, sticky="SE")
-        Label(this, text="Jelszó: ", fg=text_color, bg=this["bg"], font=(ConfigLoader.get("font"))).grid(row=2, column=0, sticky="NE")
+        Label(this, text="Felhasználónév: ", fg=font_color, bg=this["bg"], font=font_family).grid(row=1, column=0, sticky="SE")
+        Label(this, text="Jelszó: ", fg=font_color, bg=this["bg"], font=font_family).grid(row=2, column=0, sticky="NE")
 
         # INPUT FIELDS
         this.uname_entry = Entry(this)

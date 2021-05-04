@@ -27,8 +27,8 @@ class MainMenuWindow(Window):
         this.reset()
 
     def reset(this) -> None:
-        font_family = ConfigLoader.get("font")
-        font_color = "snow"
+        font_family = ConfigLoader.get("font-family")
+        font_color = ConfigLoader.get("font-color")
 
         #MENU TITLE
         tkinter.Label(this, text="Üdv, " + this.data["user"][0] + "!", fg=font_color, bg=this["bg"], font=(font_family, 26)).grid(row=0, column=0)

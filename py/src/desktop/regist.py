@@ -43,15 +43,15 @@ class RegistWindow(Window):
 
     def reset(this) -> None:
 
-        text_color = "snow"
-        font_family = ConfigLoader.get("font")
+        font_family = ConfigLoader.get("font-family")
+        font_color = ConfigLoader.get("font-color")
         std_font_size = 12
 
-        tkinter.Label(this, text="Regisztráció", fg=text_color, bg=this["bg"], font=(font_family, 26)).grid(row=0, column=0, columnspan=2, sticky="NESW")
-        tkinter.Label(this, text="Felhasználónév", fg=text_color, bg=this["bg"], font=(font_family, std_font_size)).grid(row = 1, column=0, sticky="E")
-        tkinter.Label(this, text="Jelszó", fg=text_color, bg=this["bg"], font=(font_family, std_font_size)).grid(row = 2, column=0, sticky="E")
-        tkinter.Label(this, text="Jelszó újra", fg=text_color, bg=this["bg"], font=(font_family, std_font_size)).grid(row = 3, column=0, sticky="E")
-        tkinter.Label(this, text="Email", fg=text_color, bg=this["bg"], font=(font_family, std_font_size)).grid(row=4, column=0, sticky="E")
+        tkinter.Label(this, text="Regisztráció", fg=font_color, bg=this["bg"], font=(font_family, 26)).grid(row=0, column=0, columnspan=2, sticky="NESW")
+        tkinter.Label(this, text="Felhasználónév", fg=font_color, bg=this["bg"], font=(font_family, std_font_size)).grid(row = 1, column=0, sticky="E")
+        tkinter.Label(this, text="Jelszó", fg=font_color, bg=this["bg"], font=(font_family, std_font_size)).grid(row = 2, column=0, sticky="E")
+        tkinter.Label(this, text="Jelszó újra", fg=font_color, bg=this["bg"], font=(font_family, std_font_size)).grid(row = 3, column=0, sticky="E")
+        tkinter.Label(this, text="Email", fg=font_color, bg=this["bg"], font=(font_family, std_font_size)).grid(row=4, column=0, sticky="E")
         Button(this, command=this.get_date, text="Születési dátum").grid(row=5, column=0, sticky="E")
 
 
