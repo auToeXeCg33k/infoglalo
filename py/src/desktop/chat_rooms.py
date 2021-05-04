@@ -24,30 +24,43 @@ class ChatRoom(ScrollableWindow):
         this.main_frame.columnconfigure(index=1, weight=3)
 
         # FRAME FOR ROOM NAME
-        this.room_frame = tk.LabelFrame(this.main_frame, text="Szobák", font=(None, 15))
+        this.room_frame = tk.LabelFrame(this.main_frame, text="Szobák", font=(None, 15), width=100)
         this.room_frame.grid(row=0, column=0, sticky="NESW")
 
         # FRAME FOR MAIN MESSAGES
-        main_message_frame = tk.LabelFrame(this.main_frame, text="Üzenetek", font=(None, 15))
-        main_message_frame.grid(row=0, column=1, sticky="NESW")
-        main_message_frame.rowconfigure(index=0, weight=1)
-        main_message_frame.rowconfigure(index=1, weight=1)
-        main_message_frame.columnconfigure(index=0, weight=1)
+        this.main_message_frame = tk.LabelFrame(this.main_frame, text="Üzenetek", font=(None, 15))
+        this.main_message_frame.grid(row=0, column=1, sticky="NESW")
+        this.main_message_frame.rowconfigure(index=0, weight=1)
+        this.main_message_frame.rowconfigure(index=1, weight=1)
+        this.main_message_frame.columnconfigure(index=0, weight=1)
+
+        #CANVAS FOR THE MESSAGES
+        this.scroll_message_canvas = tk.Canvas(this.main_message_frame, height=200)
+        this.scroll_message_canvas.rowconfigure(index=0, weight=1)
+        this.scroll_message_canvas.columnconfigure(index=0, weight=1)
+        this.scroll_message_canvas.grid(row=0, column=0, sticky="NESW")
+        this.scroll_message_canvas.grid_propagate(False)
+
+        this.scroll_message_scrollbar = tk.Scrollbar(this.main_message_frame,orient="vertical", command=this.scroll_message_canvas.yview)
+        this.scroll_message_scrollbar.grid(row=0, column=0, sticky="NES")
+
 
         # FRAME FOR MESSAGES
-        this.messages_frame = tk.Frame(main_message_frame, height=150)
+        this.messages_frame = tk.Frame(this.scroll_message_canvas, height=200)
         this.messages_frame.grid(row=0, column=0, sticky="NESW")
+        #this.messages_frame.grid_propagate(False)
 
         # ADD ROOMS AND MESSAGES FROM DB
         rooms: list[tuple[int, str]] = this.socialDAO.get_room(data["user"][0])
 
         for i in range(len(rooms)):
-            this.room_frame.rowconfigure(index=i, weight=1)
-            tk.Button(this.room_frame, command=partial(this.to_room, rooms[i][0], this.messages_frame),
-                      text=rooms[i][1]).grid(row=i, column=0, sticky="NEW")
+            #this.room_frame.rowconfigure(index=i, weight=1)
+            #tk.Button(this.room_frame, command=partial(this.to_room, rooms[i][0], this.messages_frame),
+            #          text=rooms[i][1]).grid(row=i, column=0, sticky="NEW")
+            tk.Button(this.room_frame, command=partial(this.to_room, rooms[i][0], this.messages_frame), text=rooms[i][1]).pack(side="top")
 
         # MESSAGE WRITER FRAME
-        writer_frame = tk.Frame(main_message_frame)
+        writer_frame = tk.Frame(this.main_message_frame)
         writer_frame.rowconfigure(index=0, weight=1)
         writer_frame.columnconfigure(index=0, weight=3)
         writer_frame.columnconfigure(index=1, weight=1)
@@ -65,8 +78,21 @@ class ChatRoom(ScrollableWindow):
         back_button = tk.Button(this.main_frame, text='Vissza', command=this.go_back)
         back_button.grid(row=1, column=0, sticky="W")
 
+
+        this.message_canvas_conf()
         this.reset()
 
+    def message_canvas_conf(this):
+        #CONFIGURE
+        this.bind("<Configure>",
+                  lambda e:
+                  this.scroll_message_canvas.configure(
+                      scrollregion=this.scroll_message_canvas.bbox("all"))
+                  )
+
+        this.scroll_message_canvas.create_window((0, 0), window=this.messages_frame, anchor="nw")
+
+        this.scroll_message_canvas.configure(yscrollcommand=this.scroll_message_scrollbar.set)
 
     def clean_messages(this) -> None:
         for widget in this.messages_frame.winfo_children():
@@ -78,7 +104,7 @@ class ChatRoom(ScrollableWindow):
             this.clean_messages()
             room_messages = this.socialDAO.get_messages(this.akt_room_id)
             for i in range(len(room_messages)):
-                akt_message = tk.Frame(this.messages_frame)
+                akt_message = tk.Frame(this.messages_frame, width=150, bd=1)
                 akt_message.rowconfigure(index=0, weight=1)
                 akt_message.columnconfigure(index=0, weight=1)
                 akt_message.columnconfigure(index=1, weight=3)
