@@ -1,10 +1,12 @@
 import tkinter
 from tkinter import filedialog
 from tkinter import ttk
+from tkinter import messagebox
 import os
 
 from .window import Window
 from ..core.config import ConfigLoader
+from ..core.dao.ad_dao import AdDAO
 
 class NewAdsWindow(Window):
     def __init__(this, data):
@@ -41,6 +43,7 @@ class NewAdsWindow(Window):
         this.title.grid(row=1, column=1, sticky="W")
         this.text.grid(row=2, column=1, sticky='W')
 
+        this.dao = AdDAO()
 
         this.reset()
 
@@ -59,4 +62,8 @@ class NewAdsWindow(Window):
         this.master.raise_previous_window()
 
     def insert_ad(this) -> None:
-        pass
+        if this.title.get() == "" or this.text.get() == "":
+            messagebox.showerror("Hiba", "Minden mezőt kötelező kitölteni!")
+            return
+
+        # this.dao.insert()

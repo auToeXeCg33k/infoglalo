@@ -14,10 +14,12 @@ class AdsWindow(ScrollableWindow):
         this.font_family = ConfigLoader.get("font-family")
         this.font_color = ConfigLoader.get("font-color")
 
+        this.main_frame.rowconfigure(index=0, weight=1)
         this.main_frame.columnconfigure(index=0, weight=1)
         this.main_frame.columnconfigure(index=1, weight=1)
 
-        tk.Label(this, fg=this.font_color, text="Hirdetések", bg=this['bg'], font=(this.font_family, 25)).grid(row=0, column=0, sticky="NESW")
+
+        tk.Label(this, fg=this.font_color, text="Hirdetések", bg=this['bg'], font=(this.font_family, 25)).grid(row=0, column=0, columnspan=2, sticky="NESW")
 
         this.reset()
 
@@ -25,19 +27,17 @@ class AdsWindow(ScrollableWindow):
         for child in this.main_frame.winfo_children():
             child.destroy()
 
+        tk.Button(this.main_frame, text="Vissza", command=this.go_back).grid(row=0, column=0, sticky="NESW")
+        if this.data["user"][4]:  # ha admin
+            ttk.Button(this.main_frame, text="Hirdetés felvitele", command=this.go_admin).grid(row=0, column=1, sticky="NESW")
+
         dao = AdDAO()
         data = dao.find_all()
-        i = 0
         for i in range (len(data)):
-            this.main_frame.rowconfigure(index=i, weight=1)
+            this.main_frame.rowconfigure(index=i+1, weight=1)
             img_button = ttk.Button(this.main_frame, image=data[i][2], command=lambda index=i: this.get_info(data, index))
             img_button.image = data[i][2]
-            img_button.grid(row=i, column=0, columnspan=2)
-        this.main_frame.rowconfigure(index=i+1, weight=1)
-        tk.Button(this.main_frame, text="Vissza", command=this.go_back).grid(row=i+1, column=0, sticky="NESW")
-
-        if this.data["user"][4]: # ha admin
-            ttk.Button(this.main_frame, text="Hirdetés felvitele", command=this.go_admin).grid(row=i+1, column=1, sticky="NESW")
+            img_button.grid(row=i+1, column=0, columnspan=2)
 
 
     def get_info(this, data, i) -> None:
