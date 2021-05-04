@@ -1,4 +1,3 @@
-from typing import Union
 import tkinter as tk
 from .window import Window
 
@@ -8,28 +7,29 @@ class ScrollableWindow(Window):
     def __init__(this, data) -> None:
         Window.__init__(this, data)
 
-        #TITLE ROW
-        # this.rowconfigure(index=0, weight=1)
-        #CANVAS ROW
         this.rowconfigure(index=1, weight=1)
-
         this.columnconfigure(index=0, weight=1)
 
         #SCROLLABLE CANVAS
-        this.scroll_canvas: Union[None, tk.Canvas] = tk.Canvas(this)
-        this.scroll_bar: Union[None, tk.Scrollbar] = tk.Scrollbar(this)
+        this.scroll_canvas: tk.Canvas = tk.Canvas(this)
+        this.scroll_canvas.grid(row=1, column=0, sticky="NESW")
+
+        this.scroll_bar: tk.Scrollbar = tk.Scrollbar(this)
+        this.scroll_bar.grid(row=1, column=1, sticky="NES")
+
+        this.scroll_canvas.rowconfigure(index=0, weight=1)
+        this.scroll_canvas.columnconfigure(index=0, weight=1)
+
         #MAIN FRAME IN THE CANVAS
-        this.main_frame: Union[None, tk.Frame] = tk.Frame(this.scroll_canvas, bg=this["bg"])
+        this.main_frame: tk.Frame = tk.Frame(this.scroll_canvas, bg=this["bg"])
+        this.main_frame.grid(row=0, column=0, sticky="NESW")
 
         # CANVAS CONF.
-        this.scroll_canvas.grid(row=1, column=0, sticky="NESW")
         this.scroll_bar = tk.Scrollbar(this, orient="vertical", command=this.scroll_canvas.yview)
         this.canvas_conf()
         # BIND THE MOUSEWHEEL ACTION
         this.scroll_canvas.bind_all("<MouseWheel>", this._on_mousewheel)
-        this.scroll_bar.grid(row=1, column=0, sticky="NES")
-        this.scroll_canvas.rowconfigure(index=0, weight=1)
-        this.scroll_canvas.columnconfigure(index=0, weight=1)
+
 
 
     def canvas_conf(this) -> None:
