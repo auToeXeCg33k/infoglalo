@@ -2,6 +2,7 @@ import tkinter
 
 from .window import Window
 from .duel_menu import DuelMenuWindow
+from ..core.config import ConfigLoader
 
 class PlayMenuWindow(Window):
     def __init__(this, data):
@@ -18,8 +19,10 @@ class PlayMenuWindow(Window):
         this.reset()
 
     def reset(this) -> None:
+
+
         #MENU TITLE
-        tkinter.Label(this, text="Játék menü", font=(None, 25)).grid(row=0, column=0, sticky="NESW")
+        tkinter.Label(this, text="Válassz játékmódot!", font=(None, 25)).grid(row=0, column=0, sticky="NESW")
 
         #MENU BUTTONS
         tkinter.Button(this, command=this.go_to_iq, text="IQ teszt").grid(row=1, column=0, sticky="NESW")
