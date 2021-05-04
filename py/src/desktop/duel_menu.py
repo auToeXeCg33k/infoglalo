@@ -28,7 +28,7 @@ class DuelMenuWindow(Window):
         tk.Label(this, text="Párbaj menü").grid(row=0, column=0, sticky="NEWS")
         tk.Label(this, text="Kihívottjaid").grid(row=0, column=1, sticky="NEWS")
         tk.Label(this, text="Elérhetőek").grid(row=0, column=2, sticky="NEWS")
-        tk.Label(this, text="Kihívójaid").grid(row=0, column=3, sticky="NEWS")
+        tk.Label(this, text="Kihívóid").grid(row=0, column=3, sticky="NEWS")
 
         tk.Button(this, text="Visszavon", command=this.rewoke).grid(row=2, column=1, sticky="NEWS")
         tk.Button(this, text="Kihív", command=this.challenge).grid(row=2, column=2, sticky="NEWS")
