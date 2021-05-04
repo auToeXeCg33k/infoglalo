@@ -19,22 +19,24 @@ class LoginWindow(Window):
         this.dao = UserDAO()
 
         # TEMPORARY WEIGHTS
-        this.rowconfigure(index=0, weight=1)
+        this.rowconfigure(index=0, weight=4)
         this.rowconfigure(index=1, weight=1)
         this.rowconfigure(index=2, weight=1)
-        this.rowconfigure(index=3, weight=1)
+        this.rowconfigure(index=3, weight=3)
         this.columnconfigure(index=0, weight=1)
         this.columnconfigure(index=1, weight=1)
 
         this.uname_entry: Union[None, Entry] = None
         this.pwd_entry: Union[None, Entry] = None
 
+        text_color = "snow"
+
         # TITLE
-        Label(this, text="Infoglaló", fg="snow", bg="gray7", font=(ConfigLoader.get("font"), 26)).grid(row=0, column=0, columnspan=2, sticky="NESW")
+        Label(this, text="Infoglaló", fg=text_color, bg="gray7", font=(ConfigLoader.get("font"), 26)).grid(row=0, column=0, columnspan=2, sticky="NESW")
 
         # FIELD NAMES
-        Label(this, text="Felhasználónév: ", fg="snow", bg=this["bg"], font=(ConfigLoader.get("font"))).grid(row=1, column=0, sticky="SE")
-        Label(this, text="Jelszó: ", fg="snow", bg=this["bg"], font=(ConfigLoader.get("font"))).grid(row=2, column=0, sticky="NE")
+        Label(this, text="Felhasználónév: ", fg=text_color, bg=this["bg"], font=(ConfigLoader.get("font"))).grid(row=1, column=0, sticky="SE")
+        Label(this, text="Jelszó: ", fg=text_color, bg=this["bg"], font=(ConfigLoader.get("font"))).grid(row=2, column=0, sticky="NE")
 
         # INPUT FIELDS
         this.uname_entry = Entry(this)
