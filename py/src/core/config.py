@@ -2,6 +2,8 @@ import json
 import cx_Oracle
 from pathlib import Path
 
+from typing import Union
+
 
 class ConfigLoader:
     # LOAD JSON DATA
@@ -39,3 +41,9 @@ class ConfigLoader:
     @staticmethod
     def get_connection_pool():
         return ConfigLoader.connection_pool_
+
+    @staticmethod
+    def get(key: str) -> Union[str, None]:
+        if key in ConfigLoader.data_:
+            return ConfigLoader.data_[key]
+        return None

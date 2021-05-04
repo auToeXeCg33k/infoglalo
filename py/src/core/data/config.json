@@ -3,5 +3,6 @@
   "db_user": "infoglalo",
   "db_pwd": "jelszo",
   "db_url": "leopph.tplinkdns.com/xe",
-  "db_encoding": "UTF-8"
+  "db_encoding": "UTF-8",
+  "font": "Ebrima"
 }

@@ -3,8 +3,6 @@ import tkinter
 from .window import Window
 from .login import LoginWindow
 
-
-from typing import Union
 from typing import Type
 
 
@@ -31,6 +29,10 @@ class App(tkinter.Tk):
     # APP INITIALIZER
     def __init__(this, *args, **kwargs):
         tkinter.Tk.__init__(this, *args, **kwargs)
+
+        this.geometry("960x540")
+        this.minsize(640, 480)
+        this["bg"] = "gray10"
 
         # CACHE FOR LOADED WINDOWS
         this.windows: dict[Type[Window], Window] = dict()
