@@ -36,9 +36,9 @@ class DuelMenuWindow(Window):
         tkinter.Label(this, font=(font_family, 18), fg=font_color, bg=this["bg"], text="Elérhetőek").grid(row=1, column=2, columnspan=2)
         tkinter.Label(this, font=(font_family, 18), fg=font_color, bg=this["bg"], text="Kihívóid").grid(row=1, column=4, columnspan=2)
 
-        this.sent_requests = tkinter.Listbox(this, font=font_family, fg=font_color, bg=this["bg"], bd=0, selectbackground=highlight_color, highlightthickness=0, relief=tkinter.FLAT)
-        this.player_list = tkinter.Listbox(this, font=font_family, fg=font_color, bg=this["bg"], bd=0, selectbackground=highlight_color, highlightthickness=0, relief=tkinter.FLAT)
-        this.incoming_requests = tkinter.Listbox(this, font=font_family, fg=font_color, bg=this["bg"], bd=0, selectbackground=highlight_color, highlightthickness=0, relief=tkinter.FLAT)
+        this.sent_requests = tkinter.Listbox(this, font=font_family, fg=font_color, bg=this["bg"], bd=0, selectbackground=highlight_color, highlightthickness=0, relief=tkinter.FLAT, selectmode=tkinter.SINGLE)
+        this.player_list = tkinter.Listbox(this, font=font_family, fg=font_color, bg=this["bg"], bd=0, selectbackground=highlight_color, highlightthickness=0, relief=tkinter.FLAT, selectmode=tkinter.SINGLE)
+        this.incoming_requests = tkinter.Listbox(this, font=font_family, fg=font_color, bg=this["bg"], bd=0, selectbackground=highlight_color, highlightthickness=0, relief=tkinter.FLAT, selectmode=tkinter.SINGLE)
 
         this.sent_requests.grid(row=2, column=0, columnspan=2, sticky="NESW")
         this.player_list.grid(row=2, column=2, columnspan=2, sticky="NESW")
@@ -48,26 +48,26 @@ class DuelMenuWindow(Window):
         this.player_list.config(justify=tkinter.CENTER, activestyle="none")
         this.incoming_requests.config(justify=tkinter.CENTER, activestyle="none")
 
-        this.sent_requests.bind("<<ListboxSelect>>", this.selection_callback)
-        this.player_list.bind("<<ListboxSelect>>", this.selection_callback)
-        this.incoming_requests.bind("<<ListboxSelect>>", this.selection_callback)
-
         # TODO this clears selection before button could query, need another solution
-        #this.sent_requests.bind('<FocusOut>', lambda e: this.sent_requests.selection_clear(0, tkinter.END))
-        #this.player_list.bind('<FocusOut>', lambda e: this.player_list.selection_clear(0, tkinter.END))
-        #this.incoming_requests.bind('<FocusOut>', lambda e: this.incoming_requests.selection_clear(0, tkinter.END))
+        #this.sent_requests.bind('<FocusOut>', this.deselect_callback)
+        #this.player_list.bind('<FocusOut>', this.deselect_callback)
+        #this.incoming_requests.bind('<FocusOut>', this.deselect_callback)
 
-        revoke_button = Button(this, text="Visszavon", command=this.revoke, state=tkinter.DISABLED)
+        #this.sent_requests.bind('<FocusIn>', this.selection_callback)
+        #this.player_list.bind('<FocusIn>', this.selection_callback)
+        #this.incoming_requests.bind('<FocusIn>', this.selection_callback)
+
+        revoke_button = Button(this, text="Visszavon", command=this.revoke)
         revoke_button.grid(row=3, column=0, columnspan=2)
 
-        challenge_button = Button(this, text="Kihív", command=this.challenge, state=tkinter.DISABLED)
-        challenge_button.grid(row=3, column=2, sticky="E")
+        challenge_button = Button(this, text="Kihív", command=this.challenge)
+        challenge_button.grid(row=3, column=2, columnspan=2)
 
-        decline_button = Button(this, text="Elutasít", command=this.decline, state=tkinter.DISABLED)
-        decline_button.grid(row=3, column=3, sticky="W")
+        decline_button = Button(this, text="Elutasít", command=this.decline)
+        decline_button.grid(row=3, column=4, sticky="E")
 
-        accept_button = Button(this, text="Elfogad", command=this.accept, state=tkinter.DISABLED)
-        accept_button.grid(row=3, column=4, columnspan=2)
+        accept_button = Button(this, text="Elfogad", command=this.accept)
+        accept_button.grid(row=3, column=5, sticky="W")
 
         this.sent_requests.buttons = [revoke_button]
         this.player_list.buttons = [challenge_button]
@@ -91,8 +91,6 @@ class DuelMenuWindow(Window):
     def deselect_callback(this, event) -> None:
         for button in event.widget.buttons:
             button["state"] = tkinter.DISABLED
-        event.widget.selection_clear(0, tkinter.END)
-
 
     def selection_callback(this, event) -> None:
         for button in event.widget.buttons:
