@@ -2,6 +2,7 @@ import tkinter
 from tkinter import filedialog
 from tkinter import ttk
 from tkinter import messagebox
+from PIL import Image, ImageTk
 import os
 
 from .window import Window
@@ -29,6 +30,7 @@ class NewAdsWindow(Window):
         tkinter.Label(this, fg=this.font_color, bg=this['bg'], text="Cím", font=(this.font_family, 15)).grid(row=1, column=0, sticky="E")
         tkinter.Label(this, fg=this.font_color, bg=this['bg'], text="Szöveg", font=(this.font_family, 15)).grid(row=2, column=0, sticky="E")
         tkinter.Label(this, fg=this.font_color, bg=this['bg'], text="Plakát", font=(this.font_family, 15)).grid(row=3, column=0, sticky="E")
+        this.img = None
         this.filename = ""
         this.filename_label = tkinter.Label(this, fg=this.font_color, bg=this['bg'], text="Nincs feltöltött file", font=(this.font_family, 10))
         this.filename_label.grid(row=4, column=1, sticky="NW")
@@ -48,6 +50,7 @@ class NewAdsWindow(Window):
         this.reset()
 
     def reset(this) -> None:
+        this.img = None
         this.filename = ""
         this.filename_label["text"] = "Nincs feltöltött file"
         this.title.delete(0, 'end')
@@ -55,15 +58,22 @@ class NewAdsWindow(Window):
 
     def upload_poster(this) -> None:
         this.filename = filedialog.askopenfilename()
-        if this.filename != "" :
-            this.filename_label["text"] = os.path.basename(this.filename)
+
+        # if this.filename != "" :
+        #     this.filename_label["text"] = os.path.basename(this.filename)
+        #     this.img = Image.open(this.filename)
+        #     img_size = this.img.size
+        #     print(img_size[0], img_size[1])
+        #     this.img = this.img.resize((300, round(img_size[1]/(img_size[0]/300))))
+
 
     def go_back(this) -> None:
         this.master.raise_previous_window()
 
     def insert_ad(this) -> None:
-        if this.title.get() == "" or this.text.get() == "":
+        if this.title.get() == "" or this.text.get() == "" or this.img is None:
             messagebox.showerror("Hiba", "Minden mezőt kötelező kitölteni!")
             return
 
-        # this.dao.insert()
+        this.dao.insert(this.title.get(), this.text.get(), this.img)
+        this.reset()
