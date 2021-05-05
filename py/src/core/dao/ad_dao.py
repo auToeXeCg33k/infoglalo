@@ -6,7 +6,7 @@ from tkinter import PhotoImage
 class AdDAO:
     #TODO: str (or smth) to blob problem
 
-    # def insert(self, cim: str, szoveg: str, plakat: str) -> bool:
+    # def insert(this, cim: str, szoveg: str, plakat: str) -> bool:
     #     try:
     #         connection = ConfigLoader.get_connection_pool().acquire()
     #         cursor = connection.cursor()
@@ -18,6 +18,9 @@ class AdDAO:
     #     except Exception as e:
     #         print(e)
     #         return False
+
+    def delete(this, index: int) -> bool:
+        pass
 
     def output_type_handler(this, cursor, name, default_type, size, precision, scale):
         if default_type == cx_Oracle.DB_TYPE_BLOB:
