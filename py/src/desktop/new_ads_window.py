@@ -63,8 +63,7 @@ class NewAdsWindow(Window):
             this.filename_label["text"] = os.path.basename(this.filename)
             this.img = Image.open(this.filename)
             img_size = this.img.size
-            this.img = this.img.resize((300, round(img_size[1]/(img_size[0]/300))))
-            this.img.show()
+            this.img = this.img.resize((round(300/img_size[1] * img_size[0]), 300))
 
 
     def go_back(this) -> None:

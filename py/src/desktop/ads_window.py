@@ -32,16 +32,18 @@ class AdsWindow(ScrollableWindow):
         for child in this.main_frame.winfo_children():
             child.destroy()
 
-        tk.Button(this.main_frame, height=2, width=5, text="Vissza", command=this.go_back).place(x=10, y=10)
+        ttk.Button(this.main_frame, text="Vissza", command=this.go_back).place(x=10, y=10)
         if this.data["user"][4]:  # ha admin
-             ttk.Button(this.main_frame, text="Hirdetés felvitele", command=this.go_admin).place(x=500, y=10)
+             ttk.Button(this.main_frame, text="Hirdetés felvitele", command=this.go_admin).place(x=700, y=10)
 
         dao = AdDAO()
         data = dao.find_all()
-        # for i in range (len(data)):
-        #     img_button = ttk.Button(this.main_frame, image=data[i][2], command=lambda index=i: this.get_info(data, index+1))
-        #     img_button.image = data[i][2]
-        #     img_button.place(x=20, y=len(data)-i * 500)
+        print(len(data))
+        for i in range (len(data)):
+            img_button = ttk.Button(this.main_frame, image=data[i][2], command=lambda index=i: this.get_info(data, index))
+            img_button.image = data[i][2]
+            img_button.place(x=110, y=((len(data)-1) * 340) - i * 330)
+            ttk.Button(this.main_frame, text="X", command=lambda index=i: this.delete_ad(index + 1)).place(x=110 + data[i][2].width() + 10, y=((len(data) - 1) * 340) - i * 330)
 
 
 

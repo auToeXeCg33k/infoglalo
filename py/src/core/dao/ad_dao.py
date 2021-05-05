@@ -35,7 +35,7 @@ class AdDAO:
             connection = ConfigLoader.get_connection_pool().acquire()
             connection.outputtypehandler = this.output_type_handler
             cursor = connection.cursor()
-            cursor.execute("SELECT * FROM HIRDETES")
+            cursor.execute("SELECT * FROM HIRDETES ORDER BY ID")
 
             db_data : list[tuple[int, str, str, str]] = cursor.fetchall()
             ConfigLoader.get_connection_pool().release(connection)
