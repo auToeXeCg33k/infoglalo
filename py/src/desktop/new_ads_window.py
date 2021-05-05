@@ -2,7 +2,7 @@ import tkinter
 from tkinter import filedialog
 from tkinter import ttk
 from tkinter import messagebox
-from PIL import Image, ImageTk
+from PIL import Image
 import os
 
 from .window import Window
@@ -76,3 +76,4 @@ class NewAdsWindow(Window):
 
         this.dao.insert(this.title.get(), this.text.get(), this.img)
         this.reset()
+        this.master.raise_previous_window()

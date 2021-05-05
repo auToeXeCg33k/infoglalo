@@ -23,7 +23,15 @@ class AdDAO:
              return False
 
     def delete(this, index: int) -> bool:
-        pass
+        try:
+            connection = ConfigLoader.get_connection_pool().acquire()
+            cursor = connection.cursor()
+            cursor.execute("DELETE FROM HIRDETES WHERE ID = :1", [index])
+            connection.commit()
+
+        except Exception as e:
+            print(e)
+            return False
 
     def output_type_handler(this, cursor, name, default_type, size, precision, scale):
         if default_type == cx_Oracle.DB_TYPE_BLOB:
