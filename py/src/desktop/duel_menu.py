@@ -5,6 +5,7 @@ from tkinter.ttk import Button
 from .window import Window
 from ..core.dao.duel_dao import DuelDAO
 from ..core.config import ConfigLoader
+from .game_window import GameWindow
 
 
 class DuelMenuWindow(Window):
@@ -126,7 +127,12 @@ class DuelMenuWindow(Window):
         this.reset()
 
     def accept(this) -> None:
-        pass
+        this.dao.accept_duel(this.incoming_requests.get(this.incoming_requests.curselection())[0], this.data["user"][0])
+        this.data["duel"] = this.dao.get_accepted_duel(this.incoming_requests.get(this.incoming_requests.curselection())[0], this.data["user"][0])
+        this.data["duel"]["challenger"] = this.incoming_requests.get(this.incoming_requests.curselection())[0]
+        this.data["duel"]["challenged"] = this.data["user"][0]
+
+        this.master.raise_window(GameWindow)
 
     def go_back(this) -> None:
         this.master.raise_previous_window()
