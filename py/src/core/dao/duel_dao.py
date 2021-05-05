@@ -48,3 +48,16 @@ class DuelDAO:
 
         except Exception as e:
             print(e)
+
+
+    def delete_duel(this, challenger: str, challenged:str, pending: int) -> None:
+        try:
+            connection = ConfigLoader.get_connection_pool().acquire()
+            cursor = connection.cursor()
+            cursor.execute("DELETE FROM PARBAJ WHERE PENDING = :1 AND ID IN(\
+                            SELECT PARBAJRAHIV.ID FROM PARBAJRAHIV INNER JOIN PARBAJRAHIVOTT ON PARBAJRAHIV.ID = PARBAJRAHIVOTT.ID\
+                            WHERE PARBAJRAHIVOTT.JATEKOS = :2 AND PARBAJRAHIV.JATEKOS = :3)", [pending, challenged, challenger])
+            connection.commit()
+
+        except Exception as e:
+            print(e)

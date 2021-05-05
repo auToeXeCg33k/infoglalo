@@ -116,14 +116,16 @@ class DuelMenuWindow(Window):
 
 
     def revoke(this) -> None:
-        pass
+        this.dao.delete_duel(this.data["user"][0], this.sent_requests.get(this.sent_requests.curselection())[0], 1)
+        this.reset()
 
     def challenge(this) -> None:
         this.dao.create_new_duel(this.data["user"][0], this.player_list.get(this.player_list.curselection())[0])
         this.reset()
 
     def decline(this) -> None:
-        pass
+        this.dao.delete_duel(this.incoming_requests.get(this.incoming_requests.curselection())[0], this.data["user"][0], 1)
+        this.reset()
 
     def accept(this) -> None:
         pass
