@@ -49,7 +49,8 @@ class AdsWindow(ScrollableWindow):
             img_button.image = data[i][2]
             img_button.grid(row=1, column=0, columnspan=2)
 
-            ttk.Button(ad_frame, text="X", command=lambda index=i: this.delete_ad(index+1)).grid(row=0, column=1)
+            if this.data["user"][4]:
+                ttk.Button(ad_frame, text="X", command=lambda index=i: this.delete_ad(index+1)).grid(row=0, column=1)
 
 
 
