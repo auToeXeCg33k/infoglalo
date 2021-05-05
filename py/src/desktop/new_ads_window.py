@@ -28,17 +28,17 @@ class NewAdsWindow(Window):
         this.img = None
         this.filename = ""
         this.filename_label = tkinter.Label(this, fg=this.font_color, bg=this['bg'], text="Nincs feltöltött file", font=(this.font_family, 10))
-        this.filename_label.grid(row=2, column=1, sticky="NW")
+        this.filename_label.grid(row=2, column=1, sticky="N")
 
-        ttk.Button(this, command=this.upload_poster, text="Feltöltés").grid(row=1, column=1)
+        ttk.Button(this, command=this.upload_poster, text="Fájl feltöltés").grid(row=1, column=1)
         ttk.Button(this, command=this.go_back, text="Vissza").grid(row=4, column=0, sticky="E")
         ttk.Button(this, command=this.insert_ad, text="Felvitel").grid(row=4, column=1, sticky="W")
 
-        this.title = tkinter.Entry(this)
-        this.text = tkinter.Entry(this)
+        this.title = tkinter.Entry(this, width=70)
+        this.text = tkinter.Text(this, width=100, height=50)
 
-        this.title.grid(row=1, column=0, rowspan=2, sticky="NEWS")
-        this.text.grid(row=3, column=0, columnspan=2, sticky="NEWS")
+        this.title.grid(row=1, column=0, rowspan=2)
+        this.text.grid(row=3, column=0, columnspan=2)
 
         this.dao = AdDAO()
 
@@ -49,9 +49,9 @@ class NewAdsWindow(Window):
         this.filename = ""
         this.filename_label["text"] = "Nincs feltöltött file"
         this.title.delete(0, 'end')
-        this.text.delete(0, 'end')
+        this.text.delete('1.0', 'end')
         this.title.insert(0, 'Cím...')
-        this.text.insert(0, 'Szöveg...')
+        this.text.insert('1.0', 'Szöveg...')
 
     def upload_poster(this) -> None:
         this.filename = filedialog.askopenfilename()
@@ -67,10 +67,10 @@ class NewAdsWindow(Window):
         this.master.raise_previous_window()
 
     def insert_ad(this) -> None:
-        if this.title.get() == "" or this.text.get() == "" or this.img is None:
+        if this.title.get() == "" or this.text.get('1.0', 'end') == "" or this.img is None:
             messagebox.showerror("Hiba", "Minden mezőt kötelező kitölteni!")
             return
 
-        this.dao.insert(this.title.get(), this.text.get(), this.img)
+        this.dao.insert(this.title.get(), this.text.get('1.0', 'end'), this.img)
         this.reset()
         this.master.raise_previous_window()
