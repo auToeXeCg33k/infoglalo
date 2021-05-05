@@ -16,7 +16,7 @@ class ChatRoom(ScrollableWindow):
         this.akt_room_id = 0
 
         # TITLE
-        tk.Label(this, text="Közösségi szobák", font=(None, 25)).grid(row=0, column=0, sticky="NESW")
+        tk.Label(this, text="Közösségi szobák", font=(None, 25), bg="gray5",fg="snow").grid(row=0, column=0, sticky="NESW")
         # FRAME IN THE CANVAS (MAIN FRAME)
         this.main_frame.rowconfigure(index=0, weight=1)
         this.main_frame.rowconfigure(index=1, weight=1)
@@ -24,11 +24,11 @@ class ChatRoom(ScrollableWindow):
         this.main_frame.columnconfigure(index=1, weight=3)
 
         # FRAME FOR ROOM NAME
-        this.room_frame = tk.LabelFrame(this.main_frame, text="Szobák", font=(None, 15), width=100)
+        this.room_frame = tk.LabelFrame(this.main_frame, text="Szobák", font=(None, 15), width=100, bg="gray5",fg="snow")
         this.room_frame.grid(row=0, column=0, sticky="NESW")
 
         # FRAME FOR MAIN MESSAGES
-        this.main_message_frame = tk.LabelFrame(this.main_frame, text="Üzenetek", font=(None, 15))
+        this.main_message_frame = tk.LabelFrame(this.main_frame, text="Üzenetek", font=(None, 15), bg="gray5",fg="snow")
         this.main_message_frame.grid(row=0, column=1, sticky="NESW")
         this.main_message_frame.rowconfigure(index=0, weight=1)
         this.main_message_frame.rowconfigure(index=1, weight=1)
@@ -78,6 +78,11 @@ class ChatRoom(ScrollableWindow):
         back_button = tk.Button(this.main_frame, text='Vissza', command=this.go_back)
         back_button.grid(row=1, column=0, sticky="W")
 
+        this.scroll_message_canvas["bg"] = this["bg"]
+        this.messages_frame["bg"] = this["bg"]
+        this.room_frame["bg"] = this["bg"]
+        this.main_message_frame["bg"] = this["bg"]
+        writer_frame["bg"] = this["bg"]
 
         this.message_canvas_conf()
         this.reset()
