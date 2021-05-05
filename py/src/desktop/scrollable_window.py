@@ -1,4 +1,4 @@
-import tkinter as tk
+import tkinter
 from abc import abstractmethod
 from .window import Window
 
@@ -7,29 +7,27 @@ class ScrollableWindow(Window):
     def __init__(this, data) -> None:
         Window.__init__(this, data)
 
-        this.rowconfigure(index=1, weight=1)
-        this.columnconfigure(index=0, weight=1)
+        this.canvas = tkinter.Canvas(master=this, bg=this["bg"], bd=0, highlightthickness=0)
+        this.canvas.pack(fill=tkinter.BOTH, expand=tkinter.TRUE)
 
-        this.canvas = tk.Canvas(this)
-        this.scrollbar = tk.Scrollbar(this, orient="vertical", command=this.canvas.yview)
-        this.main_frame = tk.Frame(this.canvas)
+        this.main_frame = tkinter.Frame(this.canvas, bg=this["bg"])
+        this.main_frame.pack(fill=tkinter.BOTH, expand=tkinter.TRUE)
 
-        this.canvas["bg"] = this["bg"]
-        this.main_frame["bg"] = this["bg"]
+        scrollbar = tkinter.Scrollbar(this.canvas, command=this.canvas.yview)
+        scrollbar.pack(side=tkinter.RIGHT, fill=tkinter.Y)
 
-        this.canvas.grid(row=1, column=0, sticky="NESW")
-        this.scrollbar.grid(row=1, column=1, sticky="NES")
+        this.canvas_window = this.canvas.create_window(0, 0, window=this.main_frame, anchor=tkinter.NW)
+        this.canvas.config(yscrollcommand=scrollbar.set)
 
-        this.canvas.bind("<Configure>", this.resize_frame)
-        this.canvas.bind("<MouseWheel>", this._on_mousewheel)
-        this.canvas_frame = this.canvas.create_window(0, 0, window=this.main_frame, anchor=tk.NW)
-        this.canvas.config(yscrollcommand=this.scrollbar.set)
+        this.main_frame.bind("<Configure>", this.on_frame_configure)
+        this.canvas.bind("<Configure>", this.on_canvas_configure)
 
 
-    def resize_frame(this, event) -> None:
-        this.canvas.itemconfig(this.canvas_frame, width=event.width-10, height=event.height-10)
+    def on_frame_configure(this, event) -> None:
         this.canvas.config(scrollregion=this.canvas.bbox("all"))
 
+    def on_canvas_configure(this, event) -> None:
+        this.canvas.itemconfig(this.canvas_window, width=event.width)
 
     def _on_mousewheel(this, event) -> None:
         this.canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")

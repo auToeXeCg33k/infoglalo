@@ -17,11 +17,7 @@ class AdsWindow(ScrollableWindow):
         this.font_family = ConfigLoader.get("font-family")
         this.font_color = ConfigLoader.get("font-color")
 
-        this.main_frame.rowconfigure(index=0, weight=1)
-        this.main_frame.columnconfigure(index=0, weight=1)
-        this.main_frame.columnconfigure(index=1, weight=1)
-
-        tkinter.Label(this, fg=this.font_color, text="Hirdetések", bg=this['bg'], font=(this.font_family, 25)).grid(row=0, column=0, columnspan=2, sticky="NESW")
+        tkinter.Label(this, fg=this.font_color, text="Hirdetések", bg=this['bg'], font=(this.font_family, 25))
 
         this.dao = AdDAO()
 
