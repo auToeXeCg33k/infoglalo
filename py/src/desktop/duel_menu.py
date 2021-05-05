@@ -52,9 +52,10 @@ class DuelMenuWindow(Window):
         this.player_list.bind("<<ListboxSelect>>", this.selection_callback)
         this.incoming_requests.bind("<<ListboxSelect>>", this.selection_callback)
 
-        this.sent_requests.bind('<FocusOut>', lambda e: this.sent_requests.selection_clear(0, tkinter.END))
-        this.player_list.bind('<FocusOut>', lambda e: this.player_list.selection_clear(0, tkinter.END))
-        this.incoming_requests.bind('<FocusOut>', lambda e: this.incoming_requests.selection_clear(0, tkinter.END))
+        # TODO this clears selection before button could query, need another solution
+        #this.sent_requests.bind('<FocusOut>', lambda e: this.sent_requests.selection_clear(0, tkinter.END))
+        #this.player_list.bind('<FocusOut>', lambda e: this.player_list.selection_clear(0, tkinter.END))
+        #this.incoming_requests.bind('<FocusOut>', lambda e: this.incoming_requests.selection_clear(0, tkinter.END))
 
         revoke_button = Button(this, text="Visszavon", command=this.revoke, state=tkinter.DISABLED)
         revoke_button.grid(row=3, column=0, columnspan=2)
@@ -118,7 +119,8 @@ class DuelMenuWindow(Window):
         pass
 
     def challenge(this) -> None:
-        pass
+        this.dao.create_new_duel(this.data["user"][0], this.player_list.get(this.player_list.curselection())[0])
+        this.reset()
 
     def decline(this) -> None:
         pass
