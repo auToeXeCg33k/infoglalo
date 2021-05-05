@@ -51,6 +51,33 @@ class SocialDAO:
             print(e)
         return list()
 
+    def delete_forum_msg(this, uname, date) -> bool:
+        try:
+            connection = ConfigLoader.get_connection_pool().acquire()
+            cursor = connection.cursor()
+            cursor.execute("DELETE FROM UZENET WHERE KULDO = :1 AND IDOPONT = :2", [uname, date])
+            connection.commit()
+            ConfigLoader.get_connection_pool().release(connection)
+            return True
+
+        except Exception as e:
+            print(e)
+            return False
+
+    def update_msg(this, uname, date, new) -> bool:
+        try:
+            connection = ConfigLoader.get_connection_pool().acquire()
+            cursor = connection.cursor()
+            cursor.execute("UPDATE UZENET SET SZOVEG = :1 WHERE KULDO = :2 AND IDOPONT = :3", [new, uname, date])
+            connection.commit()
+            ConfigLoader.get_connection_pool().release(connection)
+            return True
+
+        except Exception as e:
+            print(e)
+            return False
+
+
     def send_message(this, u_name, room_id, content) -> bool:
         try:
             connection = ConfigLoader.get_connection_pool().acquire()
