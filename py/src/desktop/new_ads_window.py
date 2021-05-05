@@ -59,12 +59,12 @@ class NewAdsWindow(Window):
     def upload_poster(this) -> None:
         this.filename = filedialog.askopenfilename()
 
-        # if this.filename != "" :
-        #     this.filename_label["text"] = os.path.basename(this.filename)
-        #     this.img = Image.open(this.filename)
-        #     img_size = this.img.size
-        #     print(img_size[0], img_size[1])
-        #     this.img = this.img.resize((300, round(img_size[1]/(img_size[0]/300))))
+        if this.filename != "" :
+            this.filename_label["text"] = os.path.basename(this.filename)
+            this.img = Image.open(this.filename)
+            img_size = this.img.size
+            this.img = this.img.resize((300, round(img_size[1]/(img_size[0]/300))))
+            this.img.show()
 
 
     def go_back(this) -> None:
