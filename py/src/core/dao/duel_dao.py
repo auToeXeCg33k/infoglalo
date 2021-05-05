@@ -37,3 +37,14 @@ class DuelDAO:
                                INNER JOIN PARBAJRAHIVOTT ON PARBAJRAHIV.ID = PARBAJRAHIVOTT.ID \
                                INNER JOIN PARBAJ ON PARBAJ.ID = PARBAJRAHIV.ID \
                                WHERE PENDING = 1 AND PARBAJRAHIV.JATEKOS = :1", [uname])
+
+
+    def create_new_duel(self, challenger: str, challenged: str) -> None:
+        try:
+            connection = ConfigLoader.get_connection_pool().acquire()
+            cursor = connection.cursor()
+            cursor.callproc("ADD_PARBAJ", [challenger, challenged])
+            connection.commit()
+
+        except Exception as e:
+            print(e)
