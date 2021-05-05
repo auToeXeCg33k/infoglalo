@@ -5,23 +5,15 @@ import io
 
 
 class AdDAO:
-    #TODO: str (or smth) to blob problem
-
-    def input_type_handler(this, cursor, value, numElements):
-        print(type(value))
-        if value == cx_Oracle.DB_TYPE_LONG_RAW:
-            return cursor.var(cx_Oracle.DB_TYPE_BLOB, arraysize=cursor.arraysize)
 
     def insert(this, title: str, text: str, poster: Image) -> bool:
-        output = io. BytesIO()
-        poster.save(output, format="gif")
-        poster_as_string = output.getvalue()
+        bytes = io.BytesIO()
+        poster.save(bytes, "png")
 
         try:
              connection = ConfigLoader.get_connection_pool().acquire()
-             connection.inputtypehandler = this.input_type_handler
              cursor = connection.cursor()
-             cursor.execute("INSERT INTO HIRDETES(CIM, SZOVEG, PLAKAT) VALUES (:1, :2, :3)", [title, text, poster_as_string])
+             cursor.execute("INSERT INTO HIRDETES(CIM, SZOVEG, PLAKAT) VALUES (:1, :2, :3)", [title, text, bytes.getvalue()])
              connection.commit()
              ConfigLoader.get_connection_pool().release(connection)
              return True
