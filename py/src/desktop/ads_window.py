@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
 
+
 from .new_ads_window import NewAdsWindow
 from .scrollable_window import ScrollableWindow
 from ..core.dao.ad_dao import AdDAO
@@ -26,31 +27,22 @@ class AdsWindow(ScrollableWindow):
 
         this.reset()
 
+    # data[i][2] -> img, height = 300px
     def reset(this) -> None:
         for child in this.main_frame.winfo_children():
             child.destroy()
 
-        tk.Button(this.main_frame, text="Vissza", command=this.go_back).grid(row=0, column=0, sticky="NESW")
+        tk.Button(this.main_frame, height=2, width=5, text="Vissza", command=this.go_back).place(x=10, y=10)
         if this.data["user"][4]:  # ha admin
-            ttk.Button(this.main_frame, text="Hirdetés felvitele", command=this.go_admin).grid(row=0, column=1, sticky="NESW")
+             ttk.Button(this.main_frame, text="Hirdetés felvitele", command=this.go_admin).place(x=500, y=10)
 
         dao = AdDAO()
         data = dao.find_all()
-        for i in range (len(data)):
-            this.main_frame.rowconfigure(index=i+1, weight=1)
-            ad_frame = tkinter.Frame(this.main_frame, bg=this["bg"])
-            ad_frame.grid(row = i+1, column=0, sticky="NEWS")
-            ad_frame.rowconfigure(index=0, weight=1)
-            ad_frame.rowconfigure(index=1, weight=300)
-            ad_frame.columnconfigure(index=0, weight=300)
-            ad_frame.columnconfigure(index=1, weight=1)
+        # for i in range (len(data)):
+        #     img_button = ttk.Button(this.main_frame, image=data[i][2], command=lambda index=i: this.get_info(data, index+1))
+        #     img_button.image = data[i][2]
+        #     img_button.place(x=20, y=len(data)-i * 500)
 
-            img_button = ttk.Button(ad_frame, image=data[i][2], command=lambda index=i: this.get_info(data, index+1))
-            img_button.image = data[i][2]
-            img_button.grid(row=1, column=0, columnspan=2)
-
-            if this.data["user"][4]:
-                ttk.Button(ad_frame, text="X", command=lambda index=i: this.delete_ad(index+1)).grid(row=0, column=1)
 
 
 
