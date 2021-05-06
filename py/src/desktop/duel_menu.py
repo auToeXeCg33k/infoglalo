@@ -5,7 +5,7 @@ from tkinter.ttk import Button
 from .window import Window
 from ..core.dao.duel_dao import DuelDAO
 from ..core.config import ConfigLoader
-from .game_window import GameWindow
+from .duel_game_window import DuelGameWindow
 
 
 class DuelMenuWindow(Window):
@@ -30,7 +30,7 @@ class DuelMenuWindow(Window):
 
         font_family = ConfigLoader.get("font-family")
         font_color = ConfigLoader.get("font-color")
-        highlight_color = "dark violet"
+        highlight_color = ConfigLoader.get("accent-color")
 
         tkinter.Label(this, font=(font_family, 26), fg=font_color, bg=this["bg"], text="Párbaj").grid(row=0, column=0, columnspan=6, sticky="NEWS")
         tkinter.Label(this, font=(font_family, 18), fg=font_color, bg=this["bg"], text="Kihívottjaid").grid(row=1, column=0, columnspan=2)
@@ -132,7 +132,7 @@ class DuelMenuWindow(Window):
         this.data["duel"]["challenger"] = this.incoming_requests.get(this.incoming_requests.curselection())[0]
         this.data["duel"]["challenged"] = this.data["user"][0]
 
-        this.master.raise_window(GameWindow)
+        this.master.raise_window(DuelGameWindow)
 
     def go_back(this) -> None:
         this.master.raise_previous_window()
