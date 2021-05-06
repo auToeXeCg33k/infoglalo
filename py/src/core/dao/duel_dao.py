@@ -80,8 +80,9 @@ class DuelDAO:
             connection = ConfigLoader.get_connection_pool().acquire()
             cursor = connection.cursor()
             cursor.execute("UPDATE PARBAJ SET PENDING = 0 WHERE ID = (\
-                            SELECT PARBAJRAHIV.ID FROM PARBAJRAHIV\
+                            SELECT UNIQUE PARBAJRAHIV.ID FROM PARBAJRAHIV\
                             INNER JOIN PARBAJRAHIVOTT ON PARBAJRAHIV.ID = PARBAJRAHIVOTT.ID\
+                            INNER JOIN PARBAJ ON PARBAJ.ID = PARBAJRAHIV.ID\
                             WHERE PARBAJRAHIV.JATEKOS = :1 AND PARBAJRAHIVOTT.JATEKOS = :2 AND PENDING = 1)", [challenger, challenged])
             connection.commit()
 
