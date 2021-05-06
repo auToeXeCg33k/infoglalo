@@ -34,6 +34,34 @@ class SocialDAO:
             print(e)
         return list()
 
+    def insert_to_room(this, uname, room_id) -> bool:
+        try:
+            connection = ConfigLoader.get_connection_pool().acquire()
+            cursor = connection.cursor()
+            cursor.execute("INSERT into kozossegtagja values (:1, :2)", [uname, room_id])
+            connection.commit()
+            ConfigLoader.get_connection_pool().release(connection)
+            return True
+
+        except Exception as e:
+            print(e)
+            return False
+
+    def get_non_member_room(this, u_name) -> list[tuple[int, str]]:
+        try:
+            connection = ConfigLoader.get_connection_pool().acquire()
+            cursor = connection.cursor()
+            cursor.execute("SELECT * FROM KOZOSSEG WHERE KOZOSSEG.ID != 0 and KOZOSSEG.ID not in (Select KOZOSSEG from KOZOSSEGTAGJA where FELHASZNALONEV = :1)", [u_name])
+            db_data: list[tuple[int, str]] = cursor.fetchall()
+            ConfigLoader.get_connection_pool().release(connection)
+            result = list()
+            for room_id, room_name in db_data:
+                result.append((room_id, room_name))
+            return result
+        except Exception as e:
+            print(e)
+        return list()
+
     def get_forum_messages(this) -> list[tuple[str, int, cx_Oracle.Date, str]]:
         try:
             connection = ConfigLoader.get_connection_pool().acquire()
