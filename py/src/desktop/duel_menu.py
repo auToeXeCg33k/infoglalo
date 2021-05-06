@@ -76,8 +76,6 @@ class DuelMenuWindow(Window):
 
         Button(this, text="Vissza", command=this.go_back).grid(row=5, column=0, columnspan=6)
 
-        this.reset()
-
 
     def reset(this) -> None:
         this.sent_requests.delete(0, this.sent_requests.size() - 1)
