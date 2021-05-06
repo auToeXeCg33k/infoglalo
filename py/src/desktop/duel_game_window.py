@@ -61,6 +61,7 @@ class DuelGameWindow(Window):
         this.ans_d_label["text"] = this.data["duel"]["answers"][3]
 
 
+    # TODO add points handling
     def on_selected(this, letter: str) -> None:
         this.dao.add_answer(this.data["duel"]["id"], this.data["user"][0], letter.upper())
 
@@ -70,19 +71,23 @@ class DuelGameWindow(Window):
         this_is_correct = this.data["duel"]["correct_ans"].lower() == letter
         this.correctness_label["text"] = "A válaszod helyes volt!" if this_is_correct else "A válaszod helytelen volt."
 
-        other_player = this.data["duel"]["challenger"] if this.data["duel"]["challenger"] == this.data["user"][0] else this.data["duel"]["challenged"]
+        other_player = this.data["duel"]["challenged"] if this.data["duel"]["challenger"] == this.data["user"][0] else this.data["duel"]["challenger"]
 
         if this.dao.has_both_answers(this.data["duel"]["id"]):
             other_is_correct =  this.dao.get_answer(this.data["duel"]["id"], other_player).lower() ==this.data["duel"]["correct_ans"].lower()
 
             if other_is_correct and this_is_correct:
                 this.result_label["text"] = "Mindketten helyes választ adtatok. Az eredmény döntetlen."
+                this.dao.delete_duel_by_id(this.data["duel"]["id"])
             elif not other_is_correct and this_is_correct:
                 this.result_label["text"] = "Győztél!"
+                this.dao.set_winner(this.data["duel"]["id"], this.data["user"][0])
             elif other_is_correct and not this_is_correct:
                 this.result_label["text"] = "Vesztettél..."
+                this.dao.set_winner(this.data["duel"]["id"], other_player)
             else:
                 this.result_label["text"] = "Mindketten helytelen választ adtatok. Az eredmény döntetlen."
+                this.dao.delete_duel_by_id(this.data["duel"]["id"])
         else:
             this.result_label["text"] = other_player + " még nem adott választ."
 

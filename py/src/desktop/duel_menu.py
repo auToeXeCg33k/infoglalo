@@ -117,8 +117,13 @@ class DuelMenuWindow(Window):
         this.reset()
 
     def challenge(this) -> None:
+        # TODO start the duel
         this.dao.create_new_duel(this.data["user"][0], this.player_list.get(this.player_list.curselection())[0])
-        this.reset()
+        this.data["duel"] = this.dao.get_unfinished_duel(this.data["user"][0], this.player_list.get(this.player_list.curselection())[0], 1)
+        this.data["duel"]["challenger"] = this.data["user"][0]
+        this.data["duel"]["challenged"] = this.player_list.get(this.player_list.curselection())[0]
+
+        this.master.raise_window(DuelGameWindow)
 
     def decline(this) -> None:
         this.dao.delete_duel(this.incoming_requests.get(this.incoming_requests.curselection())[0], this.data["user"][0], 1)
@@ -126,7 +131,7 @@ class DuelMenuWindow(Window):
 
     def accept(this) -> None:
         this.dao.accept_duel(this.incoming_requests.get(this.incoming_requests.curselection())[0], this.data["user"][0])
-        this.data["duel"] = this.dao.get_accepted_duel(this.incoming_requests.get(this.incoming_requests.curselection())[0], this.data["user"][0])
+        this.data["duel"] = this.dao.get_unfinished_duel(this.incoming_requests.get(this.incoming_requests.curselection())[0], this.data["user"][0], 0)
         this.data["duel"]["challenger"] = this.incoming_requests.get(this.incoming_requests.curselection())[0]
         this.data["duel"]["challenged"] = this.data["user"][0]
 
