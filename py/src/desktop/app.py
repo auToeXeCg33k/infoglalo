@@ -31,7 +31,7 @@ class App(tkinter.Tk):
         tkinter.Tk.__init__(this, *args, **kwargs)
 
         this.geometry("960x540")
-        this.minsize(640, 480)
+        this.minsize(800, 600)
         this["bg"] = "gray10"
 
         # CACHE FOR LOADED WINDOWS
