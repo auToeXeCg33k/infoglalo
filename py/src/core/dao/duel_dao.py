@@ -17,15 +17,16 @@ class DuelDAO:
 
 
     def get_availables(this, uname: str) -> list[str]:
-        # TODO POTENTIAL PLSQL
-        # TODO DOESNT CHECK FOR NULL WINNER, BUT STILL WORKS, INTERESTING ANOMALY
-        return this.executesql("SELECT FELHASZNALONEV FROM JATEKOS \
-                               WHERE FELHASZNALONEV != :1 AND FELHASZNALONEV NOT IN \
-                               (SELECT JATEKOS FROM PARBAJRAHIVOTT WHERE ID IN \
-                               (SELECT ID FROM PARBAJRAHIV WHERE JATEKOS = :1)) \
-                               AND FELHASZNALONEV NOT IN \
-                               (SELECT JATEKOS FROM PARBAJRAHIV WHERE ID IN \
-                               (SELECT ID FROM PARBAJRAHIVOTT WHERE JATEKOS = :1))", [uname])
+        return this.executesql("SELECT FELHASZNALONEV FROM JATEKOS\
+                                WHERE FELHASZNALONEV NOT IN\
+                                (SELECT PARBAJRAHIV.JATEKOS FROM PARBAJ\
+                                INNER JOIN PARBAJRAHIV ON PARBAJ.ID = PARBAJRAHIV.ID\
+                                WHERE PARBAJ.PENDING = 1 OR PARBAJ.NYERTES IS NULL)\
+                                AND FELHASZNALONEV NOT IN\
+                                (SELECT PARBAJRAHIVOTT.JATEKOS FROM PARBAJ\
+                                INNER JOIN PARBAJRAHIVOTT ON PARBAJ.ID = PARBAJRAHIVOTT.ID\
+                                WHERE PARBAJ.PENDING = 1 OR PARBAJ.NYERTES IS NULL)\
+                                AND FELHASZNALONEV != :1", [uname])
 
     def get_incoming(this, uname: str) -> list[str]:
         return this.executesql("SELECT PARBAJRAHIV.JATEKOS FROM PARBAJRAHIV \
