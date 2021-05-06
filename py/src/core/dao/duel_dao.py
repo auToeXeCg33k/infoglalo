@@ -64,6 +64,16 @@ class DuelDAO:
         except Exception as e:
             print(e)
 
+    def delete_duel_by_id(this, id: int) -> None:
+        try:
+            connection = ConfigLoader.get_connection_pool().acquire()
+            cursor = connection.cursor()
+            cursor.execute("DELETE FROM PARBAJ WHERE ID = :1", [id])
+            connection.commit()
+
+        except Exception as e:
+            print(e)
+
 
     def accept_duel(this, challenger: str, challenged: str) -> None:
         try:
@@ -79,7 +89,7 @@ class DuelDAO:
             print(e)
 
 
-    def get_accepted_duel(this, challenger: str, challenged: str) -> dict:
+    def get_unfinished_duel(this, challenger: str, challenged: str, pending: int) -> dict:
         try:
             connection = ConfigLoader.get_connection_pool().acquire()
             cursor = connection.cursor()
@@ -88,7 +98,7 @@ class DuelDAO:
                             INNER JOIN PARBAJRAHIV ON PARBAJ.ID = PARBAJRAHIV.ID\
                             INNER JOIN PARBAJRAHIVOTT ON PARBAJ.ID = PARBAJRAHIVOTT.ID\
                             INNER JOIN KERDES ON PARBAJKERDESE.SZOVEG = KERDES.SZOVEG\
-                            WHERE PARBAJRAHIV.JATEKOS = :1 AND PARBAJRAHIVOTT.JATEKOS = :2 AND PARBAJ.PENDING = 0 AND PARBAJ.NYERTES IS NULL", [challenger, challenged])
+                            WHERE PARBAJRAHIV.JATEKOS = :1 AND PARBAJRAHIVOTT.JATEKOS = :2 AND PARBAJ.PENDING = :3 AND PARBAJ.NYERTES IS NULL", [challenger, challenged, pending])
 
             data = cursor.fetchone()
             ret = {"id": data[0], "question": data[1], "correct_ans": data[2]}
@@ -130,7 +140,7 @@ class DuelDAO:
             connection = ConfigLoader.get_connection_pool().acquire()
             cursor = connection.cursor()
             cursor.execute("SELECT COUNT(parbajid) FROM PARBAJVALASZ WHERE parbajid = :1", [id])
-            return cursor.fetchone() == 2
+            return cursor.fetchone()[0] == 2
 
         except Exception as e:
             print(e)
@@ -142,7 +152,7 @@ class DuelDAO:
             connection = ConfigLoader.get_connection_pool().acquire()
             cursor = connection.cursor()
             cursor.execute("SELECT VALASZ FROM PARBAJVALASZ WHERE PARBAJID = :1 AND JATEKOS = :2", [id, uname])
-            return cursor.fetchone()
+            return cursor.fetchone()[0]
 
         except Exception as e:
             return ""
