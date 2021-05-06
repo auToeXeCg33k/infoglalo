@@ -37,7 +37,7 @@ class TestGameWindow(Window):
         this.current_category.set(this.data["test"]["categories"][0])
         this.category_menu["values"] = this.data["test"]["categories"]
 
-        this.current_difficulty.set("Közepes")
+        this.current_difficulty.set(list(this.data["test"]["difficulties"])[0])
 
 
     def go_back(this) -> None:
