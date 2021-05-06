@@ -37,7 +37,7 @@ class ToplistWindow(ScrollableWindow):
         this.medium_label: Union[tkinter.Button, None] = None
         this.hard_label: Union[tkinter.Button, None] = None
 
-        this.highlight_color = "dark violet"
+        this.highlight_color = ConfigLoader.get("accent-color")
 
         this.dao = TopListDAO()
         this.reset()

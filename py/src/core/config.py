@@ -7,7 +7,7 @@ from typing import Union
 
 class ConfigLoader:
     # LOAD JSON DATA
-    with open(str(Path(__file__).parent.absolute()) + "/data/config.json") as file:
+    with open(str(Path(__file__).parent.absolute()) + "/data/config.json", encoding="utf-8") as file:
         data_: dict[str, str] = json.load(file)
 
     # INIT ORACLE LIB

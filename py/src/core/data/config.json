@@ -5,5 +5,9 @@
   "db_url": "leopph.tplinkdns.com/xe",
   "db_encoding": "UTF-8",
   "font-family": "Ebrima",
-  "font-color": "snow"
+  "font-color": "snow",
+  "accent-color": "dark violet",
+  "background-color": "gray10",
+  "window-title": "Infoglaló",
+  "default-size": "960x540"
 }
