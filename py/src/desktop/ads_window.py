@@ -17,8 +17,6 @@ class AdsWindow(ScrollableWindow):
         this.font_family = ConfigLoader.get("font-family")
         this.font_color = ConfigLoader.get("font-color")
 
-        tkinter.Label(this, fg=this.font_color, text="Hirdetések", bg=this['bg'], font=(this.font_family, 25))
-
         this.dao = AdDAO()
 
         this.reset()
@@ -27,17 +25,30 @@ class AdsWindow(ScrollableWindow):
         for child in this.main_frame.winfo_children():
             child.destroy()
 
-        ttk.Button(this.main_frame, text="Vissza", command=this.go_back).place(x=10, y=10)
-        if this.data["user"][4]:  # ha admin
-             ttk.Button(this.main_frame, text="Hirdetés felvitele", command=this.go_admin).place(x=800, y=10)
+        this.main_frame.rowconfigure(index=0, weight=1)
+        this.main_frame.rowconfigure(index=1, weight=1)
+        this.main_frame.rowconfigure(index=2, weight=1)
+        this.main_frame.columnconfigure(index=0, weight=1)
+        this.main_frame.columnconfigure(index=1, weight=1)
+        this.main_frame.columnconfigure(index=2, weight=1)
 
-        dao = AdDAO()
-        data = dao.find_all()
+        tkinter.Label(this.main_frame, fg=this.font_color, text="Hirdetések", bg=this['bg'],
+                      font=(this.font_family, 25)).grid(row=0, column=0, columnspan=3, sticky="N")
+
+        ttk.Button(this.main_frame, text="Vissza", command=this.go_back).grid(row=1, column=0, sticky="E")
+
+        if this.data["user"][4]:  # ha admin
+             ttk.Button(this.main_frame, text="Hirdetés felvitele", command=this.go_admin).grid(row=1, column=2, sticky="W")
+
+
+        data = this.dao.find_all()
         for i in range (len(data)):
+            this.main_frame.rowconfigure(index=3+i*2, weight=1, minsize=20)
+            this.main_frame.rowconfigure(index=3+i*2+1, weight=1)
             img_button = ttk.Button(this.main_frame, image=data[i][2], command=lambda index=i: this.get_info(data, index))
             img_button.image = data[i][2]
-            img_button.place(x=110, y=((len(data)-1) * 330) + 10 - i * 330)
-            ttk.Button(this.main_frame, text="X", command=lambda index=i: this.delete_ad(index)).place(x=110 + data[i][2].width() + 10, y=((len(data)-1) * 330) + 10 - i * 330)
+            img_button.grid(row=3+i*2+1, column=1, sticky="NE")
+            ttk.Button(this.main_frame, text="X", command=lambda index=i: this.delete_ad(index)).grid(row=3+i*2+1, column=2, sticky="NW")
 
     def get_info(this, data, i) -> None:
         info_frame = tkinter.Toplevel()
