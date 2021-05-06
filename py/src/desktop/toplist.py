@@ -73,9 +73,8 @@ class ToplistWindow(ScrollableWindow):
         this.medium_label.config(relief=tkinter.FLAT, activebackground=this.highlight_color)
         this.hard_label.config(relief=tkinter.FLAT, activebackground=this.highlight_color)
 
-        this.display_box = tkinter.Listbox(this.main_frame, font=font_family, fg=font_color, bg=this["bg"], bd=0, highlightthickness=0, relief=tkinter.FLAT)
+        this.display_box = tkinter.Listbox(this.main_frame, font=font_family, fg=font_color, bg=this["bg"], bd=0, highlightthickness=0, relief=tkinter.FLAT, selectmode=tkinter.SINGLE, justify=tkinter.CENTER, activestyle=tkinter.NONE, selectbackground=this["bg"])
         this.display_box.grid(row=3, column=0, columnspan=4, sticky="NESW")
-        this.display_box.config(justify=tkinter.CENTER)
 
         Button(this.main_frame, command=this.go_back, text="Vissza").grid(row=5, column=1, columnspan=2)
 
