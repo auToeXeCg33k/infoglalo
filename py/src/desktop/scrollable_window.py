@@ -21,6 +21,7 @@ class ScrollableWindow(Window):
 
         this.main_frame.bind("<Configure>", this.on_frame_configure)
         this.canvas.bind("<Configure>", this.on_canvas_configure)
+        this.canvas.bind_all("<MouseWheel>", this.on_mouse_wheel)
 
 
     def on_frame_configure(this, event) -> None:
@@ -29,8 +30,9 @@ class ScrollableWindow(Window):
     def on_canvas_configure(this, event) -> None:
         this.canvas.itemconfig(this.canvas_window, width=event.width)
 
-    def _on_mousewheel(this, event) -> None:
-        this.canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+    def on_mouse_wheel(this, event) -> None:
+        if this.canvas.winfo_height() < this.main_frame.winfo_height():
+            this.canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
 
 
     @abstractmethod
