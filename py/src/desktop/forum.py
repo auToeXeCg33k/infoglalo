@@ -14,16 +14,17 @@ class Forum(ScrollableWindow):
         # DAO
         this.socialDAO = SocialDAO()
 
-        # TITLE
-        tk.Label(this, text="Fórum", font=(None, 25), bg="gray5",fg="snow").grid(row=0, column=0, sticky="NESW")
         # FRAME IN THE CANVAS (MAIN FRAME)
         this.main_frame.rowconfigure(index=0, weight=1)
         this.main_frame.rowconfigure(index=1, weight=1)
+        this.main_frame.rowconfigure(index=2, weight=1)
         this.main_frame.columnconfigure(index=0, weight=1)
+
+        tk.Label(this.main_frame, text="Fórum", font=(None, 25), bg="gray5",fg="snow").grid(row=0, column=0, sticky="NESW")
 
         # FRAME FOR MAIN MESSAGES
         this.main_message_frame = tk.LabelFrame(this.main_frame, text="Üzenetek", font=(None, 15),fg="snow")
-        this.main_message_frame.grid(row=0, column=0, sticky="NESW")
+        this.main_message_frame.grid(row=1, column=0, sticky="NESW")
         this.main_message_frame.rowconfigure(index=0, weight=1)
         this.main_message_frame.rowconfigure(index=1, weight=1)
         this.main_message_frame.columnconfigure(index=0, weight=1)
@@ -66,7 +67,7 @@ class Forum(ScrollableWindow):
 
         # BACK BUTTON
         back_button = tk.Button(this.main_frame, text='Vissza', command=this.go_back)
-        back_button.grid(row=1, column=0, sticky="W")
+        back_button.grid(row=2, column=0, sticky="W")
 
         this.scroll_message_canvas.bind("<Configure>", this.resize_message_frame)
         this.messages_frame_id = this.scroll_message_canvas.create_window(0, 0, window=this.messages_frame, anchor=tk.NW)
@@ -97,7 +98,7 @@ class Forum(ScrollableWindow):
             this.load_messages_admin()
         else:
             this.load_messages()
-        this.message_canvas_conf()
+        #this.message_canvas_conf()
 
 
     def load_messages(this):
@@ -151,7 +152,7 @@ class Forum(ScrollableWindow):
 
         update_en = tk.Entry(up_frame)
         update_en.grid(row=0, column=0, sticky="NESW")
-
+        #command=partial(this.update_m, up_frame, update_en, user, date)
         ok_btn = tk.Button(up_frame, text="OK", command=partial(this.update_m, up_frame, update_en, user, date))
         ok_btn.grid(row=0, column=1, sticky="NESW")
 
