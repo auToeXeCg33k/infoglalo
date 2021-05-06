@@ -38,11 +38,12 @@ class Forum(ScrollableWindow):
 
         this.scroll_message_scrollbar = tk.Scrollbar(this.main_message_frame,orient="vertical", command=this.scroll_message_canvas.yview)
         this.scroll_message_scrollbar.grid(row=0, column=1, sticky="NES")
-
+        #this.scroll_message_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
         # FRAME FOR MESSAGES
-        this.messages_frame = tk.Frame(this.scroll_message_canvas, bg="blue")
+        this.messages_frame = tk.Frame(this.scroll_message_canvas, bg="blue", height=300)
         this.messages_frame.grid(row=0, column=0, sticky="NESW")
+        #this.messages_frame.pack(fill=tk.BOTH, expand=tk.TRUE)
 
         # ADD THE MESSAGES
         #TODO: Check ADMIN
@@ -69,10 +70,13 @@ class Forum(ScrollableWindow):
         back_button = tk.Button(this.main_frame, text='Vissza', command=this.go_back)
         back_button.grid(row=2, column=0, sticky="W")
 
-        this.scroll_message_canvas.bind("<Configure>", this.resize_message_frame)
-        this.messages_frame_id = this.scroll_message_canvas.create_window(0, 0, window=this.messages_frame, anchor=tk.NW)
+        this.messages_window = this.scroll_message_canvas.create_window(0, 0, window=this.messages_frame, anchor=tk.NW)
         this.scroll_message_canvas.config(yscrollcommand=this.scroll_message_scrollbar.set)
         this.scroll_message_canvas.config(scrollregion=this.scroll_message_canvas.bbox("all"))
+
+
+        #this.messages_frame.bind("<Configure>", this.on_message_frame_configure)
+        #this.scroll_message_canvas.bind("<Configure>", this.resize_message_canvas)
 
         #STYLE
         this.scroll_message_canvas["bg"] = this["bg"]
@@ -80,17 +84,15 @@ class Forum(ScrollableWindow):
         this.main_message_frame["bg"] = this["bg"]
         writer_frame["bg"] = this["bg"]
 
-    def message_canvas_conf(this):
-        if this.messages_frame.winfo_height() == 1: return
-        this.scroll_message_canvas.itemconfig(this.messages_frame_id, width=this.messages_frame.winfo_width(), height=this.messages_frame.winfo_height()+30)
+    #def on_message_frame_configure(this, event):
+    #    print(this.messages_frame.winfo_height())
+    #    this.scroll_message_canvas.config(scrollregion=this.scroll_message_canvas.bbox("all"))
 
-        this.scroll_message_canvas.config(scrollregion=this.scroll_message_canvas.bbox("all"))
 
-        this.scroll_message_canvas.config(yscrollcommand=this.scroll_message_scrollbar.set)
-        this.scroll_message_canvas.yview_moveto('1.0')
-
-    def resize_message_frame(this, event) -> None:
-        this.scroll_message_canvas.config(scrollregion=this.scroll_message_canvas.bbox("all"))
+    #def resize_message_canvas(this, event) -> None:
+    #    this.scroll_message_canvas.config(scrollregion=this.scroll_message_canvas.bbox("all"))
+    #    this.scroll_message_canvas.itemconfig(this.messages_window, height=event.height)
+        
 
 
     def reset(this) -> None:
@@ -152,7 +154,6 @@ class Forum(ScrollableWindow):
 
         update_en = tk.Entry(up_frame)
         update_en.grid(row=0, column=0, sticky="NESW")
-        #command=partial(this.update_m, up_frame, update_en, user, date)
         ok_btn = tk.Button(up_frame, text="OK", command=partial(this.update_m, up_frame, update_en, user, date))
         ok_btn.grid(row=0, column=1, sticky="NESW")
 
