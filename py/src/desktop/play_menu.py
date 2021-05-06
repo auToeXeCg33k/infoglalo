@@ -4,6 +4,7 @@ from tkinter.ttk import Button
 
 from .window import Window
 from .duel_menu import DuelMenuWindow
+from .test_game_window import TestGameWindow
 from ..core.config import ConfigLoader
 
 
@@ -47,7 +48,7 @@ class PlayMenuWindow(Window):
         this.master.raise_window(DuelMenuWindow)
 
     def go_to_test(this) -> None:
-        pass
+        this.master.raise_window(TestGameWindow)
 
     def go_back(this) -> None:
         this.master.raise_previous_window()
