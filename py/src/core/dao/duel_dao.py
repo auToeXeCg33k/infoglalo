@@ -92,7 +92,7 @@ class DuelDAO:
             data = cursor.fetchone()
             ret = {"id": data[0], "question": data[1], "correct_ans": data[2]}
 
-            cursor.execute("SELECT BETUJEL, SZOVEG FROM VALASZ WHERE KERDESSZOVEG = :1", [ret["question"]])
+            cursor.execute("SELECT BETUJEL, SZOVEG FROM VALASZ WHERE KERDESSZOVEG = :1 ORDER BY BETUJEL ASC", [ret["question"]])
             ret["answers"] = cursor.fetchall()
 
             return ret
@@ -100,3 +100,37 @@ class DuelDAO:
         except Exception as e:
             print(e)
             return dict()
+
+
+    def set_winner(this, id: int, winner: str) -> None:
+        try:
+            connection = ConfigLoader.get_connection_pool().acquire()
+            cursor = connection.cursor()
+            cursor.execute("UPDATE PARBAJ SET NYERTES = :1 WHERE ID = :2", [winner, id])
+            connection.commit()
+
+        except Exception as e:
+            print(e)
+
+
+    def add_answer(this, id: int, uname: str, ans: str) -> None:
+        try:
+            connection = ConfigLoader.get_connection_pool().acquire()
+            cursor = connection.cursor()
+            cursor.execute("INSERT INTO PARBAJVALASZ(parbajid, jatekos, valasz) VALUES (:1, :2, :3)", [id, uname, ans])
+            connection.commit()
+
+        except Exception as e:
+            print(e)
+
+
+    def has_both_answers(this, id: int) -> bool:
+        try:
+            connection = ConfigLoader.get_connection_pool().acquire()
+            cursor = connection.cursor()
+            cursor.execute("SELECT COUNT(parbajid) FROM PARBAJVALASZ WHERE parbajid = :1", [id])
+            return cursor.fetchone() == 2
+
+        except Exception as e:
+            print(e)
+            return False
