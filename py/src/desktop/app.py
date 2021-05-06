@@ -2,6 +2,7 @@ import tkinter
 
 from .window import Window
 from .login import LoginWindow
+from ..core.config import ConfigLoader
 
 from typing import Type
 
@@ -30,9 +31,9 @@ class App(tkinter.Tk):
     def __init__(this, *args, **kwargs):
         tkinter.Tk.__init__(this, *args, **kwargs)
 
-        this.geometry("960x540")
+        this.geometry(ConfigLoader.get("default-size"))
         this.minsize(800, 600)
-        this["bg"] = "gray10"
+        this["bg"] = ConfigLoader.get("background-color")
 
         # CACHE FOR LOADED WINDOWS
         this.windows: dict[Type[Window], Window] = dict()
@@ -42,7 +43,7 @@ class App(tkinter.Tk):
         # CENTRAL DATA HOLDER
         this.data: dict[str] = dict()
 
-        this.title("Infoglaló")
+        this.title(ConfigLoader.get("window-title"))
 
         this.columnconfigure(index=0, weight=1)
         this.rowconfigure(index=0, weight=1)
