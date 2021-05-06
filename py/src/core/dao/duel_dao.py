@@ -135,3 +135,14 @@ class DuelDAO:
         except Exception as e:
             print(e)
             return False
+
+
+    def get_answer(this, id: int, uname: str) -> str:
+        try:
+            connection = ConfigLoader.get_connection_pool().acquire()
+            cursor = connection.cursor()
+            cursor.execute("SELECT VALASZ FROM PARBAJVALASZ WHERE PARBAJID = :1 AND JATEKOS = :2", [id, uname])
+            return cursor.fetchone()
+
+        except Exception as e:
+            return ""
