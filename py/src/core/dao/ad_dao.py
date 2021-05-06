@@ -50,7 +50,7 @@ class AdDAO:
             ret = list()
 
             for db_id, title, text, image in db_data:
-                ret.append((title, text, ImageTk.PhotoImage(data = image)))
+                ret.append((db_id, title, text, ImageTk.PhotoImage(data = image)))
             return ret
 
 
