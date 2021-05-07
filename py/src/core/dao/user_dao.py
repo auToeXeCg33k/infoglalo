@@ -36,3 +36,18 @@ class UserDAO:
         except Exception as e:
             print(e)
             return None
+
+    def get_all(self):
+        try:
+            connection = ConfigLoader.get_connection_pool().acquire()
+            cursor = connection.cursor()
+            cursor.execute("SELECT FELHASZNALONEV FROM JATEKOS")
+            result: list[tuple] = cursor.fetchall()
+            ConfigLoader.get_connection_pool().release(connection)
+
+            return result
+
+
+        except Exception as e:
+            print(e)
+            return None
