@@ -77,6 +77,15 @@ class TestGameWindow(Window):
 
         # RESULTS SCREEN
         this.results_frame = tkinter.Frame(this, bg=this["bg"])
+        tkinter.Label(this.results_frame, fg=font_color, font=(font_family, 26), bg=this["bg"], text="Eredmények").pack()
+
+        this.answer_correctness_labels: list[tkinter.Label] = list()
+
+        for i in range(this.num_max_questions):
+            this.answer_correctness_labels.append(tkinter.Label(this.results_frame, bg=this["bg"], fg=font_color, font=(font_family, 20)))
+            this.answer_correctness_labels[-1].pack()
+
+        tkinter.ttk.Button(master=this.results_frame, command=this.go_back, text="Vissza").pack()
 
 
 
@@ -113,8 +122,7 @@ class TestGameWindow(Window):
 
 
     def on_answer_selected(this, letter: str) -> None:
-        # TODO
-        print("correct" if letter == this.data["test"]["tests"][this.question_index]["correct_ans"].lower() else "incorrect")
+        this.given_answers.append(letter == this.data["test"]["tests"][this.question_index]["correct_ans"].lower())
 
         if this.question_index + 1 < this.num_max_questions:
             this.on_next_question()
@@ -126,15 +134,16 @@ class TestGameWindow(Window):
         this.question_index += 1
 
         this.question_label["text"] = this.data["test"]["tests"][this.question_index]["question"]
-        this.ans_a_label["text"] = this.data["test"]["tests"][this.question_index]["answers"][0]
-        this.ans_b_label["text"] = this.data["test"]["tests"][this.question_index]["answers"][1]
-        this.ans_c_label["text"] = this.data["test"]["tests"][this.question_index]["answers"][2]
-        this.ans_d_label["text"] = this.data["test"]["tests"][this.question_index]["answers"][3]
+        this.ans_a_label["text"] = this.data["test"]["tests"][this.question_index]["answers"][0][0] + ": " + this.data["test"]["tests"][this.question_index]["answers"][0][1]
+        this.ans_b_label["text"] = this.data["test"]["tests"][this.question_index]["answers"][1][0] + ": " + this.data["test"]["tests"][this.question_index]["answers"][1][1]
+        this.ans_c_label["text"] = this.data["test"]["tests"][this.question_index]["answers"][2][0] + ": " + this.data["test"]["tests"][this.question_index]["answers"][2][1]
+        this.ans_d_label["text"] = this.data["test"]["tests"][this.question_index]["answers"][3][0] + ": " + this.data["test"]["tests"][this.question_index]["answers"][3][1]
 
 
     def on_game_end(this) -> None:
-        # TODO
         this.setup_frame.pack_forget()
         this.game_frame.pack_forget()
         this.results_frame.pack()
-        print("the end")
+
+        for i in range(len(this.answer_correctness_labels)):
+            this.answer_correctness_labels[i]["text"] = str(i + 1) + ". " + ("Helyes" if this.given_answers[i] else "Helytelen")
