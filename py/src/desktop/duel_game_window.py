@@ -55,10 +55,10 @@ class DuelGameWindow(Window):
         this.answers_frame.pack(side=tkinter.TOP, pady=20)
 
         this.question_label["text"] = this.data["duel"]["question"]
-        this.ans_a_label["text"] = this.data["duel"]["answers"][0]
-        this.ans_b_label["text"] = this.data["duel"]["answers"][1]
-        this.ans_c_label["text"] = this.data["duel"]["answers"][2]
-        this.ans_d_label["text"] = this.data["duel"]["answers"][3]
+        this.ans_a_label["text"] = this.data["duel"]["answers"][0][0] + ": " + this.data["duel"]["answers"][0][1]
+        this.ans_b_label["text"] = this.data["duel"]["answers"][1][0] + ": " + this.data["duel"]["answers"][1][1]
+        this.ans_c_label["text"] = this.data["duel"]["answers"][2][0] + ": " + this.data["duel"]["answers"][2][1]
+        this.ans_d_label["text"] = this.data["duel"]["answers"][3][0] + ": " + this.data["duel"]["answers"][3][1]
 
 
     # TODO add points handling
