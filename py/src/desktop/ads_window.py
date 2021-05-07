@@ -19,7 +19,6 @@ class AdsWindow(ScrollableWindow):
 
         this.dao = AdDAO()
 
-        this.reset()
 
     def reset(this) -> None:
         for child in this.main_frame.winfo_children():

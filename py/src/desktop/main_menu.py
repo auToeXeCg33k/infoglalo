@@ -7,6 +7,7 @@ from .window import Window
 from .ads_window import AdsWindow
 from .toplist import ToplistWindow
 from .play_menu import PlayMenuWindow
+from .stat_window import StatWindow
 from ..core.config import ConfigLoader
 
 class MainMenuWindow(Window):
@@ -54,7 +55,7 @@ class MainMenuWindow(Window):
         this.master.raise_window(AdsWindow)
 
     def go_to_stat(this) -> None:
-        pass
+        this.master.raise_window(StatWindow)
 
     def logout(this):
         del this.data["user"]
