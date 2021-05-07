@@ -3,6 +3,7 @@ import tkinter
 from tkinter.ttk import Button
 
 from .window import Window
+from .iq_game_window import IQWindow
 from .duel_menu import DuelMenuWindow
 from .test_game_window import TestGameWindow
 from ..core.config import ConfigLoader
@@ -39,7 +40,7 @@ class PlayMenuWindow(Window):
         Button(this, command=this.go_back, text="Vissza").grid(row=6, column=0)
 
     def go_to_iq(this) -> None:
-        pass
+        this.master.raise_window(IQWindow)
 
     def go_to_comp(this) -> None:
         pass
