@@ -45,3 +45,16 @@ class TestDAO():
         except Exception as e:
             print(e)
             return list()
+
+
+    def add_answer(this, uname: str, question: str, answer_letter: str, answer_text: str) -> None:
+        try:
+            connection = ConfigLoader.get_connection_pool().acquire()
+            cursor = connection.cursor()
+            cursor.execute('''INSERT INTO ADOTTVALASZ(id, valaszjel, KERDESSZOVEG, VALASZADO, VALASZSZOVEG)
+                                VALUES(-1, :1, :2, :3, :4)''', [answer_letter, question, uname, answer_text])
+
+            connection.commit()
+
+        except Exception as e:
+            print(e)

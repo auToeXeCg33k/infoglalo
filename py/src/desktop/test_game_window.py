@@ -139,6 +139,15 @@ class TestGameWindow(Window):
     def on_answer_selected(this, letter: str) -> None:
         this.given_answers.append(letter == this.data["test"]["tests"][this.question_index]["correct_ans"].lower())
 
+        answer_text = ""
+        for letter2, text in this.data["test"]["tests"][this.question_index]["answers"]:
+            if letter2.lower() == letter.lower():
+                answer_text = text
+                print("text is " + text)
+                break
+
+        this.dao.add_answer(this.data["user"][0], this.data["test"]["tests"][this.question_index]["question"], letter.upper(), answer_text)
+
         if this.question_index + 1 < this.num_max_questions:
             this.on_next_question()
         else:

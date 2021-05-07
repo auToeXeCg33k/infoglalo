@@ -79,6 +79,7 @@ class DuelDAO:
         try:
             connection = ConfigLoader.get_connection_pool().acquire()
             cursor = connection.cursor()
+            # TODO UNIQUE?
             cursor.execute("UPDATE PARBAJ SET PENDING = 0 WHERE ID = (\
                             SELECT UNIQUE PARBAJRAHIV.ID FROM PARBAJRAHIV\
                             INNER JOIN PARBAJRAHIVOTT ON PARBAJRAHIV.ID = PARBAJRAHIVOTT.ID\
