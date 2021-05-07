@@ -108,6 +108,11 @@ class ChatRoom(Window):
 
         this.reset()
 
+    def reset(this) -> None:
+        this.load_rooms()
+        if this.akt_room_id != 0:
+            this.to_room(this.akt_room_id)
+
     def new_room(this):
         this.master.raise_window(MakeRoom)
 
@@ -151,11 +156,6 @@ class ChatRoom(Window):
         for widget in this.messages_frame.winfo_children():
             widget.destroy()
 
-
-    def reset(this) -> None:
-        if this.akt_room_id != 0:
-            this.to_room(this.akt_room_id)
-            this.scroll_message_canvas.yview_moveto('1.0')
 
     def go_back(this) -> None:
         this.master.raise_previous_window()
