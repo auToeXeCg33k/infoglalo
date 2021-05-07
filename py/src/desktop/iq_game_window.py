@@ -25,7 +25,7 @@ class IQWindow(Window):
 
         # ACTUAL GAME SCREEN
         this.game_frame = tkinter.Frame(this, bg=this["bg"])
-        this.question_label = tkinter.Label(this.game_frame, font=(font_family, 11), fg=font_color, bg=this["bg"])
+        this.question_label = tkinter.Label(this.game_frame, font=(font_family, 15), fg=font_color, bg=this["bg"],  wraplength=600)
         this.answers_frame = tkinter.Frame(this.game_frame, bg=this["bg"])
 
         this.question_label.pack()
@@ -118,7 +118,7 @@ class IQWindow(Window):
             this.answer_correctness_labels[i]["text"] = str(i + 1) + ". " + ("Helyes" if this.given_answers[i] else "Helytelen")
             if this.given_answers[i]: correct += 1
 
-        this.iq_level_label["text"] = "A teszt alapján az iq szinted " + str(round(70 + 140/this.num_max_questions * correct))
+        this.iq_level_label["text"] = "A teszt alapján az iq szinted " + str(round(70 + 70/this.num_max_questions * correct))
 
     def go_back(this) -> None:
         this.master.raise_previous_window()
