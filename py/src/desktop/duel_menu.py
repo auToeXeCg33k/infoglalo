@@ -117,7 +117,6 @@ class DuelMenuWindow(Window):
         this.reset()
 
     def challenge(this) -> None:
-        # TODO start the duel
         this.dao.create_new_duel(this.data["user"][0], this.player_list.get(this.player_list.curselection())[0])
         this.data["duel"] = this.dao.get_unfinished_duel(this.data["user"][0], this.player_list.get(this.player_list.curselection())[0], 1)
         this.data["duel"]["challenger"] = this.data["user"][0]
