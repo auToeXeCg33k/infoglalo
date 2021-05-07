@@ -19,6 +19,7 @@ class IQWindow(Window):
 
         font_color = ConfigLoader.get("font-color")
         font_family = ConfigLoader.get("font-family")
+        this.accent_color = ConfigLoader.get("accent-color")
 
         tkinter.Label(master=this, fg=font_color, bg=this["bg"], font=(font_family, 26), text="IQ teszt").pack(
             side=tkinter.TOP, fill=tkinter.X)
@@ -53,6 +54,16 @@ class IQWindow(Window):
         this.ans_b_label.bind("<Button-1>", lambda e: this.on_answer_selected("b"))
         this.ans_c_label.bind("<Button-1>", lambda e: this.on_answer_selected("c"))
         this.ans_d_label.bind("<Button-1>", lambda e: this.on_answer_selected("d"))
+
+        this.ans_a_label.bind("<Enter>", lambda e: this.on_mouse_enter(this.ans_a_label))
+        this.ans_b_label.bind("<Enter>", lambda e: this.on_mouse_enter(this.ans_b_label))
+        this.ans_c_label.bind("<Enter>", lambda e: this.on_mouse_enter(this.ans_c_label))
+        this.ans_d_label.bind("<Enter>", lambda e: this.on_mouse_enter(this.ans_d_label))
+
+        this.ans_a_label.bind("<Leave>", lambda e: this.on_mouse_leave(this.ans_a_label))
+        this.ans_b_label.bind("<Leave>", lambda e: this.on_mouse_leave(this.ans_b_label))
+        this.ans_c_label.bind("<Leave>", lambda e: this.on_mouse_leave(this.ans_c_label))
+        this.ans_d_label.bind("<Leave>", lambda e: this.on_mouse_leave(this.ans_d_label))
 
         # RESULTS SCREEN
         this.results_frame = tkinter.Frame(this, bg=this["bg"])
@@ -122,3 +133,9 @@ class IQWindow(Window):
 
     def go_back(this) -> None:
         this.master.raise_previous_window()
+
+    def on_mouse_enter(this, label: tkinter.Label) -> None:
+        label["bg"]=this.accent_color
+
+    def on_mouse_leave(this, label: tkinter.Label) -> None:
+        label["bg"]=this["bg"]
