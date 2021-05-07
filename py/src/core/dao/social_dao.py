@@ -47,6 +47,34 @@ class SocialDAO:
             print(e)
             return False
 
+    def make_room(this, r_id, r_name) -> bool:
+        try:
+            connection = ConfigLoader.get_connection_pool().acquire()
+            cursor = connection.cursor()
+            cursor.execute("INSERT into kozosseg values (:1, :2)", [r_id, r_name])
+            connection.commit()
+            ConfigLoader.get_connection_pool().release(connection)
+            return True
+
+        except Exception as e:
+            print(e)
+            return False
+
+    def get_room_id(this)->int:
+        try:
+            connection = ConfigLoader.get_connection_pool().acquire()
+            cursor = connection.cursor()
+            cursor.execute("SELECT max(ID)+1 FROM KOZOSSEG")
+            db_data: list[tuple[int, str]] = cursor.fetchall()
+            ConfigLoader.get_connection_pool().release(connection)
+            result = list()
+            for room_id in db_data:
+                result.append((room_id))
+            return result[0][0]
+        except Exception as e:
+            print(e)
+        return -1
+
     def get_non_member_room(this, u_name) -> list[tuple[int, str]]:
         try:
             connection = ConfigLoader.get_connection_pool().acquire()

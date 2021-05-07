@@ -61,7 +61,6 @@ class Forum(ScrollableWindow):
         else:
             this.load_messages()
 
-
     def load_messages(this):
         this.clean_messages()
         room_messages = this.socialDAO.get_forum_messages()
