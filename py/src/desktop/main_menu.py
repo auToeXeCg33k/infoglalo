@@ -38,7 +38,7 @@ class MainMenuWindow(Window):
         Button(this, command=this.go_to_ranking, text="Rangsor").grid(row=2, column=0)
         Button(this, command=this.go_to_social, text="Közösségi").grid(row=3, column=0)
         Button(this, command=this.go_to_ad, text="Hirdetések").grid(row=4, column=0)
-        Button(this, command=this.go_to_settings, text="Beállítások").grid(row=5, column=0)
+        Button(this, command=this.go_to_stat, text="Statisztika").grid(row=5, column=0)
         Button(this, command=this.logout, text="Kijelentkezés").grid(row=7, column=0)
 
     def go_to_play(this) -> None:
@@ -53,7 +53,7 @@ class MainMenuWindow(Window):
     def go_to_ad(this) -> None:
         this.master.raise_window(AdsWindow)
 
-    def go_to_settings(this) -> None:
+    def go_to_stat(this) -> None:
         pass
 
     def logout(this):
