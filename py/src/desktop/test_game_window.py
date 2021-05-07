@@ -143,7 +143,6 @@ class TestGameWindow(Window):
         for letter2, text in this.data["test"]["tests"][this.question_index]["answers"]:
             if letter2.lower() == letter.lower():
                 answer_text = text
-                print("text is " + text)
                 break
 
         this.dao.add_answer(this.data["user"][0], this.data["test"]["tests"][this.question_index]["question"], letter.upper(), answer_text)
