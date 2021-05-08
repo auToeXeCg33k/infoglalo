@@ -1,4 +1,4 @@
-from src.desktop import app
+from desktop import app
 
 app = app.App()
 app.mainloop()

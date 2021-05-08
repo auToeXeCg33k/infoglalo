@@ -2,7 +2,7 @@ import tkinter
 
 from .window import Window
 from .login import LoginWindow
-from ..core.config import ConfigLoader
+from core.config import ConfigLoader
 
 from typing import Type
 

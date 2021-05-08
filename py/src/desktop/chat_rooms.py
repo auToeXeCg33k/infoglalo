@@ -5,7 +5,7 @@ import cx_Oracle
 
 from .make_room import MakeRoom
 from .window import Window
-from ..core.dao.social_dao import SocialDAO
+from core.dao.social_dao import SocialDAO
 
 
 class ChatRoom(Window):

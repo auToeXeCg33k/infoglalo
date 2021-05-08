@@ -2,8 +2,8 @@ import tkinter
 import tkinter.ttk
 
 from .window import Window
-from ..core.config import ConfigLoader
-from ..core.dao.duel_dao import DuelDAO
+from core.config import ConfigLoader
+from core.dao.duel_dao import DuelDAO
 
 
 class DuelGameWindow(Window):

@@ -6,7 +6,7 @@ from .window import Window
 from .iq_game_window import IQWindow
 from .duel_menu import DuelMenuWindow
 from .test_game_window import TestGameWindow
-from ..core.config import ConfigLoader
+from core.config import ConfigLoader
 
 
 class PlayMenuWindow(Window):

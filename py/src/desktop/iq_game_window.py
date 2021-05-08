@@ -2,8 +2,8 @@ import tkinter
 from tkinter import ttk
 
 from .window import Window
-from ..core.config import ConfigLoader
-from ..core.dao.iq_dao import IQDAO
+from core.config import ConfigLoader
+from core.dao.iq_dao import IQDAO
 
 class IQWindow(Window):
     def __init__(this, data) -> None:

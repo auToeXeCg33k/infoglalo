@@ -1,13 +1,12 @@
 import tkinter
-import tkinter
 from tkinter import messagebox
 from tkinter import ttk
 
 
 from .new_ads_window import NewAdsWindow
 from .scrollable_window import ScrollableWindow
-from ..core.dao.ad_dao import AdDAO
-from ..core.config import ConfigLoader
+from core.dao.ad_dao import AdDAO
+from core.config import ConfigLoader
 
 
 class AdsWindow(ScrollableWindow):

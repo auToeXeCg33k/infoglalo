@@ -1,6 +1,6 @@
 import cx_Oracle
 
-from src.core.config import ConfigLoader
+from core.config import ConfigLoader
 
 from typing import Union
 

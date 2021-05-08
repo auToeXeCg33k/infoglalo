@@ -1,5 +1,5 @@
 import cx_Oracle
-from src.core.config import ConfigLoader
+from core.config import ConfigLoader
 from PIL import ImageTk, Image
 import io
 

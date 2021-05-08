@@ -2,8 +2,8 @@ import tkinter
 import tkinter.ttk
 
 from .window import Window
-from ..core.dao.test_dao import TestDAO
-from ..core.config import ConfigLoader
+from core.dao.test_dao import TestDAO
+from core.config import ConfigLoader
 
 
 class TestGameWindow(Window):

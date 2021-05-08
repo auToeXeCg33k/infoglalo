@@ -3,8 +3,8 @@ from functools import partial
 from tkinter import messagebox
 
 from.window import Window
-from ..core.dao.social_dao import SocialDAO
-from ..core.dao.user_dao import UserDAO
+from core.dao.social_dao import SocialDAO
+from core.dao.user_dao import UserDAO
 import tkinter as tk
 
 class MakeRoom(Window):
