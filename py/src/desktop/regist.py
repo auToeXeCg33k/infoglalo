@@ -8,9 +8,9 @@ import bcrypt
 from typing import Union
 from tkinter import messagebox, DISABLED
 from tkcalendar import Calendar
-from ..core.dao.user_dao import UserDAO
+from core.dao.user_dao import UserDAO
 from .window import Window
-from ..core.config import ConfigLoader
+from core.config import ConfigLoader
 
 
 # TODO IMPLEMENT BIRTHDATE

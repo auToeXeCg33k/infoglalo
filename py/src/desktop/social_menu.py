@@ -4,7 +4,7 @@ from tkinter import ttk
 from .chat_rooms import ChatRoom
 from .forum import Forum
 from .window import Window
-from ..core.config import ConfigLoader
+from core.config import ConfigLoader
 
 class SocialMenu(Window):
     def __init__(this, data) -> None:

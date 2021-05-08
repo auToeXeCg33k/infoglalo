@@ -8,8 +8,8 @@ from typing import Union
 from .window import Window
 from .regist import RegistWindow
 from .main_menu import MainMenuWindow
-from..core.dao.user_dao import UserDAO
-from ..core.config import ConfigLoader
+from core.dao.user_dao import UserDAO
+from core.config import ConfigLoader
 
 
 class LoginWindow(Window):

@@ -8,7 +8,7 @@ from .ads_window import AdsWindow
 from .toplist import ToplistWindow
 from .play_menu import PlayMenuWindow
 from .stat_window import StatWindow
-from ..core.config import ConfigLoader
+from core.config import ConfigLoader
 
 class MainMenuWindow(Window):
     def __init__(this, data) -> None:

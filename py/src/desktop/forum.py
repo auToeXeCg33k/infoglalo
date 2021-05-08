@@ -4,7 +4,7 @@ from functools import partial
 import cx_Oracle
 
 from .scrollable_window import ScrollableWindow
-from ..core.dao.social_dao import SocialDAO
+from core.dao.social_dao import SocialDAO
 import tkinter as tk
 
 

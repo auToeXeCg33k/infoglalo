@@ -3,8 +3,8 @@ import tkinter
 from tkinter.ttk import Button
 
 from .scrollable_window import ScrollableWindow
-from ..core.dao.toplist_dao import TopListDAO
-from ..core.config import ConfigLoader
+from core.dao.toplist_dao import TopListDAO
+from core.config import ConfigLoader
 
 from typing import Union
 

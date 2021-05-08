@@ -3,8 +3,8 @@ import tkinter
 from tkinter.ttk import Button
 
 from .window import Window
-from ..core.dao.duel_dao import DuelDAO
-from ..core.config import ConfigLoader
+from core.dao.duel_dao import DuelDAO
+from core.config import ConfigLoader
 from .duel_game_window import DuelGameWindow
 
 

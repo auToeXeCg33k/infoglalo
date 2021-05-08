@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from .window import Window
-from ..core.config import ConfigLoader
-from ..core.dao.stat_dao import StatDAO
-from ..core.dao.toplist_dao import TopListDAO
+from core.config import ConfigLoader
+from core.dao.stat_dao import StatDAO
+from core.dao.toplist_dao import TopListDAO
 
 class StatWindow(Window):
     def __init__(this, data) -> None:

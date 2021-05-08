@@ -6,8 +6,8 @@ from PIL import Image
 import os
 
 from .window import Window
-from ..core.config import ConfigLoader
-from ..core.dao.ad_dao import AdDAO
+from core.config import ConfigLoader
+from core.dao.ad_dao import AdDAO
 
 class NewAdsWindow(Window):
     def __init__(this, data):

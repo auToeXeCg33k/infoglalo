@@ -1,5 +1,5 @@
 import cx_Oracle
-from src.core.config import ConfigLoader
+from core.config import ConfigLoader
 
 class SocialDAO:
     def get_messages(this,room:int) -> list[tuple[str, int, cx_Oracle.Date, str]]:

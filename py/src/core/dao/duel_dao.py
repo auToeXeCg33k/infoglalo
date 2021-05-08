@@ -1,4 +1,4 @@
-from src.core.config import ConfigLoader
+from core.config import ConfigLoader
 
 
 class DuelDAO:
