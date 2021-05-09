@@ -183,7 +183,7 @@ class ChatRoom(Window):
             akt_message.columnconfigure(index=2, weight=1)
             tk.Label(akt_message, text=room_messages[i][0], font=("Ebrima", 18)).grid(row=0, column=0, sticky="W")
             tk.Label(akt_message, text=room_messages[i][3], font=("Ebrima", 15)).grid(row=0, column=1, sticky="WE")
-            tk.Label(akt_message, text=room_messages[i][2], font=("Ebrima", 10)).grid(row=0, column=2, sticky="E")
+            tk.Label(akt_message, text=str(room_messages[i][2].date()) + " " + str(room_messages[i][2].timetz()), font=("Ebrima", 10)).grid(row=0, column=2, sticky="E")
             akt_message.grid(row=i, sticky="W", padx=10, pady=10)
 
     def load_messages_admin(this, room_id: int):
@@ -201,7 +201,7 @@ class ChatRoom(Window):
             akt_message.columnconfigure(index=5, weight=1)
             tk.Label(akt_message, text=room_messages[i][0], font=("Ebrima", 18)).grid(row=0, column=0, sticky="W")
             tk.Label(akt_message, text=room_messages[i][3], font=("Ebrima", 15)).grid(row=0, column=1, sticky="WE")
-            tk.Label(akt_message, text=room_messages[i][2], font=("Ebrima", 10)).grid(row=0, column=2, sticky="E")
+            tk.Label(akt_message, text=str(room_messages[i][2].date()) + " " + str(room_messages[i][2].timetz()), font=("Ebrima", 10)).grid(row=0, column=2, sticky="E")
             tk.Button(akt_message, text="X", command = partial(this.delete, room_messages[i][0],room_messages[i][2])).grid(row=0, column=3, sticky="W")
             tk.Button(akt_message, text="Módosít", command = partial(this.update_msg,room_messages[i][0],room_messages[i][2],akt_message)).grid(row=0, column=4, sticky="W")
             akt_message.grid(row=i, sticky="W", padx=10, pady=10)
