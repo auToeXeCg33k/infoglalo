@@ -73,7 +73,7 @@ class Forum(ScrollableWindow):
             akt_message.columnconfigure(index=2, weight=1)
             tk.Label(akt_message, text=room_messages[i][0], font=("Ebrima", 18)).grid(row=0, column=0, sticky="W")
             tk.Label(akt_message, text=room_messages[i][3], font=("Ebrima", 15)).grid(row=0, column=1, sticky="WE")
-            tk.Label(akt_message, text=room_messages[i][2], font=("Ebrima", 10)).grid(row=0, column=2, sticky="E")
+            tk.Label(akt_message, text=str(room_messages[i][2].date()) + " " + str(room_messages[i][2].timetz()), font=("Ebrima", 10)).grid(row=0, column=2, sticky="E")
             akt_message.grid(row=i, sticky="W", padx=10, pady=10)
 
     def load_messages_admin(this):
@@ -90,20 +90,20 @@ class Forum(ScrollableWindow):
             akt_message.columnconfigure(index=5, weight=1)
             tk.Label(akt_message, text=room_messages[i][0], font=("Ebrima", 18)).grid(row=0, column=0, sticky="W")
             tk.Label(akt_message, text=room_messages[i][3], font=("Ebrima", 15)).grid(row=0, column=1, sticky="WE")
-            tk.Label(akt_message, text=room_messages[i][2], font=("Ebrima", 10)).grid(row=0, column=2, sticky="E")
+            tk.Label(akt_message, text=str(room_messages[i][2].date()) + " " + str(room_messages[i][2].timetz()), font=("Ebrima", 10)).grid(row=0, column=2, sticky="E")
             tk.Button(akt_message, text="X", command = partial(this.delete, room_messages[i][0],room_messages[i][2])).grid(row=0, column=3, sticky="W")
             tk.Button(akt_message, text="Módosít", command = partial(this.update_msg,room_messages[i][0],room_messages[i][2],akt_message)).grid(row=0, column=4, sticky="W")
             akt_message.grid(row=i, sticky="W", padx=10, pady=10)
 
 
-    def delete(this, user:str, date:cx_Oracle.Date) -> None:
+    def delete(this, user:str, date:cx_Oracle.Timestamp) -> None:
         if this.socialDAO.delete_forum_msg(user, date):
             this.load_messages_admin()
             return
         else:
             print("ERROR")
 
-    def update_msg(this, user:str, date:cx_Oracle.Date, frame: tk.Frame) -> None:
+    def update_msg(this, user:str, date:cx_Oracle.Timestamp, frame: tk.Frame) -> None:
         up_frame = tk.Frame(frame)
         up_frame.rowconfigure(index=0, weight=1)
         up_frame.columnconfigure(index=0, weight=1)
@@ -115,7 +115,7 @@ class Forum(ScrollableWindow):
         ok_btn = tk.Button(up_frame, text="OK", command=partial(this.update_m, up_frame, update_en, user, date))
         ok_btn.grid(row=0, column=1, sticky="NESW")
 
-    def update_m(this, msg_frame: tk.Frame, msg_en: tk.Entry, msg_user:str, msg_date:cx_Oracle.Date):
+    def update_m(this, msg_frame: tk.Frame, msg_en: tk.Entry, msg_user:str, msg_date:cx_Oracle.Timestamp):
         this.socialDAO.update_msg(msg_user, msg_date, msg_en.get())
         this.load_messages_admin()
         msg_frame.destroy()

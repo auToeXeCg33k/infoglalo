@@ -2,12 +2,12 @@ import cx_Oracle
 from core.config import ConfigLoader
 
 class SocialDAO:
-    def get_messages(this,room:int) -> list[tuple[str, int, cx_Oracle.Date, str]]:
+    def get_messages(this,room:int) -> list[tuple[str, int, cx_Oracle.Timestamp, str]]:
         try:
             connection = ConfigLoader.get_connection_pool().acquire()
             cursor = connection.cursor()
             cursor.execute("SELECT * FROM UZENET WHERE KOZOSSEG = :1 ORDER BY IDOPONT",[room])
-            db_data: list[tuple[str, int, cx_Oracle.Date, str]] = cursor.fetchall()
+            db_data: list[tuple[str, int, cx_Oracle.Timestamp, str]] = cursor.fetchall()
             ConfigLoader.get_connection_pool().release(connection)
             result = list()
 
@@ -90,12 +90,12 @@ class SocialDAO:
             print(e)
         return list()
 
-    def get_forum_messages(this) -> list[tuple[str, int, cx_Oracle.Date, str]]:
+    def get_forum_messages(this) -> list[tuple[str, int, cx_Oracle.Timestamp, str]]:
         try:
             connection = ConfigLoader.get_connection_pool().acquire()
             cursor = connection.cursor()
             cursor.execute("SELECT * FROM UZENET WHERE KOZOSSEG = 0 order by IDOPONT")
-            db_data: list[tuple[str, int, cx_Oracle.Date, str]] = cursor.fetchall()
+            db_data: list[tuple[str, int, cx_Oracle.Timestamp, str]] = cursor.fetchall()
             ConfigLoader.get_connection_pool().release(connection)
             result = list()
 
@@ -120,11 +120,11 @@ class SocialDAO:
             print(e)
             return False
 
-    def update_msg(this, uname, date, new) -> bool:
+    def update_msg(this, uname, time, new) -> bool:
         try:
             connection = ConfigLoader.get_connection_pool().acquire()
             cursor = connection.cursor()
-            cursor.execute("UPDATE UZENET SET SZOVEG = :1 WHERE KULDO = :2 AND IDOPONT = :3", [new, uname, date])
+            cursor.execute("UPDATE UZENET SET SZOVEG = :1 WHERE KULDO = :2 AND IDOPONT = :3", [new, uname, time])
             connection.commit()
             ConfigLoader.get_connection_pool().release(connection)
             return True
@@ -138,7 +138,7 @@ class SocialDAO:
         try:
             connection = ConfigLoader.get_connection_pool().acquire()
             cursor = connection.cursor()
-            cursor.execute("INSERT INTO UZENET(KULDO, KOZOSSEG, IDOPONT, SZOVEG) VALUES (:1, :2, SYSDATE, :3)", [u_name, room_id, content])
+            cursor.execute("INSERT INTO UZENET(KULDO, KOZOSSEG, IDOPONT, SZOVEG) VALUES (:1, :2, current_timestamp, :3)", [u_name, room_id, content])
             connection.commit()
             ConfigLoader.get_connection_pool().release(connection)
             return True
