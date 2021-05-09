@@ -2,6 +2,7 @@ import tkinter
 
 from tkinter.ttk import Button
 
+from .comp_menu import CompMenuWindow
 from .window import Window
 from .iq_game_window import IQWindow
 from .duel_menu import DuelMenuWindow
@@ -43,7 +44,7 @@ class PlayMenuWindow(Window):
         this.master.raise_window(IQWindow)
 
     def go_to_comp(this) -> None:
-        pass
+        this.master.raise_window(CompMenuWindow)
 
     def go_to_duel(this) -> None:
         this.master.raise_window(DuelMenuWindow)
