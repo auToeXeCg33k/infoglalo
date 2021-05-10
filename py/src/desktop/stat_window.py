@@ -71,6 +71,10 @@ class StatWindow(Window):
 
         fig = plt.figure(figsize=(7, 5))
 
+        if len(first) == 0: first.append(0)
+        if len(sec) == 0: sec.append(0)
+        if len(third) == 0: third.append(0)
+
         ypos = np.arange(3)
         categories = ["<18", "18-50", "50<"]
         plt.xticks(ypos, categories)
