@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  File created - Sunday-May-09-2021   
+--  File created - Monday-May-10-2021   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Type AGGREGATE_TOPLIST_ENTRY_T
@@ -334,12 +334,88 @@ Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) value
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (13,'A','1995-ben ki volt az USA elnöke?','ADMIN','George W. Bush');
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (16,'A','Ki nyerte az első magyar aranyérmet a Riói olimpián?','ADMIN','Szász Emese');
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (18,'C','Hány aranyérmet gyűjtött Hosszú Katinka a Riói Olimpián?','ADMIN','3');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (84,'A','Kinek a regénye a Gergő és az álomfogók?','leopph','Fekete István');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (85,'B','Ki írta Für Elise c. regényt?','leopph','Kaffka Margit');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (86,'C','Melyik irodalmi mű szereplője Csicsó?','leopph','Pál utcai fiúk');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (87,'A','Mi volt Szombahely ókori latin neve?','leopph','Savaria');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (88,'B','Hány gyermeke született Károly Walesi hercegnek?','leopph','négy');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (89,'B','Ki volt Az árvízi hajós?','leopph','Wesselényi Miklós');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (90,'D','Mennyi az elefántok vemhességi ideje?','leopph','22 hónap');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (91,'C','Hányszor erősebb a cápák szemlencséje az embernél?','leopph','7x');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (92,'D','Hány csigolyából áll a zsiráf nyaka?','leopph','27');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (93,'A','Mikor és hol rendezték meg az első nyári olimpiai játékokat?','leopph','1908 London');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (94,'B','Melyik sportolónk beceneve Madár?','leopph','Madár Ferenc');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (95,'B','Melyik város szülötte Vajda Attila kenus?','leopph','Sopron');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (96,'A','Mi volt Petőfi Sándor édesapjának foglalkozása?','leopph','ács');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (97,'A','Hány tagja van a Gyűrű szövetségének "A Gyűrűk urai" c. regényben?','leopph','7');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (98,'B','Mi az alliteráció?','leopph','betűrím');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (99,'B','Ádám melyik csontjából lett Éva?','leopph','bordájából');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (100,'A','Kik voltak a Küklopszok a görög mitológiában?','leopph','egyszemű óriások');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (101,'A','Melyik királyunk nevéhez fűződik az Aranybulla kiadása?','leopph','II. András');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (102,'A','Hány évente kerül megrendezésre a labdarúgó EB?','leopph','egy');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (103,'A','Mikor és hol rendezték meg az első nyári olimpiai játékokat?','leopph','1908 London');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (104,'B','Melyik város szülötte Vajda Attila kenus?','leopph','Sopron');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (105,'B','Melyik sportolónk beceneve Madár?','leopph','Madár Ferenc');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (107,'B','Ádám melyik csontjából lett Éva?','leopph','bordájából');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (110,'D','Szilágyi Áron melyik sportág olimpiai bajnoka?','leopph','ökölvívás');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (111,'D','Kik voltak a tatárok?','leopph','mongolok');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (114,'C','Ki volt Orpheusz felesége?','leopph','Pénelopé');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (115,'B','Ki volt a kalapos király?','TESZT','II. József');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (116,'A','Ki volt Gandalf, A Gyűrűk Ura trilógiában?','Sanyi','mágus');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (118,'D','Milyen állat a haris?','Sanyi','hüllő');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (122,'B','Keleti Ágnes melyik sportág olimpiai bajnoka?','Sanyi','torna');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (123,'C','Ki nyerte az első magyar aranyérmet a Riói olimpián?','Sanyi','Gyurta Dániel');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (124,'C','Szilágyi Áron melyik sportág olimpiai bajnoka?','Sanyi','atlétika');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (128,'B','Ki írta Für Elise c. regényt?','Sanyi','Kaffka Margit');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (129,'D','Kinek a regénye "A Mester és Margarita"?','Sanyi','Fjodor Mihajlovics Dosztojevszkij');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (130,'B','Csehov melyik művében szerepel Arkagyina?','Sanyi','Sirály');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (131,'A','Kinek a regénye a Gergő és az álomfogók?','Sanyi','Fekete István');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (132,'C','Kinek a regénye "A Mester és Margarita"?','Sanyi','Lev Tolsztoj');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (133,'D','Ki volt a kalapos király?','Sanyi','II. József');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (134,'B','Ki volt Hunyadi Mátyás anyja?','Sanyi','Szilágyi Erzsébet');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (135,'C','1995-ben ki volt az USA elnöke?','Sanyi','Bill Clinton');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (137,'A','Milyen állat a haris?','Sanyi','hüllő');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (138,'C','Hányszor erősebb a cápák szemlencséje az embernél?','Sanyi','7x');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (139,'D','Hány csigolyából áll a zsiráf nyaka?','Sanyi','27');
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (8,'B','Ki volt Az árvízi hajós?','ADMIN','Wesselényi Miklós');
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (10,'C','Ki volt a kalapos király?','TESZT','I. József');
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (12,'D','Kik voltak a tatárok?','TESZT','mongolok');
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (14,'B','1995-ben ki volt az USA elnöke?','TESZT','Ronald Reagan');
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (15,'A','Ki nyerte az első magyar aranyérmet a Riói olimpián?','TESZT','Szász Emese');
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (17,'B','Hány aranyérmet gyűjtött Hosszú Katinka a Riói Olimpián?','TESZT','2');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (81,'D','Hány évig élhet egy óriásteknős?','Béla','250-300 évig');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (82,'C','Melyik kontinensen él a jaguár?','Béla','Afrika');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (83,'B','Hol él a koala?','Béla','Ausztráliában');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (106,'A','Melyik sportolónk beceneve Madár?','Béla','Erdei Zsolt');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (108,'B','Ádám melyik csontjából lett Éva?','Béla','bordájából');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (109,'C','Szilágyi Áron melyik sportág olimpiai bajnoka?','Béla','atlétika');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (112,'D','Kik voltak a tatárok?','Béla','mongolok');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (113,'A','Ki volt Orpheusz felesége?','Béla','Eurüdiké');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (117,'C','Ki nyerte az első magyar aranyérmet a Riói olimpián?','Béla','Szász Emese');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (119,'A','Ki volt Gandalf, A Gyűrűk Ura trilógiában?','Béla','mágus');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (120,'B','Hány kötetből áll a Harry Potter?','Béla','7');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (121,'D','Melyik költő verse a Héja-nász az avaron?','Béla','Ady Endre');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (125,'A','Melyik háborúban volt a Barbadossa hadművelet?','Béla','harmadik világháború');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (126,'C','Ki volt Hunyadi Mátyás anyja?','Béla','Anjou Mária');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (127,'D','Ki volt a kalapos király?','Béla','II. József');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (136,'B','1995-ben ki volt az USA elnöke?','Józsi bácsi','Ronald Reagan');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (140,'B','Ki volt Hunyadi Mátyás anyja?','Józsi bácsi','Szilágyi Erzsébet');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (141,'D','Ki volt a kalapos király?','Józsi bácsi','II. József');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (142,'D','Melyik költő verse a Héja-nász az avaron?','Józsi bácsi','Ady Endre');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (143,'A','Milyen állat Vuk, Fekete István regényében?','Józsi bácsi','róka');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (144,'C','Hány kötetből áll a Harry Potter?','Józsi bácsi','8');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (145,'A','Hány évente kerül megrendezésre a labdarúgó EB?','Józsi bácsi','egy');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (146,'D','Hol született Lionel Messi a híres focista?','Józsi bácsi','Spanyolországban');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (147,'B','Melyik sportolónk beceneve Madár?','Józsi bácsi','Madár Ferenc');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (148,'D','Ki volt a kalapos király?','Józsi bácsi','II. József');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (149,'B','Melyik háborúban volt a Barbadossa hadművelet?','Józsi bácsi','első világháború');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (150,'B','Ki volt Hunyadi Mátyás anyja?','Józsi bácsi','Szilágyi Erzsébet');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (151,'A','Melyik sportolónk beceneve Madár?','Józsi bácsi','Erdei Zsolt');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (152,'C','Hol született Lionel Messi a híres focista?','Józsi bácsi','Argentínában');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (153,'C','Melyik város szülötte Vajda Attila kenus?','Józsi bácsi','Szeged');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (154,'B','Hol él a koala?','Józsi bácsi','Ausztráliában');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (155,'A','Hány évig élhet egy óriásteknős?','Józsi bácsi','150-200 évig');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (156,'C','Melyik kontinensen él a jaguár?','Józsi bácsi','Afrika');
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (21,'D','Ki fedezte fel a déli sarkkört?','ADMIN','James Cook');
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (22,'D','Ki fedezte fel a déli sarkkört?','TESZT','James Cook');
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (25,'C','Hol született Lionel Messi a híres focista?','TESZT','Argentínában');
@@ -368,6 +444,11 @@ Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) value
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (73,'D','Ki nyerte az első magyar aranyérmet a Riói olimpián?','ADMIN','Szász Emese');
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (74,'D','Melyik költő verse a Héja-nász az avaron?','TESZT3','Ady Endre');
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (75,'B','Szilágyi Áron melyik sportág olimpiai bajnoka?','TESZT3','kardvívás');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (76,'B','Hány csigolyából áll a zsiráf nyaka?','TESZT2','7');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (77,'A','Kinek a regénye "A Mester és Margarita"?','TESZT','Mihail Bulgakov');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (78,'C','Kinek a műve az Egyperces novellák?','TESZT','Örkény István');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (79,'B','Hány kötetből áll a Harry Potter?','TESZT','7');
+Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (80,'A','Ki volt Gandalf, A Gyűrűk Ura trilógiában?','TESZT','mágus');
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (2,'C','Ki volt Orpheusz felesége?','TESZT','Pénelopé');
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (23,'C','Ki volt Orpheusz felesége?','TESZT','Pénelopé');
 Insert into ADOTTVALASZ (ID,VALASZJEL,KERDESSZOVEG,VALASZADO,VALASZSZOVEG) values (24,'A','Ki volt Orpheusz felesége?','ADMIN','Eurüdiké');
@@ -413,7 +494,7 @@ REM INSERTING into HIRDETES
 SET DEFINE OFF;
 Insert into HIRDETES (ID,CIM,SZOVEG) values (7,'BOJLER ELADÓ','eskü buszra kő...
 ');
-Insert into HIRDETES (ID,CIM,SZOVEG) values (6,'Ezt itt a cím','Remélem ezt is elalvassa majd valaki, nem csak teszteli ezt a hirdetést. Olyan rossz, hogy senki nem jut el idáig :(
+Insert into HIRDETES (ID,CIM,SZOVEG) values (6,'Ezt itt a cím','Remélem ezt is elolvassa majd valaki, nem csak teszteli ezt a hirdetést. Olyan rossz, hogy senki nem jut el idáig :(
 ');
 Insert into HIRDETES (ID,CIM,SZOVEG) values (8,'MegaHirdetés','Olyat hirdetek, a fal adja a másikat
 ');
@@ -421,12 +502,16 @@ Insert into HIRDETES (ID,CIM,SZOVEG) values (9,'INGYEN KÓLA','na jó nem...
 ');
 REM INSERTING into JATEKOS
 SET DEFINE OFF;
-Insert into JATEKOS (FELHASZNALONEV,EMAIL,ADMIN,JELSZO,NEHEZPONT,SALT,SZULDATUM,KONNYUPONT,KOZEPESPONT) values ('TESZT','teszt@gmail.com',0,'$2b$12$zTp24tZbMAaBC1RQx.7XAOmJysGWs71TDtqR/.Woczc6RrJ78SrqW',0,'$2b$12$zTp24tZbMAaBC1RQx.7XAO',to_date('12-MAY-21','DD-MON-RR'),4,12);
-Insert into JATEKOS (FELHASZNALONEV,EMAIL,ADMIN,JELSZO,NEHEZPONT,SALT,SZULDATUM,KONNYUPONT,KOZEPESPONT) values ('asd','asd@gmai.com',0,'$2b$12$nQRuToarscHp2DzUf7tWQOryGoPviu.epF.nYtOBCe37hT0sjigQe',0,'$2b$12$nQRuToarscHp2DzUf7tWQO',to_date('01-MAY-21','DD-MON-RR'),0,4);
-Insert into JATEKOS (FELHASZNALONEV,EMAIL,ADMIN,JELSZO,NEHEZPONT,SALT,SZULDATUM,KONNYUPONT,KOZEPESPONT) values ('ADMIN','admin@gmail.com',1,'$2b$12$DYxnB1/1FXPqNbC/DeoKUOv/Rznn2dZqAB00UZ/rso8eNG3Bplueu',3,'$2b$12$DYxnB1/1FXPqNbC/DeoKUO',to_date('01-MAY-21','DD-MON-RR'),1,0);
-Insert into JATEKOS (FELHASZNALONEV,EMAIL,ADMIN,JELSZO,NEHEZPONT,SALT,SZULDATUM,KONNYUPONT,KOZEPESPONT) values ('TESZT2','teszt2@gmail.com',0,'$2b$12$2AQQDWELoh0pd.kTUWYbp.GdxXE6d0.dcEV9Y4OTcQyVK712ekF6C',0,'$2b$12$2AQQDWELoh0pd.kTUWYbp.',to_date('12-JAN-21','DD-MON-RR'),0,0);
-Insert into JATEKOS (FELHASZNALONEV,EMAIL,ADMIN,JELSZO,NEHEZPONT,SALT,SZULDATUM,KONNYUPONT,KOZEPESPONT) values ('Atesz','asd@gmail.com',0,'$2b$12$hRbYzm9JRBQfrxIaS34wj.D0aU8RJ5cW4ueeEsg9YdxNu4SpcDlte',0,'$2b$12$hRbYzm9JRBQfrxIaS34wj.',to_date('11-MAY-21','DD-MON-RR'),0,4);
-Insert into JATEKOS (FELHASZNALONEV,EMAIL,ADMIN,JELSZO,NEHEZPONT,SALT,SZULDATUM,KONNYUPONT,KOZEPESPONT) values ('TESZT3','teszt3@gmail.com',0,'$2b$12$8YAadSrDw40Kg1cf67RpQeGyUs/L7ZAhwSnEzP2q5bgGWLf/Omj72',0,'$2b$12$8YAadSrDw40Kg1cf67RpQe',to_date('21-MAY-21','DD-MON-RR'),1,0);
+Insert into JATEKOS (FELHASZNALONEV,EMAIL,ADMIN,JELSZO,NEHEZPONT,SALT,SZULDATUM,KONNYUPONT,KOZEPESPONT) values ('leopph','leopph@gmail.com',0,'$2b$12$zBkTZXMPYTvgfCMsN5Kcr.wjSXyfci8G4L3AsWdnykdx4WKoAcqui',3,'$2b$12$zBkTZXMPYTvgfCMsN5Kcr.',to_date('08-NOV-93','DD-MON-RR'),6,0);
+Insert into JATEKOS (FELHASZNALONEV,EMAIL,ADMIN,JELSZO,NEHEZPONT,SALT,SZULDATUM,KONNYUPONT,KOZEPESPONT) values ('Sanyi','sanyi@sanyimail.com',0,'$2b$12$3fyF3DooSLQM/aAp/aU7NOuCgmh3R9aWxAvzfUMGuIQshPZUUCTw6',3,'$2b$12$3fyF3DooSLQM/aAp/aU7NO',to_date('01-SEP-39','DD-MON-RR'),5,0);
+Insert into JATEKOS (FELHASZNALONEV,EMAIL,ADMIN,JELSZO,NEHEZPONT,SALT,SZULDATUM,KONNYUPONT,KOZEPESPONT) values ('TESZT','teszt@gmail.com',0,'$2b$12$zTp24tZbMAaBC1RQx.7XAOmJysGWs71TDtqR/.Woczc6RrJ78SrqW',3,'$2b$12$zTp24tZbMAaBC1RQx.7XAO',to_date('12-MAY-21','DD-MON-RR'),11,2);
+Insert into JATEKOS (FELHASZNALONEV,EMAIL,ADMIN,JELSZO,NEHEZPONT,SALT,SZULDATUM,KONNYUPONT,KOZEPESPONT) values ('Béla','bela@gmail.com',0,'$2b$12$TGP7/x4SQzNfJidqAAtuOe92G/yCcxuc7YXq9olrMQ.gr6ddz9Cvm',3,'$2b$12$TGP7/x4SQzNfJidqAAtuOe',to_date('11-JAN-12','DD-MON-RR'),10,0);
+Insert into JATEKOS (FELHASZNALONEV,EMAIL,ADMIN,JELSZO,NEHEZPONT,SALT,SZULDATUM,KONNYUPONT,KOZEPESPONT) values ('asd','asd@gmai.com',0,'$2b$12$nQRuToarscHp2DzUf7tWQOryGoPviu.epF.nYtOBCe37hT0sjigQe',0,'$2b$12$nQRuToarscHp2DzUf7tWQO',to_date('01-MAY-21','DD-MON-RR'),4,0);
+Insert into JATEKOS (FELHASZNALONEV,EMAIL,ADMIN,JELSZO,NEHEZPONT,SALT,SZULDATUM,KONNYUPONT,KOZEPESPONT) values ('Józsi bácsi','jozsi@gmail.com',0,'$2b$12$XHAGWmzl4ASJR8jNih50NuSJZEU9FdNipmotn9n2ZnDrheQXETG0u',0,'$2b$12$XHAGWmzl4ASJR8jNih50Nu',to_date('07-OCT-65','DD-MON-RR'),7,2);
+Insert into JATEKOS (FELHASZNALONEV,EMAIL,ADMIN,JELSZO,NEHEZPONT,SALT,SZULDATUM,KONNYUPONT,KOZEPESPONT) values ('ADMIN','admin@gmail.com',1,'$2b$12$DYxnB1/1FXPqNbC/DeoKUOv/Rznn2dZqAB00UZ/rso8eNG3Bplueu',3,'$2b$12$DYxnB1/1FXPqNbC/DeoKUO',to_date('01-MAY-21','DD-MON-RR'),5,0);
+Insert into JATEKOS (FELHASZNALONEV,EMAIL,ADMIN,JELSZO,NEHEZPONT,SALT,SZULDATUM,KONNYUPONT,KOZEPESPONT) values ('TESZT2','teszt2@gmail.com',0,'$2b$12$2AQQDWELoh0pd.kTUWYbp.GdxXE6d0.dcEV9Y4OTcQyVK712ekF6C',3,'$2b$12$2AQQDWELoh0pd.kTUWYbp.',to_date('12-JAN-21','DD-MON-RR'),4,0);
+Insert into JATEKOS (FELHASZNALONEV,EMAIL,ADMIN,JELSZO,NEHEZPONT,SALT,SZULDATUM,KONNYUPONT,KOZEPESPONT) values ('Atesz','asd@gmail.com',0,'$2b$12$hRbYzm9JRBQfrxIaS34wj.D0aU8RJ5cW4ueeEsg9YdxNu4SpcDlte',0,'$2b$12$hRbYzm9JRBQfrxIaS34wj.',to_date('11-MAY-21','DD-MON-RR'),4,0);
+Insert into JATEKOS (FELHASZNALONEV,EMAIL,ADMIN,JELSZO,NEHEZPONT,SALT,SZULDATUM,KONNYUPONT,KOZEPESPONT) values ('TESZT3','teszt3@gmail.com',0,'$2b$12$8YAadSrDw40Kg1cf67RpQeGyUs/L7ZAhwSnEzP2q5bgGWLf/Omj72',0,'$2b$12$8YAadSrDw40Kg1cf67RpQe',to_date('21-MAY-21','DD-MON-RR'),5,0);
 REM INSERTING into KERDES
 SET DEFINE OFF;
 Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('A csigák melyik törzsbe tartoznak?','Élővilág','A',0);
@@ -439,7 +524,7 @@ Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('Hol él a koala?',
 Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('Mi a deres tapló?','Élővilág','D',1);
 Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('Hány évig élhet egy óriásteknős?','Élővilág','A',1);
 Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('Melyik kontinensen él a jaguár?','Élővilág','A',1);
-Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('Milyen állat a haris?','Élővilág','A',2);
+Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('Milyen állat a haris?','Élővilág','D',2);
 Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('Hány csigolyából áll a zsiráf nyaka?','Élővilág','B',2);
 Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('Mennyi az elefántok vemhességi ideje?','Élővilág','D',2);
 Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('Hányszor erősebb a cápák szemlencséje az embernél?','Élővilág','C',2);
@@ -448,7 +533,7 @@ Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('Kik voltak a Kükl
 Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('Ki volt Az árvízi hajós?','Történelem','B',2);
 Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('Ki fedezte fel a déli sarkkört?','Történelem','D',2);
 Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('1995-ben ki volt az USA elnöke?','Történelem','C',1);
-Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('Ki volt Hunyadi Mátyás anyja?','Történelem','B',1);
+Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('Ki volt Hunyadi Mátyás anyja?','Történelem','B',0);
 Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('Kik voltak a tatárok?','Történelem','D',0);
 Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('Ádám melyik csontjából lett Éva?','Történelem','B',0);
 Insert into KERDES (SZOVEG,TEMAKOR,BETUJEL,NEHEZSEG) values ('Melyik háborúban volt a Barbadossa hadművelet?','Történelem','C',1);
@@ -521,6 +606,11 @@ Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('ADMIN',6);
 Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('ADMIN',7);
 Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('ADMIN',8);
 Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('Atesz',0);
+Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('Béla',0);
+Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('Józsi bácsi',0);
+Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('Sanyi',0);
+Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('Sanyi',3);
+Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('Sanyi',8);
 Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('TESZT',0);
 Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('TESZT',1);
 Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('TESZT',2);
@@ -528,11 +618,16 @@ Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('TESZT',8);
 Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('TESZT2',0);
 Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('TESZT3',0);
 Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('asd',0);
+Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('leopph',0);
+Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('leopph',3);
+Insert into KOZOSSEGTAGJA (FELHASZNALONEV,KOZOSSEG) values ('leopph',8);
 REM INSERTING into PARBAJ
 SET DEFINE OFF;
 Insert into PARBAJ (ID,PENDING,NYERTES) values (0,0,'ADMIN');
 Insert into PARBAJ (ID,PENDING,NYERTES) values (1,0,'ADMIN');
+Insert into PARBAJ (ID,PENDING,NYERTES) values (13,0,'Béla');
 Insert into PARBAJ (ID,PENDING,NYERTES) values (2,0,'ADMIN');
+Insert into PARBAJ (ID,PENDING,NYERTES) values (14,0,'Béla');
 Insert into PARBAJ (ID,PENDING,NYERTES) values (3,0,'ADMIN');
 Insert into PARBAJ (ID,PENDING,NYERTES) values (5,0,'TESZT');
 Insert into PARBAJ (ID,PENDING,NYERTES) values (7,0,'ADMIN');
@@ -556,11 +651,15 @@ Insert into PARBAJKERDESE (ID,SZOVEG) values (7,'Hányszor erősebb a cápák sz
 Insert into PARBAJKERDESE (ID,SZOVEG) values (8,'Hol született Lionel Messi a híres focista?');
 Insert into PARBAJKERDESE (ID,SZOVEG) values (11,'Kinek a regénye "A Mester és Margarita"?');
 Insert into PARBAJKERDESE (ID,SZOVEG) values (12,'Mikor és hol rendezték meg az első nyári olimpiai játékokat?');
+Insert into PARBAJKERDESE (ID,SZOVEG) values (13,'Melyik sportolónk beceneve Madár?');
+Insert into PARBAJKERDESE (ID,SZOVEG) values (14,'Ki volt Orpheusz felesége?');
 REM INSERTING into PARBAJRAHIV
 SET DEFINE OFF;
 Insert into PARBAJRAHIV (ID,JATEKOS) values (1,'ADMIN');
 Insert into PARBAJRAHIV (ID,JATEKOS) values (0,'TESZT');
+Insert into PARBAJRAHIV (ID,JATEKOS) values (13,'leopph');
 Insert into PARBAJRAHIV (ID,JATEKOS) values (2,'TESZT');
+Insert into PARBAJRAHIV (ID,JATEKOS) values (14,'Béla');
 Insert into PARBAJRAHIV (ID,JATEKOS) values (3,'TESZT');
 Insert into PARBAJRAHIV (ID,JATEKOS) values (5,'TESZT');
 Insert into PARBAJRAHIV (ID,JATEKOS) values (4,'TESZT');
@@ -569,7 +668,9 @@ REM INSERTING into PARBAJRAHIVOTT
 SET DEFINE OFF;
 Insert into PARBAJRAHIVOTT (ID,JATEKOS) values (1,'TESZT');
 Insert into PARBAJRAHIVOTT (ID,JATEKOS) values (0,'ADMIN');
+Insert into PARBAJRAHIVOTT (ID,JATEKOS) values (13,'Béla');
 Insert into PARBAJRAHIVOTT (ID,JATEKOS) values (2,'ADMIN');
+Insert into PARBAJRAHIVOTT (ID,JATEKOS) values (14,'leopph');
 Insert into PARBAJRAHIVOTT (ID,JATEKOS) values (3,'ADMIN');
 Insert into PARBAJRAHIVOTT (ID,JATEKOS) values (5,'ADMIN');
 Insert into PARBAJRAHIVOTT (ID,JATEKOS) values (4,'ADMIN');
@@ -580,8 +681,12 @@ Insert into PARBAJVALASZ (PARBAJID,JATEKOS,VALASZ) values (0,'TESZT','B');
 Insert into PARBAJVALASZ (PARBAJID,JATEKOS,VALASZ) values (0,'ADMIN','C');
 Insert into PARBAJVALASZ (PARBAJID,JATEKOS,VALASZ) values (2,'ADMIN','C');
 Insert into PARBAJVALASZ (PARBAJID,JATEKOS,VALASZ) values (1,'ADMIN','D');
+Insert into PARBAJVALASZ (PARBAJID,JATEKOS,VALASZ) values (13,'leopph','B');
+Insert into PARBAJVALASZ (PARBAJID,JATEKOS,VALASZ) values (14,'leopph','C');
 Insert into PARBAJVALASZ (PARBAJID,JATEKOS,VALASZ) values (2,'TESZT','B');
 Insert into PARBAJVALASZ (PARBAJID,JATEKOS,VALASZ) values (1,'TESZT','C');
+Insert into PARBAJVALASZ (PARBAJID,JATEKOS,VALASZ) values (13,'Béla','A');
+Insert into PARBAJVALASZ (PARBAJID,JATEKOS,VALASZ) values (14,'Béla','A');
 Insert into PARBAJVALASZ (PARBAJID,JATEKOS,VALASZ) values (5,'TESZT','C');
 Insert into PARBAJVALASZ (PARBAJID,JATEKOS,VALASZ) values (5,'ADMIN','B');
 Insert into PARBAJVALASZ (PARBAJID,JATEKOS,VALASZ) values (1,'ADMIN','D');
@@ -602,21 +707,32 @@ Insert into TEMAKOR (NEV) values ('Történelem');
 Insert into TEMAKOR (NEV) values ('Élővilág');
 REM INSERTING into UTKOZET
 SET DEFINE OFF;
-Insert into UTKOZET (VERSENYID,KEZDES,FELHASZNALONEV) values (1,to_date('09-MAY-21','DD-MON-RR'),'TESZT');
+Insert into UTKOZET (VERSENYID,KEZDES,FELHASZNALONEV) values (2,to_date('10-MAY-21','DD-MON-RR'),'ADMIN');
+Insert into UTKOZET (VERSENYID,KEZDES,FELHASZNALONEV) values (2,to_date('10-MAY-21','DD-MON-RR'),'TESZT');
+Insert into UTKOZET (VERSENYID,KEZDES,FELHASZNALONEV) values (2,to_date('10-MAY-21','DD-MON-RR'),'TESZT2');
+Insert into UTKOZET (VERSENYID,KEZDES,FELHASZNALONEV) values (2,to_date('10-MAY-21','DD-MON-RR'),'leopph');
 Insert into UTKOZET (VERSENYID,KEZDES,FELHASZNALONEV) values (1,to_date('09-MAY-21','DD-MON-RR'),'TESZT2');
+Insert into UTKOZET (VERSENYID,KEZDES,FELHASZNALONEV) values (1,to_date('09-MAY-21','DD-MON-RR'),'ADMIN');
+Insert into UTKOZET (VERSENYID,KEZDES,FELHASZNALONEV) values (1,to_date('09-MAY-21','DD-MON-RR'),'TESZT3');
 REM INSERTING into UTKOZETKERDESE
 SET DEFINE OFF;
 Insert into UTKOZETKERDESE (VERSENYID,SZOVEG) values (1,'Egy juhásznak 17 báránya volt. Négy kivételével mind elpusztult. Hány maradt életben?');
+Insert into UTKOZETKERDESE (VERSENYID,SZOVEG) values (1,'Hány csigolyából áll a zsiráf nyaka?');
 Insert into UTKOZETKERDESE (VERSENYID,SZOVEG) values (1,'Hány lába van a póknak?');
 Insert into UTKOZETKERDESE (VERSENYID,SZOVEG) values (1,'Ki nyerte az első magyar aranyérmet a Riói olimpián?');
 Insert into UTKOZETKERDESE (VERSENYID,SZOVEG) values (1,'Ki volt Az árvízi hajós?');
 Insert into UTKOZETKERDESE (VERSENYID,SZOVEG) values (1,'Ki volt Gandalf, A Gyűrűk Ura trilógiában?');
 Insert into UTKOZETKERDESE (VERSENYID,SZOVEG) values (1,'Ki volt Orpheusz felesége?');
+Insert into UTKOZETKERDESE (VERSENYID,SZOVEG) values (1,'Ki volt a kalapos király?');
 Insert into UTKOZETKERDESE (VERSENYID,SZOVEG) values (1,'Kik voltak a Küklopszok a görög mitológiában?');
 Insert into UTKOZETKERDESE (VERSENYID,SZOVEG) values (1,'Kinek a műve az Egyperces novellák?');
+Insert into UTKOZETKERDESE (VERSENYID,SZOVEG) values (1,'Kinek a regénye "A Mester és Margarita"?');
 Insert into UTKOZETKERDESE (VERSENYID,SZOVEG) values (1,'Melyik költő verse a Héja-nász az avaron?');
 Insert into UTKOZETKERDESE (VERSENYID,SZOVEG) values (1,'Milyen állat a haris?');
 Insert into UTKOZETKERDESE (VERSENYID,SZOVEG) values (1,'Szilágyi Áron melyik sportág olimpiai bajnoka?');
+Insert into UTKOZETKERDESE (VERSENYID,SZOVEG) values (2,'Ki nyerte az első magyar aranyérmet a Riói olimpián?');
+Insert into UTKOZETKERDESE (VERSENYID,SZOVEG) values (2,'Ki volt Gandalf, A Gyűrűk Ura trilógiában?');
+Insert into UTKOZETKERDESE (VERSENYID,SZOVEG) values (2,'Milyen állat a haris?');
 REM INSERTING into UTKOZETRESZVETEL
 SET DEFINE OFF;
 Insert into UTKOZETRESZVETEL (VERSENYID,FELHASZNALONEV) values (1,'ADMIN');
@@ -624,11 +740,22 @@ Insert into UTKOZETRESZVETEL (VERSENYID,FELHASZNALONEV) values (1,'TESZT');
 Insert into UTKOZETRESZVETEL (VERSENYID,FELHASZNALONEV) values (1,'TESZT2');
 Insert into UTKOZETRESZVETEL (VERSENYID,FELHASZNALONEV) values (1,'TESZT3');
 Insert into UTKOZETRESZVETEL (VERSENYID,FELHASZNALONEV) values (2,'ADMIN');
+Insert into UTKOZETRESZVETEL (VERSENYID,FELHASZNALONEV) values (2,'Béla');
+Insert into UTKOZETRESZVETEL (VERSENYID,FELHASZNALONEV) values (2,'Sanyi');
+Insert into UTKOZETRESZVETEL (VERSENYID,FELHASZNALONEV) values (2,'TESZT');
 Insert into UTKOZETRESZVETEL (VERSENYID,FELHASZNALONEV) values (2,'TESZT2');
+Insert into UTKOZETRESZVETEL (VERSENYID,FELHASZNALONEV) values (2,'leopph');
+Insert into UTKOZETRESZVETEL (VERSENYID,FELHASZNALONEV) values (3,'Béla');
 REM INSERTING into UZENET
 SET DEFINE OFF;
+Insert into UZENET (KULDO,KOZOSSEG,IDOPONT,SZOVEG) values ('Sanyi',8,to_timestamp('10-MAY-21 04.30.10.000000000 PM','DD-MON-RR HH.MI.SSXFF AM'),'Heló heló heló sziasztok');
+Insert into UZENET (KULDO,KOZOSSEG,IDOPONT,SZOVEG) values ('Sanyi',3,to_timestamp('10-MAY-21 04.31.49.000000000 PM','DD-MON-RR HH.MI.SSXFF AM'),'én nagyon szeretem a tejet');
+Insert into UZENET (KULDO,KOZOSSEG,IDOPONT,SZOVEG) values ('leopph',3,to_timestamp('10-MAY-21 04.32.38.000000000 PM','DD-MON-RR HH.MI.SSXFF AM'),'és a kakaót is?');
+Insert into UZENET (KULDO,KOZOSSEG,IDOPONT,SZOVEG) values ('Sanyi',3,to_timestamp('10-MAY-21 04.33.36.000000000 PM','DD-MON-RR HH.MI.SSXFF AM'),'Azt is');
+Insert into UZENET (KULDO,KOZOSSEG,IDOPONT,SZOVEG) values ('Sanyi',8,to_timestamp('10-MAY-21 04.30.43.000000000 PM','DD-MON-RR HH.MI.SSXFF AM'),'heló heló mizujs');
 Insert into UZENET (KULDO,KOZOSSEG,IDOPONT,SZOVEG) values ('TESZT',0,to_timestamp('09-MAY-21 11.38.24.000000000 AM','DD-MON-RR HH.MI.SSXFF AM'),'hello');
 Insert into UZENET (KULDO,KOZOSSEG,IDOPONT,SZOVEG) values ('ADMIN',4,to_timestamp('09-MAY-21 11.59.26.000000000 AM','DD-MON-RR HH.MI.SSXFF AM'),'lol');
+Insert into UZENET (KULDO,KOZOSSEG,IDOPONT,SZOVEG) values ('TESZT',0,to_timestamp('09-MAY-21 01.00.03.000000000 PM','DD-MON-RR HH.MI.SSXFF AM'),'szia mizujs');
 REM INSERTING into VALASZ
 SET DEFINE OFF;
 Insert into VALASZ (SZOVEG,BETUJEL,KERDESSZOVEG) values ('puhatestűek','A','A csigák melyik törzsbe tartoznak?');
@@ -687,6 +814,10 @@ Insert into VALASZ (SZOVEG,BETUJEL,KERDESSZOVEG) values ('3x','A','Hányszor er�
 Insert into VALASZ (SZOVEG,BETUJEL,KERDESSZOVEG) values ('5x','B','Hányszor erősebb a cápák szemlencséje az embernél?');
 Insert into VALASZ (SZOVEG,BETUJEL,KERDESSZOVEG) values ('7x','C','Hányszor erősebb a cápák szemlencséje az embernél?');
 Insert into VALASZ (SZOVEG,BETUJEL,KERDESSZOVEG) values ('10x','D','Hányszor erősebb a cápák szemlencséje az embernél?');
+Insert into VALASZ (SZOVEG,BETUJEL,KERDESSZOVEG) values ('Cseresznyéskert','A','Csehov melyik művében szerepel Arkagyina?');
+Insert into VALASZ (SZOVEG,BETUJEL,KERDESSZOVEG) values ('Sirály','B','Csehov melyik művében szerepel Arkagyina?');
+Insert into VALASZ (SZOVEG,BETUJEL,KERDESSZOVEG) values ('Három nővér','C','Csehov melyik művében szerepel Arkagyina?');
+Insert into VALASZ (SZOVEG,BETUJEL,KERDESSZOVEG) values ('Ványa bácsi','D','Csehov melyik művében szerepel Arkagyina?');
 Insert into VALASZ (SZOVEG,BETUJEL,KERDESSZOVEG) values ('1001. jan.1.','A','Mikor volt István, királlyá koronázása?');
 Insert into VALASZ (SZOVEG,BETUJEL,KERDESSZOVEG) values ('1001. jan.11.','B','Mikor volt István, királlyá koronázása?');
 Insert into VALASZ (SZOVEG,BETUJEL,KERDESSZOVEG) values ('1001. jan.21.','C','Mikor volt István, királlyá koronázása?');
